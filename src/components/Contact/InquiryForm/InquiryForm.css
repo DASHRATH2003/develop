@@ -1,0 +1,56 @@
+.enter-name{
+    transition: transform 0.6s ease, background-color 0.9s ease; 
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0%;
+}
+
+.enter-name:hover{
+    transform: scale(1.10) translateX(3rem);
+    background-color: rgb(114, 114, 119);
+}
+
+
+.enter-email{
+    transition: transform 0.6s ease, background-color 0.9s ease; 
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0%;
+}
+
+.enter-email:hover{
+    transform: scale(1.10) translateX(3rem);
+    background-color: rgb(241, 177, 151);
+}
+
+
+.contactBlock{
+    margin-bottom: 10%;
+    margin-top: 5%;
+    padding: 4%;
+}
+
+.enter-message{
+    transition: transform 0.6s ease, background-color 0.9s ease; 
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0%;
+}
+
+.enter-message:hover{
+    transform: scale(1.10) translateX(3rem);
+    background-color: rgb(117, 211, 228);
+}
+
+.enter-phone{
+    transition: transform 0.6s ease, background-color 0.9s ease; 
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0%;
+}
+
+.enter-phone:hover{
+    transform: scale(1.10) translateX(3rem);
+    background-color: rgb(107, 98, 240);
+}
+

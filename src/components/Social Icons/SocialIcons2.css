@@ -1,0 +1,44 @@
+:root {
+    --youtube-color: #ff0000; /* Red color for YouTube */
+    --facebook-color: #3b5998; /* Facebook blue color */
+    --instagram-color: #bc2a8d; /* Pink color for Instagram */
+    --phone-color: #007bff; /* Blue color for phone icon */
+}
+
+.social-icons {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row; /* Change to row format */
+    align-items: center;
+    z-index: 999; /* Ensure it's above other content */
+}
+
+.social-icons a {
+    margin-right: 10px; /* Adjust spacing between icons */
+    color: rgb(255, 193, 37); /* Default icon color */
+    text-decoration: none;
+    transition: transform 0.6s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for color and box-shadow */
+}
+
+.social-icons a:hover {
+    transform: scale(1.70);
+}
+
+.youtube-icon {
+    --glow-color: var(--youtube-color);
+}
+
+.facebook-icon {
+    --glow-color: var(--facebook-color);
+}
+
+.instagram-icon {
+    --glow-color: var(--instagram-color);
+}
+
+.phone-icon {
+    --glow-color: var(--phone-color);
+}
