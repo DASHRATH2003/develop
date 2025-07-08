@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiPlus, FiEdit2, FiTrash2, FiSearch } from 'react-icons/fi';
 import AddJobForm from './AddJobForm';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const JobsTable = ({ jobs, onEdit, onDelete }) => (
   <div className="overflow-x-auto">
@@ -84,12 +84,12 @@ const JobsManagement = () => {
   // Fetch jobs from backend
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('https://backendinnomatrics.onrender.com/api/jobs');
+      const response = await api.get('/jobs');
       setJobs(response.data);
       setError(null);
-    } catch (err) {
-      setError('Failed to fetch jobs. Please try again later.');
-      console.error('Error fetching jobs:', err);
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+      setError('Failed to fetch jobs');
     } finally {
       setLoading(false);
     }
@@ -101,50 +101,32 @@ const JobsManagement = () => {
 
   const handleAddJob = async (newJob) => {
     try {
-      const response = await axios.post('https://backendinnomatrics.onrender.com/api/jobs', newJob, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      setJobs(prevJobs => [...prevJobs, response.data]);
-      setError(null);
-    } catch (err) {
-      setError('Failed to add job. Please try again.');
-      console.error('Error adding job:', err);
+      const response = await api.post('/jobs', newJob);
+      setJobs([...jobs, response.data]);
+      setShowAddForm(false);
+    } catch (error) {
+      console.error('Error adding job:', error);
+      setError('Failed to add job');
     }
   };
 
-  const handleEdit = async (job) => {
+  const handleUpdateJob = async (job) => {
     try {
-      const response = await axios.patch(`https://backendinnomatrics.onrender.com/api/jobs/${job._id}`, job, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      setJobs(prevJobs => prevJobs.map(j => j._id === job._id ? response.data : j));
-      setError(null);
-    } catch (err) {
-      setError('Failed to update job. Please try again.');
-      console.error('Error updating job:', err);
+      const response = await api.patch(`/jobs/${job._id}`, job);
+      setJobs(jobs.map(j => j._id === job._id ? response.data : j));
+    } catch (error) {
+      console.error('Error updating job:', error);
+      setError('Failed to update job');
     }
   };
 
-  const handleDelete = async (jobId) => {
-    if (window.confirm('Are you sure you want to delete this job?')) {
-      try {
-        await axios.delete(`https://backendinnomatrics.onrender.com/api/jobs/${jobId}`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-        setJobs(prevJobs => prevJobs.filter(job => job._id !== jobId));
-        setError(null);
-      } catch (err) {
-        setError('Failed to delete job. Please try again.');
-        console.error('Error deleting job:', err);
-      }
+  const handleDeleteJob = async (jobId) => {
+    try {
+      await api.delete(`/jobs/${jobId}`);
+      setJobs(jobs.filter(job => job._id !== jobId));
+    } catch (error) {
+      console.error('Error deleting job:', error);
+      setError('Failed to delete job');
     }
   };
 
@@ -203,8 +185,8 @@ const JobsManagement = () => {
             job.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
             job.location.toLowerCase().includes(searchTerm.toLowerCase())
           )} 
-          onEdit={handleEdit}
-          onDelete={handleDelete}
+          onEdit={handleUpdateJob}
+          onDelete={handleDeleteJob}
         />
       </div>
 

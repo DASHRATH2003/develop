@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import api from '../../utils/api';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -31,8 +32,8 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
+    setError('');
 
     // Validate passwords match
     if (formData.password !== formData.confirmPassword) {
@@ -49,10 +50,10 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('https://backendinnomatrics.onrender.com/api/auth/register', {
-        name: formData.name,
+      const response = await api.post('/auth/register', {
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        fullName: formData.name
       });
 
       // Store token and user info

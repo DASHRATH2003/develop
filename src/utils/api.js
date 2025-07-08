@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 // Log the API URL for debugging
-console.log('API URL:', process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.onrender.com/api');
+console.log('API URL:', process.env.REACT_APP_API_URL || 'http://localhost:5000/api');
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.onrender.com/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 // Create axios instance
 const api = axios.create({
@@ -13,7 +13,7 @@ const api = axios.create({
     'Accept': 'application/json'
   },
   withCredentials: false, // Changed to false to avoid CORS preflight issues
-  timeout: 30000 // Increased timeout to 30 seconds
+  timeout: 60000 // Increased timeout to 60 seconds for slower connections
 });
 
 // Add request interceptor
