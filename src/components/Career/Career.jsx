@@ -409,7 +409,7 @@ const CareerComponent = forwardRef((props, ref) => {
 });
 
 const Career = forwardRef((props, ref) => {
-  const [jobs, setJobs] = useState(openPositions); // Initialize with hardcoded jobs
+  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -423,18 +423,11 @@ const Career = forwardRef((props, ref) => {
         const apiJobs = await getAllJobs();
         console.log('Received jobs from API:', apiJobs);
         
-        if (Array.isArray(apiJobs) && apiJobs.length > 0) {
-          // If we get jobs from the API, use those
-          setJobs(apiJobs);
-        } else {
-          // Otherwise, keep using the hardcoded jobs
-          console.log('Using hardcoded jobs as fallback');
-          setJobs(openPositions);
-        }
+        // Use API jobs if available, otherwise use hardcoded jobs
+        setJobs(apiJobs.length > 0 ? apiJobs : openPositions);
       } catch (error) {
         console.error('Error fetching jobs:', error);
-        // On error, keep using hardcoded jobs
-        console.log('Using hardcoded jobs due to API error');
+        setError('Failed to fetch jobs. Showing available positions.');
         setJobs(openPositions);
       } finally {
         setLoading(false);

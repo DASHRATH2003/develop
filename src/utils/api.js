@@ -12,8 +12,8 @@ const api = axios.create({
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   },
-  withCredentials: true,
-  timeout: 10000 // 10 second timeout
+  withCredentials: false, // Changed to false to avoid CORS preflight issues
+  timeout: 30000 // Increased timeout to 30 seconds
 });
 
 // Add request interceptor
@@ -21,7 +21,13 @@ api.interceptors.request.use(
   (config) => {
     // Log request details
     console.log(`Making ${config.method.toUpperCase()} request to: ${config.baseURL}${config.url}`);
-    console.log('Request headers:', config.headers);
+    
+    // Add authorization header if token exists
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    
     return config;
   },
   (error) => {
@@ -88,10 +94,10 @@ export const getAllJobs = async () => {
     console.log('Fetching all jobs...');
     const response = await api.get('/jobs');
     console.log('Jobs response:', response.data);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error in getAllJobs:', error);
-    throw error;
+    return []; // Return empty array instead of throwing
   }
 };
 
@@ -129,4 +135,7 @@ export const deleteJob = async (id) => {
   } catch (error) {
     throw error;
   }
-}; 
+};
+
+// Export the api instance as default
+export default api; 
