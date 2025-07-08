@@ -84,7 +84,7 @@ const JobsManagement = () => {
   // Fetch jobs from backend
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/jobs');
+      const response = await axios.get('https://backendinnomatrics.onrender.com/api/jobs');
       setJobs(response.data);
       setError(null);
     } catch (err) {
@@ -117,7 +117,7 @@ const JobsManagement = () => {
 
   const handleEdit = async (job) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/api/jobs/${job._id}`, job, {
+      const response = await axios.patch(`https://backendinnomatrics.onrender.com/api/jobs/${job._id}`, job, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -134,7 +134,7 @@ const JobsManagement = () => {
   const handleDelete = async (jobId) => {
     if (window.confirm('Are you sure you want to delete this job?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/jobs/${jobId}`, {
+        await axios.delete(`https://backendinnomatrics.onrender.com/api/jobs/${jobId}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
