@@ -6,7 +6,8 @@ const API_URL = process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.on
 const api = axios.create({
   baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   },
   withCredentials: true
 });
@@ -14,6 +15,10 @@ const api = axios.create({
 // Add token to requests if it exists
 api.interceptors.request.use(
   (config) => {
+    // Log request details for debugging
+    console.log('Making request to:', config.url);
+    console.log('Request config:', config);
+
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -21,23 +26,32 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.error('Request error:', error);
     return Promise.reject(error);
   }
 );
 
 // Add response interceptor for better error handling
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Log successful response for debugging
+    console.log('Received response from:', response.config.url);
+    console.log('Response data:', response.data);
+    return response;
+  },
   (error) => {
     console.error('API Error:', error);
     if (error.response) {
       // Server responded with error
-      throw new Error(error.response.data.message || 'Server error occurred');
+      console.error('Server error response:', error.response.data);
+      throw new Error(error.response.data.message || `Server error: ${error.response.status}`);
     } else if (error.request) {
       // Request made but no response
+      console.error('No response received:', error.request);
       throw new Error('No response from server. Please check your connection.');
     } else {
       // Error in request setup
+      console.error('Request setup error:', error.message);
       throw new Error('Error setting up request. Please try again.');
     }
   }

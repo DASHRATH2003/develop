@@ -416,12 +416,19 @@ const Career = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
+        setLoading(true);
+        setError(null);
         const jobsData = await getAllJobs();
-        setJobs(jobsData);
-        setLoading(false);
+        if (Array.isArray(jobsData)) {
+          setJobs(jobsData);
+        } else {
+          throw new Error('Invalid data format received from server');
+        }
       } catch (error) {
         console.error('Error fetching jobs:', error);
-        setError('Failed to fetch jobs. e.data.filter is not a function. Status: undefined. Details: Unknown error');
+        setError(error.message || 'Failed to fetch jobs. Network Error. Status: undefined. Details: Unknown error');
+        setJobs([]);
+      } finally {
         setLoading(false);
       }
     };
