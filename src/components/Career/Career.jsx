@@ -5,7 +5,7 @@ import careerImage from "../../assets/career.jpg";
 import InfoBlock from "./Info Block/InfoBlock";
 import { Link } from 'react-router-dom';
 import { FaBriefcase, FaGraduationCap, FaUsers, FaRocket, FaLaptopCode, FaChartLine, FaPalette, FaSearchDollar, FaHandshake, FaHeart, FaGlobe, FaCoffee } from 'react-icons/fa';
-import axios from 'axios';
+import { getAllJobs } from '../../utils/api';
 
 // Shared data arrays moved outside components
 const openPositions = [
@@ -416,12 +416,12 @@ const Career = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/jobs/active');
-        setJobs(response.data);
+        const jobsData = await getAllJobs();
+        setJobs(jobsData);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching jobs:', error);
-        setError('Failed to load job openings. Please try again later.');
+        setError('Failed to fetch jobs. e.data.filter is not a function. Status: undefined. Details: Unknown error');
         setLoading(false);
       }
     };

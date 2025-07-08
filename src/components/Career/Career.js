@@ -3,10 +3,9 @@ import axios from 'axios';
 import { FiMapPin, FiBriefcase, FiClock, FiDollarSign } from 'react-icons/fi';
 
 // Define the API URL based on environment
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? '/api' 
+const API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://backendinnomatrics.onrender.com/api'
   : 'http://localhost:5000/api';
-
 // Decorative SVG Components
 const WaveBackground = () => (
   <div className="absolute bottom-0 left-0 right-0 overflow-hidden z-0">

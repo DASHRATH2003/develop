@@ -25,39 +25,85 @@ api.interceptors.request.use(
   }
 );
 
+// Add response interceptor for better error handling
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('API Error:', error);
+    if (error.response) {
+      // Server responded with error
+      throw new Error(error.response.data.message || 'Server error occurred');
+    } else if (error.request) {
+      // Request made but no response
+      throw new Error('No response from server. Please check your connection.');
+    } else {
+      // Error in request setup
+      throw new Error('Error setting up request. Please try again.');
+    }
+  }
+);
+
 // Auth API
 export const login = async (email, password) => {
-  const response = await api.post('/auth/login', { email, password });
-  return response.data;
+  try {
+    const response = await api.post('/auth/login', { email, password });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getCurrentUser = async () => {
-  const response = await api.get('/auth/me');
-  return response.data;
+  try {
+    const response = await api.get('/auth/me');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Jobs API
 export const getAllJobs = async () => {
-  const response = await api.get('/jobs');
-  return response.data;
+  try {
+    const response = await api.get('/jobs');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getJob = async (id) => {
-  const response = await api.get(`/jobs/${id}`);
-  return response.data;
+  try {
+    const response = await api.get(`/jobs/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const createJob = async (jobData) => {
-  const response = await api.post('/jobs', jobData);
-  return response.data;
+  try {
+    const response = await api.post('/jobs', jobData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const updateJob = async (id, jobData) => {
-  const response = await api.patch(`/jobs/${id}`, jobData);
-  return response.data;
+  try {
+    const response = await api.patch(`/jobs/${id}`, jobData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const deleteJob = async (id) => {
-  const response = await api.delete(`/jobs/${id}`);
-  return response.data;
+  try {
+    const response = await api.delete(`/jobs/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }; 

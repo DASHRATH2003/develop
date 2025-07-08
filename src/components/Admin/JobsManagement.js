@@ -101,7 +101,7 @@ const JobsManagement = () => {
 
   const handleAddJob = async (newJob) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/jobs', newJob, {
+      const response = await axios.post('https://backendinnomatrics.onrender.com/api/jobs', newJob, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
