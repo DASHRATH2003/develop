@@ -1,11 +1,10 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import React from 'react';
 
-// Layout Components
-import NAv from './components/Navbar/NAv';
-import Footer from './components/Footer/Footer';
-import SocialIcons from './components/Social Icons/SocialIcons';
+// Layouts
+import MainLayout from './components/layouts/MainLayout';
+import AdminLayout from './components/layouts/AdminLayout';
 
 // Main Pages
 import Home from './components/Home/Home';
@@ -38,59 +37,67 @@ import DataRetentionPolicy from './components/Footer/Legal/DataRetentionPolicy';
 // Admin Components
 import Login from './components/Admin/Login';
 import Register from './components/Admin/Register';
-import Dashboard from './components/Admin/Dashboard';
-import ProtectedRoute from './components/Admin/ProtectedRoute';
+import AdminDashboard from './components/AdminDashboard';
+import UsersPage from './components/UsersPage';
+import JobsManagement from './components/Admin/JobsManagement';
 
 function App() {
+  // You can add authentication check here
+  const isAuthenticated = true; // Replace with actual auth check
+
   return (
-    <div className="App overflow-clip">
-      <Router>
-        <NAv />
-        <Routes>
-          {/* Main Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/about/overview" element={<CompanyOverview />} />
-          <Route path="/about/vision-mission" element={<VisionMission />} />
-          <Route path="/about/why-us" element={<WhyUs />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/industries/:industry" element={<IndustryDetail />} />
-          <Route path="/contact" element={<Conatct />} />
-         
-          <Route path="/careers" element={<Career />} />
-          <Route path="/blog" element={<BlogPage />} />
+    <Router>
+      <Routes>
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/dashboard" />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route 
+            path="dashboard" 
+            element={isAuthenticated ? <AdminDashboard /> : <Navigate to="/admin/login" />} 
+          />
+          <Route 
+            path="users" 
+            element={isAuthenticated ? <UsersPage /> : <Navigate to="/admin/login" />} 
+          />
+          <Route 
+            path="jobs" 
+            element={isAuthenticated ? <JobsManagement /> : <Navigate to="/admin/login" />} 
+          />
+        </Route>
+
+        {/* Main Website Routes */}
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="about/overview" element={<CompanyOverview />} />
+          <Route path="about/vision-mission" element={<VisionMission />} />
+          <Route path="about/why-us" element={<WhyUs />} />
+          <Route path="services" element={<Services />} />
+          <Route path="industries" element={<Industries />} />
+          <Route path="industries/:industry" element={<IndustryDetail />} />
+          <Route path="contact" element={<Conatct />} />
+          <Route path="careers" element={<Career />} />
+          <Route path="blog" element={<BlogPage />} />
 
           {/* Service Routes */}
-          <Route path="/webdev" element={<WebDev />} />
-          <Route path="/appdev" element={<Appdev />} />
-          <Route path="/digitalmarket" element={<DigitalMarket />} />
-          <Route path="/logodesign" element={<LogoDesign />} />
-          <Route path="/socialmedia" element={<SocialMedia />} />
-          <Route path="/devops" element={<DevOps />} />
+          <Route path="webdev" element={<WebDev />} />
+          <Route path="appdev" element={<Appdev />} />
+          <Route path="digitalmarket" element={<DigitalMarket />} />
+          <Route path="logodesign" element={<LogoDesign />} />
+          <Route path="socialmedia" element={<SocialMedia />} />
+          <Route path="devops" element={<DevOps />} />
 
           {/* Legal Routes */}
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-          <Route path="/content" element={<ContentDisclaimer />} />
-          <Route path="/refund" element={<RefundCancellationPolicy />} />
-          <Route path="/data" element={<DataRetentionPolicy />} />
-
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin/register" element={<Register />} />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+          <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<TermsOfService />} />
+          <Route path="content" element={<ContentDisclaimer />} />
+          <Route path="refund" element={<RefundCancellationPolicy />} />
+          <Route path="data" element={<DataRetentionPolicy />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,30 +1,21 @@
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+// Create axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json'
   }
 });
 
-// Add a request interceptor
+// Add token to requests if it exists
 api.interceptors.request.use(
   (config) => {
-    // Get token from localStorage
     const token = localStorage.getItem('token');
-    
-    // Check if token exists and is not expired
     if (token) {
-      try {
-        // Add token to headers
-        config.headers.Authorization = `Bearer ${token}`;
-      } catch (error) {
-        console.error('Token error:', error);
-        // Clear invalid tokens
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.href = '/admin/login';
-      }
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -33,40 +24,39 @@ api.interceptors.request.use(
   }
 );
 
-// Add a response interceptor
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
+// Auth API
+export const login = async (email, password) => {
+  const response = await api.post('/auth/login', { email, password });
+  return response.data;
+};
 
-    // If the error is 401 and we haven't retried yet
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+export const getCurrentUser = async () => {
+  const response = await api.get('/auth/me');
+  return response.data;
+};
 
-      try {
-        // Try to refresh the token
-        const response = await api.post('/auth/refresh-token');
-        const { token } = response.data;
+// Jobs API
+export const getAllJobs = async () => {
+  const response = await api.get('/jobs');
+  return response.data;
+};
 
-        if (token) {
-          // Update token in localStorage
-          localStorage.setItem('token', token);
-          
-          // Update Authorization header
-          originalRequest.headers.Authorization = `Bearer ${token}`;
-          
-          // Retry the original request
-          return api(originalRequest);
-        }
-      } catch (refreshError) {
-        // If refresh fails, redirect to login
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.href = '/admin/login';
-      }
-    }
-    return Promise.reject(error);
-  }
-);
+export const getJob = async (id) => {
+  const response = await api.get(`/jobs/${id}`);
+  return response.data;
+};
 
-export default api; 
+export const createJob = async (jobData) => {
+  const response = await api.post('/jobs', jobData);
+  return response.data;
+};
+
+export const updateJob = async (id, jobData) => {
+  const response = await api.patch(`/jobs/${id}`, jobData);
+  return response.data;
+};
+
+export const deleteJob = async (id) => {
+  const response = await api.delete(`/jobs/${id}`);
+  return response.data;
+}; 
