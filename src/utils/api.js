@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// Log the API URL for debugging
+console.log('API URL:', process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.onrender.com/api');
+
 const API_URL = process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.onrender.com/api';
 
 // Create axios instance
@@ -9,20 +12,16 @@ const api = axios.create({
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   },
-  withCredentials: true
+  withCredentials: true,
+  timeout: 10000 // 10 second timeout
 });
 
-// Add token to requests if it exists
+// Add request interceptor
 api.interceptors.request.use(
   (config) => {
-    // Log request details for debugging
-    console.log('Making request to:', config.url);
-    console.log('Request config:', config);
-
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // Log request details
+    console.log(`Making ${config.method.toUpperCase()} request to: ${config.baseURL}${config.url}`);
+    console.log('Request headers:', config.headers);
     return config;
   },
   (error) => {
@@ -31,23 +30,30 @@ api.interceptors.request.use(
   }
 );
 
-// Add response interceptor for better error handling
+// Add response interceptor
 api.interceptors.response.use(
   (response) => {
-    // Log successful response for debugging
-    console.log('Received response from:', response.config.url);
-    console.log('Response data:', response.data);
+    // Log successful response
+    console.log(`Response from ${response.config.url}:`, response.data);
     return response;
   },
   (error) => {
     console.error('API Error:', error);
+    
     if (error.response) {
-      // Server responded with error
-      console.error('Server error response:', error.response.data);
-      throw new Error(error.response.data.message || `Server error: ${error.response.status}`);
+      // Server responded with an error
+      console.error('Server error:', {
+        status: error.response.status,
+        data: error.response.data,
+        headers: error.response.headers
+      });
+      throw new Error(error.response.data?.message || `Server error: ${error.response.status}`);
     } else if (error.request) {
       // Request made but no response
-      console.error('No response received:', error.request);
+      console.error('No response received:', {
+        request: error.request,
+        config: error.config
+      });
       throw new Error('No response from server. Please check your connection.');
     } else {
       // Error in request setup
@@ -79,9 +85,12 @@ export const getCurrentUser = async () => {
 // Jobs API
 export const getAllJobs = async () => {
   try {
+    console.log('Fetching all jobs...');
     const response = await api.get('/jobs');
+    console.log('Jobs response:', response.data);
     return response.data;
   } catch (error) {
+    console.error('Error in getAllJobs:', error);
     throw error;
   }
 };

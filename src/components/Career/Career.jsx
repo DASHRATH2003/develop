@@ -416,17 +416,34 @@ const Career = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
+        console.log('Starting to fetch jobs...');
         setLoading(true);
         setError(null);
-        const jobsData = await getAllJobs();
-        if (Array.isArray(jobsData)) {
-          setJobs(jobsData);
-        } else {
-          throw new Error('Invalid data format received from server');
+        
+        // Try fetching active jobs first
+        try {
+          const activeJobs = await getAllJobs();
+          console.log('Received jobs:', activeJobs);
+          
+          if (Array.isArray(activeJobs)) {
+            setJobs(activeJobs);
+          } else {
+            console.warn('Received non-array response:', activeJobs);
+            setJobs([]);
+          }
+        } catch (activeError) {
+          console.error('Error fetching active jobs:', activeError);
+          // If active jobs fail, try fetching all jobs
+          const allJobs = await getAllJobs();
+          if (Array.isArray(allJobs)) {
+            setJobs(allJobs);
+          } else {
+            throw new Error('Invalid data format received from server');
+          }
         }
       } catch (error) {
-        console.error('Error fetching jobs:', error);
-        setError(error.message || 'Failed to fetch jobs. Network Error. Status: undefined. Details: Unknown error');
+        console.error('Final error fetching jobs:', error);
+        setError(error.message || 'Failed to fetch jobs. Please try again later.');
         setJobs([]);
       } finally {
         setLoading(false);
