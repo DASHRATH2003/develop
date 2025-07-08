@@ -545,4 +545,4 @@ const Career = forwardRef((props, ref) => {
   );
 });
 
-export default CareerComponent;
+export default Career;
