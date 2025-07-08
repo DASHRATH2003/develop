@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 // Log the API URL for debugging
-console.log('API URL:', process.env.REACT_APP_API_URL || 'https://backendinnomatrics.onrender.com/api');
+console.log('API URL:', process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.onrender.com/api');
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://backendinnomatrics.onrender.com/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://backendinnomatriocs.onrender.com/api';
 
 // Create axios instance
 const api = axios.create({
