@@ -409,7 +409,7 @@ const CareerComponent = forwardRef((props, ref) => {
 });
 
 const Career = forwardRef((props, ref) => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(openPositions); // Initialize with hardcoded jobs
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -420,31 +420,22 @@ const Career = forwardRef((props, ref) => {
         setLoading(true);
         setError(null);
         
-        // Try fetching active jobs first
-        try {
-          const activeJobs = await getAllJobs();
-          console.log('Received jobs:', activeJobs);
-          
-          if (Array.isArray(activeJobs)) {
-            setJobs(activeJobs);
-          } else {
-            console.warn('Received non-array response:', activeJobs);
-            setJobs([]);
-          }
-        } catch (activeError) {
-          console.error('Error fetching active jobs:', activeError);
-          // If active jobs fail, try fetching all jobs
-          const allJobs = await getAllJobs();
-          if (Array.isArray(allJobs)) {
-            setJobs(allJobs);
-          } else {
-            throw new Error('Invalid data format received from server');
-          }
+        const apiJobs = await getAllJobs();
+        console.log('Received jobs from API:', apiJobs);
+        
+        if (Array.isArray(apiJobs) && apiJobs.length > 0) {
+          // If we get jobs from the API, use those
+          setJobs(apiJobs);
+        } else {
+          // Otherwise, keep using the hardcoded jobs
+          console.log('Using hardcoded jobs as fallback');
+          setJobs(openPositions);
         }
       } catch (error) {
-        console.error('Final error fetching jobs:', error);
-        setError(error.message || 'Failed to fetch jobs. Please try again later.');
-        setJobs([]);
+        console.error('Error fetching jobs:', error);
+        // On error, keep using hardcoded jobs
+        console.log('Using hardcoded jobs due to API error');
+        setJobs(openPositions);
       } finally {
         setLoading(false);
       }
@@ -506,7 +497,7 @@ const Career = forwardRef((props, ref) => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {jobs.map((job) => (
-                <div key={job._id} className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <div key={job._id || job.title} className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
@@ -546,7 +537,7 @@ const Career = forwardRef((props, ref) => {
                         Apply Now
                       </button>
                       <span className="text-sm text-gray-500">
-                        Posted {new Date(job.posted).toLocaleDateString()}
+                        {job.posted ? `Posted ${new Date(job.posted).toLocaleDateString()}` : 'Open Position'}
                       </span>
                     </div>
                   </div>
