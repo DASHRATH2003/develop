@@ -18,67 +18,48 @@ const BlogPage = () => {
     {
       title: "The Future of Web Development: Trends to Watch in 2024",
       excerpt: "Explore the latest trends shaping the future of web development, from AI integration to advanced frameworks.",
-      date: "March 15, 2024",
+    
       category: "Web Development",
-      readTime: "5 min read",
-      author: "Sarah Johnson",
-      authorRole: "Senior Developer",
       image: "https://t3.ftcdn.net/jpg/08/71/60/32/360_F_871603234_fTMmjlUOpt4F9mDudj8wjyzkt0khEtSZ.jpg"
     },
     {
       title: "How AI is Transforming Digital Marketing",
       excerpt: "Discover how artificial intelligence is revolutionizing digital marketing strategies and customer engagement.",
-      date: "March 10, 2024",
+   
       category: "Digital Marketing",
-      readTime: "4 min read",
-      author: "Michael Chen",
-      authorRole: "Marketing Specialist",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYUBp-sS7gkr50RwnCu5hElWKdKNuk3eqbw&s"
     },
     {
       title: "Mobile App Development: Native vs Cross-Platform",
       excerpt: "A comprehensive comparison of native and cross-platform mobile app development approaches.",
-      date: "March 5, 2024",
+     
       category: "Mobile Development",
-      readTime: "6 min read",
-      author: "David Wilson",
-      authorRole: "Mobile Lead",
       image: "https://img.freepik.com/free-vector/app-development-banner_33099-1720.jpg"
     },
     {
       title: "Designing for Accessibility: Best Practices",
       excerpt: "Learn how to create inclusive digital experiences that work for everyone.",
-      date: "March 1, 2024",
+  
       category: "UI/UX Design",
-      readTime: "7 min read",
-      author: "Emma Thompson",
-      authorRole: "UX Designer",
       image: "https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149024129.jpg"
     },
     {
       title: "Innomatrics Wins Best Tech Innovation Award 2024",
       excerpt: "We're proud to announce our recent recognition at the Annual Tech Excellence Awards.",
-      date: "February 28, 2024",
+     
       category: "Company News",
-      readTime: "3 min read",
-      author: "PR Team",
-      authorRole: "Communications",
       image: "https://img.freepik.com/free-vector/gradient-technology-award-illustration_52683-62314.jpg"
     },
     {
       title: "The Rise of Edge Computing in 2024",
       excerpt: "Understanding the impact of edge computing on modern application architecture.",
-      date: "February 25, 2024",
       category: "Technology",
-      readTime: "8 min read",
-      author: "Alex Rivera",
-      authorRole: "Cloud Architect",
       image: "https://img.freepik.com/free-vector/digital-technology-background-with-hexagonal-segments-circuit-pattern_1017-41325.jpg"
     }
   ];
 
-  const filteredPosts = selectedCategory === "All" 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === "All"
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
@@ -120,7 +101,7 @@ const BlogPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post, index) => (
-            <article 
+            <article
               key={index}
               className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
@@ -140,8 +121,6 @@ const BlogPage = () => {
               <div className="p-6">
                 <div className="flex items-center text-sm text-gray-500">
                   <time dateTime={post.date}>{post.date}</time>
-                  <span className="mx-2">•</span>
-                  <span>{post.readTime}</span>
                 </div>
 
                 <h3 className="mt-3 text-xl font-semibold text-gray-900 group-hover:text-blue-600">
@@ -154,20 +133,11 @@ const BlogPage = () => {
                   {post.excerpt}
                 </p>
 
-                <div className="mt-6 flex items-center">
-                  <div className="flex-shrink-0">
-                    */}
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">{post.author}</p>
-                    <p className="text-sm text-gray-500">{post.authorRole}</p>
-                  </div>
-                </div>
-
+                {/* Read Full Article Button */}
                 <div className="mt-6">
                   <Link
                     to={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-blue-600 hover:text-blue-500 font-medium flex items-center"
+                    className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 font-semibold rounded-md hover:bg-blue-200 transition"
                   >
                     Read full article
                     <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,7 +162,7 @@ const BlogPage = () => {
             />
             <button
               type="submit"
-              className="flex-none rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="flex-none rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
             >
               Subscribe
             </button>
@@ -203,4 +173,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage; 
+export default BlogPage;

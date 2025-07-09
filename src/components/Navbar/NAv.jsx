@@ -107,25 +107,17 @@ function NAv() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo with Company Name */}
-            <div className="flex-shrink-0 flex items-center pr-4">
-              <Link to="/" className="flex items-center space-x-1">
-                {" "}
-                {/* 🔧 space-x-3 ➝ space-x-1 */}
-                <img
-                  src={logo}
-                  className="h-20 w-16 md:h-28 md:w-28" // 🔧 increased size
-                  alt="Innomatric Logo"
-                />
-                <div className="text-left hidden md:block">
-                  <span className="text-white text-xl font-bold block leading-tight -ml-9 mt-4">
-                    INNOMATRICS TECH
-                  </span>
-                  <span className="text-blue-300 text-xs leading-tight -ml-9  -mt-1 block">
-                    Innovate Inspire Integrate
-                  </span>
-                </div>
-              </Link>
-            </div>
+            <div className="flex-shrink-0 flex items-end pr-4">
+  {/* Changed items-center to items-end */}
+  <Link to="/" className="flex items-end space-x-2">
+    {/* Ensure text aligns to bottom of logo */}
+    <img
+      src={logo}
+      className="h-24 w-24 md:h-36 md:w-40" // 🔧 Increased size
+      alt="Innomatrics Logo"
+    />
+  </Link>
+</div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex md:items-center md:space-x-6">

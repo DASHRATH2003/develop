@@ -10,6 +10,8 @@ import w6 from "../../../assets/webServices/w6.avif";
 import "./WebDev.css";
 import { Link } from 'react-router-dom';
 import { FaCode, FaDesktop, FaMobile, FaShoppingCart, FaDatabase, FaCloud, FaLock, FaChartLine, FaUsers, FaShieldAlt, FaRocket, FaLightbulb } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaAngular, FaVuejs, FaPhp, FaPython } from 'react-icons/fa';
+import { SiMongodb, SiMysql } from 'react-icons/si';
 
 const ServicesCard = ({ title, description, image }) => (
   <div className="bg-white shadow-lg rounded-xl p-6 m-4 flex-1 transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-gray-100">
@@ -21,14 +23,14 @@ const ServicesCard = ({ title, description, image }) => (
 
 const WebDev = forwardRef((props, ref) => {
   const technologies = [
-    { name: 'React', level: '95%', icon: <FaCode className="text-blue-600" /> },
-    { name: 'Node.js', level: '90%', icon: <FaDesktop className="text-blue-600" /> },
-    { name: 'Angular', level: '85%', icon: <FaMobile className="text-blue-600" /> },
-    { name: 'Vue.js', level: '88%', icon: <FaChartLine className="text-blue-600" /> },
-    { name: 'PHP/Laravel', level: '92%', icon: <FaDatabase className="text-blue-600" /> },
-    { name: 'Python/Django', level: '87%', icon: <FaCloud className="text-blue-600" /> },
-    { name: 'MongoDB', level: '89%', icon: <FaLock className="text-blue-600" /> },
-    { name: 'MySQL', level: '93%', icon: <FaShieldAlt className="text-blue-600" /> }
+    { name: 'React', level: '95%', icon: <FaReact className="text-blue-600 text-2xl" /> },
+    { name: 'Node.js', level: '90%', icon: <FaNodeJs className="text-blue-600 text-2xl" /> },
+    { name: 'Angular', level: '85%', icon: <FaAngular className="text-blue-600 text-2xl" /> },
+    { name: 'Vue.js', level: '88%', icon: <FaVuejs className="text-blue-600 text-2xl" /> },
+    { name: 'PHP/Laravel', level: '92%', icon: <FaPhp className="text-blue-600 text-2xl" /> },
+    { name: 'Python/Django', level: '87%', icon: <FaPython className="text-blue-600 text-2xl" /> },
+    { name: 'MongoDB', level: '89%', icon: <SiMongodb className="text-blue-600 text-2xl" /> },
+    { name: 'MySQL', level: '93%', icon: <SiMysql className="text-blue-600 text-2xl" /> }
   ];
 
   const services = [
@@ -253,20 +255,35 @@ const WebDev = forwardRef((props, ref) => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {technologies.map((tech, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-center mb-3">
-                  <div className="mr-3">
-                    {tech.icon}
+              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-blue-50 rounded-lg mr-4">
+                    {React.cloneElement(tech.icon, { className: "w-8 h-8 text-blue-600" })}
                   </div>
-                  <div className="text-lg font-semibold text-gray-900">{tech.name}</div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{tech.name}</h3>
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div 
-                    className="bg-blue-600 h-2.5 rounded-full"
-                    style={{ width: tech.level }}
-                  ></div>
+                <div className="relative pt-1">
+                  <div className="flex mb-2 items-center justify-between">
+                    <div>
+                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-50">
+                        Proficiency
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs font-semibold inline-block text-blue-600">
+                        {tech.level}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-100">
+                    <div
+                      style={{ width: tech.level }}
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-500"
+                    ></div>
+                  </div>
                 </div>
-                <div className="text-right text-sm text-gray-600 mt-1">{tech.level}</div>
               </div>
             ))}
           </div>

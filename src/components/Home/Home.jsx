@@ -24,7 +24,6 @@ import ClientsCard from "../ClientsLogo/ClientsCard";
 import ClientsCarousel from "../ClientsLogo/ClientsCarousel";
 import Join from "./JoinTeam/Join";
 import CountRise from "./CountRise/CountRise";
-import Industry from "./Industry/Industry";
 import Blog from "./Blog/Blog";
 
 const Home = forwardRef((props, ref) => {
@@ -95,11 +94,14 @@ const Home = forwardRef((props, ref) => {
               <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
                 <div className="-mt-6">
                   <div>
-                    <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
-                      <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </span>
+                    <div className="relative h-48 w-full overflow-hidden rounded-lg shadow-lg">
+                      <img 
+                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                        alt="Expert Team"
+                        className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
                   </div>
                   <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Expert Team</h3>
                   <p className="mt-5 text-base text-gray-500">
@@ -114,11 +116,14 @@ const Home = forwardRef((props, ref) => {
               <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
                 <div className="-mt-6">
                   <div>
-                    <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
-                      <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </span>
+                    <div className="relative h-48 w-full overflow-hidden rounded-lg shadow-lg">
+                      <img 
+                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                        alt="Quality Assurance"
+                        className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
                   </div>
                   <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Quality Assurance</h3>
                   <p className="mt-5 text-base text-gray-500">
@@ -133,11 +138,14 @@ const Home = forwardRef((props, ref) => {
               <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
                 <div className="-mt-6">
                   <div>
-                    <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
-                      <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </span>
+                    <div className="relative h-48 w-full overflow-hidden rounded-lg shadow-lg">
+                      <img 
+                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                        alt="Timely Delivery"
+                        className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
                   </div>
                   <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Timely Delivery</h3>
                   <p className="mt-5 text-base text-gray-500">
@@ -150,10 +158,7 @@ const Home = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="bg-white">
-        <Industry />
-      </div>
-
+      {/* Remove Industry section */}
       <div className="ServicesMission">
       <div className="p-8 ">
         <h2 className="text-4xl text-white text-center">Our Services</h2>

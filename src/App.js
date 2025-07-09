@@ -35,11 +35,9 @@ import RefundCancellationPolicy from './components/Footer/Legal/RefundCancellati
 import DataRetentionPolicy from './components/Footer/Legal/DataRetentionPolicy';
 
 // Admin Components
-import Login from './components/Admin/Login';
-import Register from './components/Admin/Register';
-import AdminDashboard from './components/AdminDashboard';
-import UsersPage from './components/UsersPage';
-import JobsManagement from './components/Admin/JobsManagement';
+
+
+
 
 function App() {
   // You can add authentication check here
@@ -49,23 +47,7 @@ function App() {
     <Router>
       <Routes>
         {/* Admin Routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Navigate to="/admin/dashboard" />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route 
-            path="dashboard" 
-            element={isAuthenticated ? <AdminDashboard /> : <Navigate to="/admin/login" />} 
-          />
-          <Route 
-            path="users" 
-            element={isAuthenticated ? <UsersPage /> : <Navigate to="/admin/login" />} 
-          />
-          <Route 
-            path="jobs" 
-            element={isAuthenticated ? <JobsManagement /> : <Navigate to="/admin/login" />} 
-          />
-        </Route>
+        
 
         {/* Main Website Routes */}
         <Route path="/" element={<MainLayout />}>

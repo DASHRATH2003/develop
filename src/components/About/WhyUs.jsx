@@ -276,7 +276,6 @@ const WhyUs = () => {
 };
 
 export default WhyUs;
-
 // {
 //   "name": "Test User",
 //   "email": "test@example.com",

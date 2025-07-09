@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import './HeroSlider.css';
 
 // Import images
-import homeBg from '../../../assets/homeBg.jpg';
-import webDevHero from '../../../assets/webDevHero.jpg';
-import digiHero from '../../../assets/digiHero.webp';
-import serviceBg from '../../../assets/serviceBg.jpg';
+import homeBg from '../../../assets/technologies.avif';
+import webDevHero from '../../../assets/webdevelopment1.jpg';
+import digiHero from '../../../assets/digital11.jpeg';
+import serviceBg from '../../../assets/itit.jpg';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
