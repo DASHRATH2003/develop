@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import HeroSlider from "./HeroSlider/HeroSlider";
+import Industry from "./Industry/Industry";
 
 import c1 from "../../assets/portfolioLogo/MRItow.jpg";
 import test from "../../assets/portfolio/test.png";
@@ -157,6 +158,9 @@ const Home = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+
+      {/* Industry Section */}
+      <Industry />
 
       {/* Remove Industry section */}
       <div className="ServicesMission">

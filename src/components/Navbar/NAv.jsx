@@ -57,43 +57,7 @@ function NAv() {
   return (
     <header className="relative">
       {/* Top Information Bar */}
-      {showInfoBar && (
-        <div className="bg-blue-800 text-white text-sm">
-          <div className="max-w-screen-xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center">
-                <FaPhone className="mr-2 text-blue-300" />
-                <span>+1 (123) 456-7890</span>
-              </div>
-              <div className="flex items-center">
-                <FaEnvelope className="mr-2 text-blue-300" />
-                <span>info@innomatric.com</span>
-              </div>
-              <div className="flex items-center">
-                <FaClock className="mr-2 text-blue-300" />
-                <span>Mon-Fri: 9:00 AM - 6:00 PM</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4 mt-2 sm:mt-0">
-              <a href="#" className="hover:text-blue-300 transition-colors">
-                <FaLinkedin />
-              </a>
-              <a href="#" className="hover:text-blue-300 transition-colors">
-                <FaTwitter />
-              </a>
-              <a href="#" className="hover:text-blue-300 transition-colors">
-                <FaFacebook />
-              </a>
-              <button
-                onClick={toggleInfoBar}
-                className="text-blue-300 hover:text-white ml-4"
-              >
-                ×
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
 
       {/* Main Navigation */}
       <nav
@@ -329,16 +293,16 @@ function NAv() {
             <Link to="/careers" className="nav-item block">
               Careers
             </Link>
-            <div className="pt-4 space-y-2 px-2">
+            <div className="pt-4 flex flex-col items-center space-y-2 px-2">
               <Link
                 to="/contact"
-                className="nav-button primary block text-center"
+                className="nav-button primary w-full max-w-[200px] text-center"
               >
                 Contact Us
               </Link>
               <Link
                 to="/quote"
-                className="nav-button secondary block text-center"
+                className="nav-button secondary w-full max-w-[200px] text-center"
               >
                 Get a Quote
               </Link>
