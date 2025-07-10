@@ -64,24 +64,32 @@ function NAv() {
         ref={navRef}
         className={`w-full z-50 top-0 fixed transition-all duration-300 ${
           scrolled
-            ? "bg-gradient-to-r from-blue-800 via-purple-800 to-indigo-900 shadow-lg"
-            : "bg-gradient-to-r from-blue-900 via-blue-800 to-purple-900/90 backdrop-blur-sm"
+            ? "bg-gradient-to-r from-blue-800/80 via-purple-800/80 to-indigo-900/80 backdrop-blur-sm"
+            : "bg-transparent"
         } ${showInfoBar ? "" : "top-0"}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo with Company Name */}
-            <div className="flex-shrink-0 flex items-end pr-4">
-  {/* Changed items-center to items-end */}
-  <Link to="/" className="flex items-end space-x-2">
-    {/* Ensure text aligns to bottom of logo */}
-    <img
-      src={logo}
-      className="h-24 w-24 md:h-36 md:w-40" // 🔧 Increased size
-      alt="Innomatrics Logo"
-    />
-  </Link>
-</div>
+            <div className="flex-shrink-0 flex items-center">
+              <Link to="/" className="flex items-center">
+                <img
+                  src={logo}
+                  className="h-16 w-16 md:h-36 md:w-40"
+                  alt="Innomatrics Logo"
+                />
+              </Link>
+            </div>
+
+            {/* Mobile Contact Button */}
+            <div className="md:hidden flex items-center">
+              <Link
+                to="/contact"
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-red-500 transition duration-150 ease-in-out shadow-lg"
+              >
+                Contact Us
+              </Link>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex md:items-center md:space-x-6">
@@ -90,7 +98,7 @@ function NAv() {
                 onMouseEnter={() => setShowAbout(true)}
                 onMouseLeave={() => setShowAbout(false)}
               >
-                <button className="nav-item flex items-center">
+                <button className="nav-item flex items-center text-white hover:text-blue-200">
                   About Us
                   <svg
                     className="ml-1 h-4 w-4"
@@ -112,7 +120,7 @@ function NAv() {
                 onMouseEnter={() => setShowServices(true)}
                 onMouseLeave={() => setShowServices(false)}
               >
-                <button className="nav-item flex items-center">
+                <button className="nav-item flex items-center text-white hover:text-blue-200">
                   Services
                   <svg
                     className="ml-1 h-4 w-4"
@@ -129,13 +137,13 @@ function NAv() {
                 </button>
                 {showServices && <ServiceHover />}
               </div>
-              <Link to="/industries" className="nav-item">
+              <Link to="/industries" className="nav-item text-white hover:text-blue-200">
                 Industries
               </Link>
-              <Link to="/blog" className="nav-item">
+              <Link to="/blog" className="nav-item text-white hover:text-blue-200">
                 Blog
               </Link>
-              <Link to="/careers" className="nav-item">
+              <Link to="/careers" className="nav-item text-white hover:text-blue-200">
                 Careers
               </Link>
 
@@ -143,13 +151,13 @@ function NAv() {
               <div className="flex items-center space-x-3 ml-4">
                 <Link
                   to="/contact"
-                  className="nav-button primary hover:bg-blue-50"
+                  className="nav-button primary bg-blue-500/90 hover:bg-blue-600 text-white shadow-lg backdrop-blur-sm"
                 >
                   Contact Us
                 </Link>
                 <Link
                   to="/quote"
-                  className="nav-button secondary hover:bg-blue-800"
+                  className="nav-button secondary bg-red-500/90 hover:bg-red-600 text-white shadow-lg backdrop-blur-sm"
                 >
                   Get a Quote
                 </Link>
@@ -157,7 +165,7 @@ function NAv() {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-blue-200 focus:outline-none"

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './HeroSlider.css';
 
 // Import images
-import homeBg from '../../../assets/technologies.avif';
+import homeBg from '../../../assets/innomatricstech.jpg';
 import webDevHero from '../../../assets/webdevelopment1.jpg';
-import digiHero from '../../../assets/digital11.jpeg';
+import digiHero from '../../../assets/010101.jpg';
 import serviceBg from '../../../assets/itit.jpg';
 
 const HeroSlider = () => {
@@ -55,17 +55,16 @@ const HeroSlider = () => {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
           <img
             src={slide.image}
             alt={slide.title}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 transform translate-y-0 transition-transform duration-700">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 transform translate-y-0 transition-transform duration-700 text-shadow-lg">
               {slide.title}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 transform translate-y-0 transition-transform duration-700 delay-200">
+            <p className="text-xl md:text-2xl mb-8 transform translate-y-0 transition-transform duration-700 delay-200 text-shadow-lg">
               {slide.subtitle}
             </p>
             <Link to="/contact">

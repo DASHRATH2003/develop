@@ -110,13 +110,15 @@ const DevOps = () => {
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-700 to-blue-900 py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <svg className="absolute bottom-0 left-0 transform -translate-x-32" width="1622" height="552" viewBox="0 0 1622 552" fill="none">
-            <path d="M-122 267.501C-122 267.501 94.0378 228.833 536.037 285.833C978.037 342.833 1381.54 401.334 1620.54 238.334" stroke="white" strokeWidth="2" strokeDasharray="10 10"/>
-          </svg>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="relative bg-blue-900 text-white py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://media.istockphoto.com/id/2015825825/photo/devops-software-development-operations-programmer-administration-system-life-cycle-quality.jpg?s=612x612&w=0&k=20&c=eih7PTfZpUkLiqiqnRuOVF047ufdEb4xa4aZSNo5UIo=')",
+          }}
+        ></div>
+        <div className="absolute inset-0"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

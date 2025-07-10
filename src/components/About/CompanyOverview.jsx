@@ -26,7 +26,7 @@ const CompanyOverview = () => {
             <div className="w-20 h-1 bg-white mb-6"></div>
             <p className="text-lg md:text-xl leading-relaxed">
               Driving digital transformation through innovative technology
-              solutions since 2022
+              solutions since 2023
             </p>
           </div>
         </div>
@@ -44,7 +44,7 @@ const CompanyOverview = () => {
                 Innomatrics Technologies is a premier technology solutions
                 provider headquartered in Bangalore, with a global presence
                 serving clients across over all india . Since
-                our founding in 2022, we've been at the forefront of digital
+                our founding in 2023, we've been at the forefront of digital
                 innovation, helping businesses transform their operations
                 through cutting-edge technology.
               </p>
@@ -140,27 +140,27 @@ const CompanyOverview = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center p-4 border-r border-gray-200 last:border-r-0">
                 <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2020
+                  2022
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">Founded</h3>
                 <p className="text-gray-600">
-                  Established in [Your City] with 5 team members
+                  Established in Bangalore with 5 team members
                 </p>
               </div>
               <div className="text-center p-4 border-r border-gray-200 last:border-r-0">
                 <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2021
+                  2023
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">
                   Global Expansion
                 </h3>
                 <p className="text-gray-600">
-                  Opened first international office in [Country]
+                  Opened first international office in India
                 </p>
               </div>
               <div className="text-center p-4 border-r border-gray-200 last:border-r-0">
                 <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2022
+                  2024
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">
                   AI Division
@@ -263,69 +263,7 @@ const CompanyOverview = () => {
           </div>
 
           {/* Leadership Team Preview */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Meet Our Leadership
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  alt="CEO"
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    John Smith
-                  </h3>
-                  <p className="text-blue-600 mb-2">Founder & CEO</p>
-                  <p className="text-gray-600">
-                    With 20+ years in the tech industry, John leads our
-                    strategic vision and growth initiatives.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  alt="CTO"
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Sarah Johnson
-                  </h3>
-                  <p className="text-blue-600 mb-2">Chief Technology Officer</p>
-                  <p className="text-gray-600">
-                    Sarah oversees our technical strategy and ensures we stay at
-                    the forefront of innovation.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  alt="COO"
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Michael Chen
-                  </h3>
-                  <p className="text-blue-600 mb-2">Chief Operations Officer</p>
-                  <p className="text-gray-600">
-                    Michael ensures operational excellence and the highest
-                    quality standards across all projects.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="text-center mt-8">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300">
-                View Full Leadership Team
-              </button>
-            </div>
-          </div>
+          
 
           {/* CTA Section */}
           <div className="bg-blue-600 rounded-xl p-12 text-center">

@@ -97,3 +97,25 @@
     font-size: 1.125rem;
   }
 } 
+
+.text-shadow-lg {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+               0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Make navigation buttons more visible */
+.hero-slider button {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure text is readable on any background */
+.hero-slider h1,
+.hero-slider p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+               0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Make the CTA button stand out */
+.hero-slider button.bg-blue-600 {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} 

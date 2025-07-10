@@ -105,16 +105,27 @@ const Industries = () => {
   ];
 
   return (
-    <div className="bg-white py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#00235B] text-center mb-4">
-          Industries We Serve
-        </h2>
-        <p className="text-gray-700 text-center max-w-4xl mx-auto mb-12">
-          At Innomatrics Technologies, we deliver cutting-edge software solutions across diverse industries. 
-          Our expertise spans the entire digital spectrum, enabling businesses to transform and thrive in the digital age.
-        </p>
+    <div className="bg-white">
+      <div className="relative py-20 mb-16">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://www.shutterstock.com/image-photo/industry-40-modern-factory-project-600nw-1936499776.jpg')",
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 "></div>
+        <div className="container mx-auto px-4 relative">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
+            Industries We Serve
+          </h2>
+          <p className="text-blue-100 text-center max-w-4xl mx-auto text-lg">
+            At Innomatrics Technologies, we deliver cutting-edge software solutions across diverse industries. 
+            Our expertise spans the entire digital spectrum, enabling businesses to transform and thrive in the digital age.
+          </p>
+        </div>
+      </div>
 
+      <div className="container mx-auto px-4 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {industries.map((industry, index) => (
             <div key={index} className="group relative bg-white rounded-lg overflow-hidden shadow-lg">

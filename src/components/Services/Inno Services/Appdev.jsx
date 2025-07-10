@@ -152,7 +152,8 @@ const AppDev = forwardRef((props, ref) => {
 
   const developmentProcess = [
     {
-      phase: "Discovery & Strategy",
+      number: "1",
+      title: "Discovery & Strategy",
       description: "Comprehensive analysis to define your app's vision, goals, and technical requirements",
       activities: [
         "Business requirement workshops",
@@ -163,7 +164,8 @@ const AppDev = forwardRef((props, ref) => {
       icon: <FaLightbulb className="text-blue-600 w-6 h-6" />
     },
     {
-      phase: "Design & Prototyping",
+      number: "2",
+      title: "Design & Prototyping",
       description: "Creating intuitive and engaging user experiences with pixel-perfect designs",
       activities: [
         "User flows & journey mapping",
@@ -174,37 +176,28 @@ const AppDev = forwardRef((props, ref) => {
       icon: <FaLayerGroup className="text-blue-600 w-6 h-6" />
     },
     {
-      phase: "Development",
+      number: "3",
+      title: "Development",
       description: "Building your app with clean, efficient code following industry best practices",
       activities: [
         "Agile sprints with bi-weekly demos",
-        "Frontend development",
-        "Backend & API integration",
+        "Frontend & backend development",
+        "API integration & testing",
         "Continuous integration/delivery"
       ],
       icon: <FaCode className="text-blue-600 w-6 h-6" />
     },
     {
-      phase: "Quality Assurance",
+      number: "4",
+      title: "Testing & QA",
       description: "Rigorous testing to ensure your app is performant, secure, and bug-free",
       activities: [
-        "Automated & manual testing",
-        "Performance benchmarking",
-        "Security vulnerability scanning",
+        "Functional testing",
+        "Performance optimization",
+        "Security testing",
         "User acceptance testing"
       ],
       icon: <FaCheckCircle className="text-blue-600 w-6 h-6" />
-    },
-    {
-      phase: "Deployment & Launch",
-      description: "Seamless app store submission and go-to-market strategy execution",
-      activities: [
-        "App store optimization (ASO)",
-        "Beta testing program",
-        "Production deployment",
-        "Launch marketing support"
-      ],
-      icon: <FaRocket className="text-blue-600 w-6 h-6" />
     }
   ];
 
@@ -226,20 +219,26 @@ const AppDev = forwardRef((props, ref) => {
   return (
     <div className="min-h-screen bg-gray-50" ref={ref}>
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-40"></div>
+      <div className="relative bg-blue-900 text-white py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://media.istockphoto.com/id/1193278024/vector/application-of-smartphone-with-business-graph-and-analytics-data-on-isometric-mobile-phone.jpg?s=612x612&w=0&k=20&c=cV3zqN7LAi6_qAqW45_vZMg7HVRSt4_2NV-SRJ-FK04=')",
+          }}
+        ></div>
+        <div className="absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl mb-6">
               Mobile App Development Services
             </h1>
             <p className="mt-4 text-xl text-blue-200 max-w-3xl mx-auto">
-              Innomatrics Technologies delivers innovative mobile solutions that engage users and drive business growth
+              Transform your ideas into powerful, user-friendly mobile applications that deliver real value
             </p>
             <div className="mt-8">
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-3 border border-transparent text-lg font-bold rounded-md text-white bg-blue-600 hover:bg-blue-500 transition-colors duration-300 shadow-lg"
+                className="inline-flex items-center px-8 py-3 border border-transparent text-lg font-bold rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300 shadow-lg"
               >
                 Get Your Free Consultation
               </Link>
@@ -340,37 +339,43 @@ const AppDev = forwardRef((props, ref) => {
           </div>
         </div>
 
-        {/* Development Process */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Our Proven Development Methodology
-          </h2>
-          <div className="space-y-8">
-            {developmentProcess.map((phase, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-6">
-                    {index + 1}
-                  </div>
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <div className="mr-3">
-                        {phase.icon}
+        {/* Development Process Section */}
+        <div className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+              Our Proven Development Methodology
+            </h2>
+            
+            <div className="space-y-12">
+              {developmentProcess.map((step, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-lg p-8">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        {step.number}
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900">{phase.phase}</h3>
                     </div>
-                    <p className="text-gray-600 mb-4">{phase.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {phase.activities.map((activity, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                          {activity}
-                        </span>
-                      ))}
+                    <div className="ml-6 flex-grow">
+                      <div className="flex items-center">
+                        {step.icon}
+                        <h3 className="text-xl font-bold text-gray-900 ml-2">{step.title}</h3>
+                      </div>
+                      <p className="mt-2 text-gray-600">{step.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {step.activities.map((activity, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800"
+                          >
+                            {activity}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -400,11 +405,11 @@ const AppDev = forwardRef((props, ref) => {
           <h2 className="text-3xl font-bold text-center mb-12">Why Choose Innomatrics Technologies?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">10+</div>
+              <div className="text-4xl font-bold mb-2">5+</div>
               <div className="text-xl">Years in Mobile Development</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">150+</div>
+              <div className="text-4xl font-bold mb-2">100+</div>
               <div className="text-xl">Successful App Launches</div>
             </div>
             <div className="text-center">

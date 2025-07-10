@@ -18,6 +18,7 @@ import IndustryDetail from './components/Industries/IndustryDetail';
 import Conatct from './components/Contact/Contact';
 import Career from './components/Career/Career';
 import BlogPage from './components/Blog/BlogPage';
+import Quote from './components/Quote/Quote';
 
 // Service Pages
 import WebDev from './components/Services/Inno Services/WebDev';
@@ -62,6 +63,7 @@ function App() {
           <Route path="contact" element={<Conatct />} />
           <Route path="careers" element={<Career />} />
           <Route path="blog" element={<BlogPage />} />
+          <Route path="quote" element={<Quote />} />
 
           {/* Service Routes */}
           <Route path="webdev" element={<WebDev />} />

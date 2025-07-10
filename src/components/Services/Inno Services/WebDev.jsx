@@ -23,14 +23,14 @@ const ServicesCard = ({ title, description, image }) => (
 
 const WebDev = forwardRef((props, ref) => {
   const technologies = [
-    { name: 'React', level: '95%', icon: <FaReact className="text-blue-600 text-2xl" /> },
-    { name: 'Node.js', level: '90%', icon: <FaNodeJs className="text-blue-600 text-2xl" /> },
-    { name: 'Angular', level: '85%', icon: <FaAngular className="text-blue-600 text-2xl" /> },
-    { name: 'Vue.js', level: '88%', icon: <FaVuejs className="text-blue-600 text-2xl" /> },
-    { name: 'PHP/Laravel', level: '92%', icon: <FaPhp className="text-blue-600 text-2xl" /> },
-    { name: 'Python/Django', level: '87%', icon: <FaPython className="text-blue-600 text-2xl" /> },
-    { name: 'MongoDB', level: '89%', icon: <SiMongodb className="text-blue-600 text-2xl" /> },
-    { name: 'MySQL', level: '93%', icon: <SiMysql className="text-blue-600 text-2xl" /> }
+    { name: 'React', icon: <FaReact className="text-blue-600 text-2xl" /> },
+    { name: 'Node.js', icon: <FaNodeJs className="text-blue-600 text-2xl" /> },
+    { name: 'Angular', icon: <FaAngular className="text-blue-600 text-2xl" /> },
+    { name: 'Vue.js', icon: <FaVuejs className="text-blue-600 text-2xl" /> },
+    { name: 'PHP/Laravel', icon: <FaPhp className="text-blue-600 text-2xl" /> },
+    { name: 'Python/Django', icon: <FaPython className="text-blue-600 text-2xl" /> },
+    { name: 'MongoDB', icon: <SiMongodb className="text-blue-600 text-2xl" /> },
+    { name: 'MySQL', icon: <SiMysql className="text-blue-600 text-2xl" /> }
   ];
 
   const services = [
@@ -176,7 +176,13 @@ const WebDev = forwardRef((props, ref) => {
     <div className="min-h-screen bg-gray-50" ref={ref}>
       {/* Hero Section */}
       <div className="relative bg-blue-900 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?w=2000&t=st=1709704844~exp=1709705444~hmac=49a8c4842faa0f1f6b5b7f5c3c0c4e4a4e4e4e4a4e4e4e4a4e4e4e4a4e4e4e4a')",
+          }}
+        ></div>
+        <div className="absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl mb-6">
@@ -256,32 +262,12 @@ const WebDev = forwardRef((props, ref) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {technologies.map((tech, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                <div className="flex items-center mb-4">
+                <div className="flex items-center">
                   <div className="p-3 bg-blue-50 rounded-lg mr-4">
                     {React.cloneElement(tech.icon, { className: "w-8 h-8 text-blue-600" })}
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">{tech.name}</h3>
-                  </div>
-                </div>
-                <div className="relative pt-1">
-                  <div className="flex mb-2 items-center justify-between">
-                    <div>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-50">
-                        Proficiency
-                      </span>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-semibold inline-block text-blue-600">
-                        {tech.level}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-100">
-                    <div
-                      style={{ width: tech.level }}
-                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-500"
-                    ></div>
                   </div>
                 </div>
               </div>
@@ -336,11 +322,11 @@ const WebDev = forwardRef((props, ref) => {
           <h2 className="text-3xl font-bold text-center mb-12">Why Choose Innomatrics?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">10+</div>
+              <div className="text-4xl font-bold mb-2">5+</div>
               <div className="text-xl">Years in Web Development</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">200+</div>
+              <div className="text-4xl font-bold mb-2">150+</div>
               <div className="text-xl">Successful Projects</div>
             </div>
             <div className="text-center">

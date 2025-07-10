@@ -31,10 +31,10 @@ const WhyUs = () => {
   };
 
   const stats = [
-    { value: "100+", label: "Projects Completed" },
-    { value: "50+", label: "Satisfied Clients" },
+    { value: "150+", label: "Projects Completed" },
+    { value: "200+", label: "Satisfied Clients" },
     { value: "24/7", label: "Support Available" },
-    { value: "10+", label: "Years Experience" }
+    { value: "5+", label: "Years Experience" }
   ];
 
   const testimonials = [

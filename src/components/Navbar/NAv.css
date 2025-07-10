@@ -46,7 +46,11 @@ margin-top: 7%;
 
 /* Smooth transitions for hover effects */
 .nav-link {
-  transition: all 0.3s ease;
+  font-size: 18px !important;  /* Increased from default */
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 /* Mobile menu animation */
@@ -98,8 +102,9 @@ margin-top: 7%;
 
 /* Navigation items styling */
 .nav-item {
+  font-size: 18px !important;  /* Increased from default */
+  padding: 0.5rem 1rem;
   position: relative;
-  padding: 0.75rem 1rem;
   color: white;
   font-size: 1rem;
   font-weight: 500;
@@ -188,13 +193,75 @@ margin-top: 7%;
 }
 
 .dropdown-item {
-  font-size: 0.95rem;
-  padding: 0.75rem 1.25rem;
-  color: #1f2937;
-  transition: all 0.2s ease;
+  font-size: 16px !important;  /* Increased from default */
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .dropdown-item:hover {
   background-color: #f3f4f6;
   color: #2563eb;
+}
+
+/* Mobile contact button styles */
+@media (max-width: 768px) {
+  .nav-mobile-contact {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .nav-mobile-contact:hover {
+    transform: translateY(-1px);
+  }
+
+  .nav-mobile-contact:active {
+    transform: translateY(0);
+  }
+}
+
+/* Adjust logo size for mobile */
+@media (max-width: 768px) {
+  .logo-container img {
+    height: 3rem;
+    width: auto;
+  }
+}
+
+/* Ensure proper spacing in mobile view */
+@media (max-width: 768px) {
+  .mobile-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+/* Make sure the hover menu items are also bigger */
+.services-hover-menu a,
+.about-hover-menu a {
+  font-size: 16px !important;  /* Increased from default */
+  padding: 10px 15px;
+  display: block;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Top bar contact info */
+.contact-info {
+  font-size: 15px !important;  /* Increased from default */
+}
+
+/* Make sure dropdown text is visible */
+.dropdown-content a {
+  font-size: 16px !important;  /* Increased from default */
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }

@@ -5,7 +5,7 @@
   "dependencies": {
     "@coreui/coreui": "^4.3.0",
     "@coreui/react": "^4.11.1",
-    "@emailjs/browser": "^3.11.0",
+    "@emailjs/browser": "^3.12.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.15.2",
     "axios": "^1.10.0",
+    "cross-env": "^7.0.3",
     "framer-motion": "^10.18.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.525.0",
@@ -30,8 +31,7 @@
     "react-social-icons": "^6.10.0",
     "scrollreveal": "^4.0.9",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4",
-    "cross-env": "^7.0.3"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

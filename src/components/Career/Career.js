@@ -30,7 +30,7 @@ const staticJobs = [
 const testimonials = [
   {
     id: 1,
-    quote: "Being part of an organization that focuses on helping employees and clients succeed is the best thing anyone can ask for in their career. The innovative solutions and dedication to excellence make Innomatrics stand out.",
+    quote: "Being part of an organization that focuses on helping employees and clients succeed is the best thing anyone can ask for in their career.",
     name: "Sarah Chen",
     role: "Senior Developer",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
