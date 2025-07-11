@@ -10,7 +10,7 @@ const InquiryForm = () => {
   const messageRef = useRef();
   const phoneRef = useRef();
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState({ type: '', message: '' });
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   useEffect(() => {
     emailjs.init("iQsjiARc7-03nKSZz");
@@ -18,7 +18,7 @@ const InquiryForm = () => {
 
   const resetForm = () => {
     formRef.current.reset();
-    setStatus({ type: '', message: '' });
+    setStatus({ type: "", message: "" });
   };
 
   const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ const InquiryForm = () => {
 
     try {
       setLoading(true);
-      setStatus({ type: '', message: '' });
+      setStatus({ type: "", message: "" });
 
       await emailjs.send(serviceId, templateId, {
         name: nameRef.current.value,
@@ -38,16 +38,15 @@ const InquiryForm = () => {
       });
 
       setStatus({
-        type: 'success',
-        message: 'Thank you for your message! We will get back to you soon.'
+        type: "success",
+        message: "Thank you for your message! We will get back to you soon.",
       });
       resetForm();
-      
     } catch (error) {
       console.error("Error sending email:", error);
       setStatus({
-        type: 'error',
-        message: 'There was an error sending your message. Please try again.'
+        type: "error",
+        message: "There was an error sending your message. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -55,13 +54,17 @@ const InquiryForm = () => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="w-full max-w-lg bg-white rounded-2xl p-8 shadow-lg">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      className="w-full max-w-lg bg-white rounded-2xl p-8 shadow-lg"
+    >
       {status.message && (
-        <div 
+        <div
           className={`mb-6 p-4 rounded-lg ${
-            status.type === 'success' 
-              ? 'bg-green-100 text-green-700 border border-green-200' 
-              : 'bg-red-100 text-red-700 border border-red-200'
+            status.type === "success"
+              ? "bg-green-100 text-green-700 border border-green-200"
+              : "bg-red-100 text-red-700 border border-red-200"
           }`}
         >
           {status.message}
@@ -112,7 +115,9 @@ const InquiryForm = () => {
           required
           pattern="[0-9]{10}"
         />
-        <p className="text-sm text-gray-500 mt-1">Enter 10 digit mobile number</p>
+        <p className="text-sm text-gray-500 mt-1">
+          Enter 10 digit mobile number
+        </p>
       </div>
 
       <div className="mb-8">
@@ -134,21 +139,36 @@ const InquiryForm = () => {
         type="submit"
         disabled={loading}
         className={`w-full font-medium py-3 px-6 rounded-xl transition duration-200 transform hover:translate-y-[-1px] active:translate-y-0 ${
-          loading 
-            ? 'bg-gray-400 cursor-not-allowed' 
-            : 'bg-red-500 hover:bg-red-600 text-white'
+          loading
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-red-500 hover:bg-red-600 text-white"
         }`}
       >
         {loading ? (
           <div className="flex items-center justify-center">
-            <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+            <svg
+              className="animate-spin h-5 w-5 mr-3 text-white"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+                fill="none"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
             </svg>
             Sending...
           </div>
         ) : (
-          'Send Message'
+          "Send Message"
         )}
       </button>
     </form>
@@ -163,11 +183,12 @@ const InquiryAndMapComponent = () => {
           We'd love to hear from you!
         </h2>
         <p className="text-gray-600 mb-8">
-          Please let us know what you are looking for and we will get in touch with you
+          Please let us know what you are looking for and we will get in touch
+          with you
         </p>
 
         <div className="border-t border-gray-200 pt-8 mt-8">
-          <div className="flex items-start">
+          <div className="flex items-start mb-6">
             <FaLocationPin className="text-red-500 text-2xl mt-1 mr-4" />
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -178,6 +199,19 @@ const InquiryAndMapComponent = () => {
                 Petroleum, BTM 2nd Stage, Bengaluru, Karnataka 560076
               </p>
             </div>
+          </div>
+
+          {/* Google Maps Embed */}
+          <div className="w-full h-[300px] rounded-lg overflow-hidden">
+          <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8106411375257!2d77.60544587473798!3d12.916304287388451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b14d40b127%3A0xf9c3ada4f0a27e4b!2sInnomatrics%20Technologies!5e0!3m2!1sen!2sin!4v1709641611099!5m2!1sen!2sin"
+  width="100%"
+  height="400"
+  style={{ border: 0 }}
+  allowFullScreen=""
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </div>

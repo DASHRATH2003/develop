@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGoogle } from "react-icons/fa";
 import logo from "../../assets/innomatric_logo_only.png";
 
 const Footer = () => {
@@ -31,6 +31,14 @@ const Footer = () => {
                 <FaFacebook size={24} />
               </a>
               <a 
+                href="https://twitter.com/innomatricstech" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-300 hover:text-white transition-colors"
+              >
+                <FaTwitter size={24} />
+              </a>
+              <a 
                 href="https://www.instagram.com/innomatrics_tech/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
@@ -47,12 +55,12 @@ const Footer = () => {
                 <FaLinkedin size={24} />
               </a>
               <a 
-                href="https://wa.me/918431655799" 
+                href="https://www.google.com/business/innomatricstech" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-blue-300 hover:text-white transition-colors"
               >
-                <FaWhatsapp size={24} />
+                <FaGoogle size={24} />
               </a>
             </div>
           </div>
