@@ -18,35 +18,30 @@ const BlogPage = () => {
     {
       title: "The Future of Web Development: Trends to Watch in 2024",
       excerpt: "Explore the latest trends shaping the future of web development, from AI integration to advanced frameworks.",
-    
       category: "Web Development",
       image: "https://t3.ftcdn.net/jpg/08/71/60/32/360_F_871603234_fTMmjlUOpt4F9mDudj8wjyzkt0khEtSZ.jpg"
     },
     {
       title: "How AI is Transforming Digital Marketing",
       excerpt: "Discover how artificial intelligence is revolutionizing digital marketing strategies and customer engagement.",
-   
       category: "Digital Marketing",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyYUBp-sS7gkr50RwnCu5hElWKdKNuk3eqbw&s"
     },
     {
       title: "Mobile App Development: Native vs Cross-Platform",
       excerpt: "A comprehensive comparison of native and cross-platform mobile app development approaches.",
-     
       category: "Mobile Development",
       image: "https://img.freepik.com/free-vector/app-development-banner_33099-1720.jpg"
     },
     {
       title: "Designing for Accessibility: Best Practices",
       excerpt: "Learn how to create inclusive digital experiences that work for everyone.",
-  
       category: "UI/UX Design",
       image: "https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149024129.jpg"
     },
     {
       title: "Innomatrics Wins Best Tech Innovation Award 2024",
       excerpt: "We're proud to announce our recent recognition at the Annual Tech Excellence Awards.",
-     
       category: "Company News",
       image: "https://img.freepik.com/free-vector/gradient-technology-award-illustration_52683-62314.jpg"
     },
@@ -132,19 +127,6 @@ const BlogPage = () => {
                 <p className="mt-3 text-base text-gray-500 line-clamp-3">
                   {post.excerpt}
                 </p>
-
-                {/* Read Full Article Button */}
-                <div className="mt-6">
-                  <Link
-                    to={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 font-semibold rounded-md hover:bg-blue-200 transition"
-                  >
-                    Read full article
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
               </div>
             </article>
           ))}

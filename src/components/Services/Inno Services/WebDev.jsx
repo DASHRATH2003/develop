@@ -189,7 +189,7 @@ const WebDev = forwardRef((props, ref) => {
               Web Development Services
             </h1>
             <p className="mt-4 text-xl text-blue-200 max-w-3xl mx-auto">
-              Innomatrics Technologies delivers cutting-edge web solutions that drive business growth and digital transformation
+              Innomatrics Tech delivers cutting-edge web solutions that drive business growth and digital transformation
             </p>
             <div className="mt-8">
               <Link
@@ -211,7 +211,7 @@ const WebDev = forwardRef((props, ref) => {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            At Innomatrics Technologies, we specialize in building high-performance web applications that deliver 
+            At Innomatrics Tech, we specialize in building high-performance web applications that deliver 
             exceptional user experiences and measurable business results. With over a decade of experience, our team 
             of certified developers creates solutions that are scalable, secure, and tailored to your specific needs.
           </p>
@@ -391,7 +391,7 @@ const WebDev = forwardRef((props, ref) => {
         <div className="text-center bg-white rounded-xl shadow-lg p-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Build Your Web Solution?</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Let's discuss how Innomatrics Technologies can help you achieve your digital goals with our expert web development services.
+            Let's discuss how Innomatrics Tech can help you achieve your digital goals with our expert web development services.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link

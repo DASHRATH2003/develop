@@ -1,5 +1,6 @@
 import React from "react";
 import joinTeam from "../../../assets/joinTeam.jpg";
+import { Link } from 'react-router-dom';
 
 const Join = () => {
   return (
@@ -10,9 +11,11 @@ const Join = () => {
         <p class="text-gray-500 font-semibold">Leaders Innovators Thinkers Problem Solvers</p>
 
         </div>
-        <button className="bg-orange-600 rounded-md w-1/2 md:w-1/3 h-12 my-12 text-zinc-800 font-semibold hover:bg-black hover:text-white transition ease-in-out duration-300">
-          Work With Us
-        </button>
+        <Link to="/careers">
+  <button className="bg-orange-600 rounded-md w-1/2 md:w-1/3 h-12 my-12 text-white  font-semibold hover:bg-black hover:text-white transition ease-in-out duration-300">
+    Work With Us
+  </button>
+</Link>
       </div>
       <div className="flex flex-auto w-full md:w-[40%]">
         <img

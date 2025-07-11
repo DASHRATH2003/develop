@@ -100,7 +100,7 @@ const SocialMedia = forwardRef((props,ref)=> {
             </div>
             <div className="mt-2 text-sm md:text-base text-zinc-800">
               <p>
-                Innomatrics Technologies is your trusted partner for driving
+                Innomatrics Tech is your trusted partner for driving
                 online visibility, engagement, and growth through strategic
                 digital marketing solutions. With our expertise in the
                 ever-evolving digital landscape, we'll help you reach your

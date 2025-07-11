@@ -107,7 +107,7 @@ const SocialMedia= forwardRef((props,ref)=> {
             </div>
             <div className="mt-2 text-sm md:text-base text-zinc-800">
               <p>
-                At Innomatrics Technologies, we believe that your social media
+                At Innomatrics Tech, we believe that your social media
                 presence is more than just a series of posts - it's a powerful
                 platform that can help you engage with your audience, enhance
                 your brand, and drive business growth. With our comprehensive

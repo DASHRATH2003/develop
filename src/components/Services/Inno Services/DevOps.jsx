@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const DevOps = () => {
   const services = [
@@ -319,20 +320,18 @@ const DevOps = () => {
               Our DevOps experts are ready to help you build, deploy, and scale your applications faster and more reliably.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg"
+              <Link
+                to="/quote"
+                className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg inline-block"
               >
                 Get Started
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-transparent hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg border-2 border-white transition-all duration-300"
+              </Link>
+              <Link
+                to="/contact"
+                className="bg-transparent hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg border-2 border-white transition-all duration-300 inline-block"
               >
                 Schedule a Call
-              </motion.button>
+              </Link>
             </div>
           </motion.div>
         </div>

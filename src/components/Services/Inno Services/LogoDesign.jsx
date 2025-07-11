@@ -70,7 +70,7 @@ const LogoDesign = forwardRef((props, ref) => {
             <div className="text-xl text-lime-400">Logo Design</div>
             <div className="mt-2 text-sm md:text-base text-neutral-500">We focus on providing creative and effective logo design solutions.</div>
             <div className="mt-2 text-sm md:text-base text-zinc-800">
-              <p>Innomatrics Technologies excels in the art of logo design, where creativity meets brand identity. With a keen eye for detail and a passion for innovation, we craft iconic logos that resonate with your audience. Our team collaborates closely with you to understand your vision and values, translating them into visually striking symbols that leave a lasting impression. From sleek and modern to timeless and elegant, we tailor each design to reflect the essence of your brand. Trust Innomatrics Technologies to elevate your identity with logo designs that truly stand out in the digital realm.</p>
+              <p>Innomatrics Tech excels in the art of logo design, where creativity meets brand identity. With a keen eye for detail and a passion for innovation, we craft iconic logos that resonate with your audience. Our team collaborates closely with you to understand your vision and values, translating them into visually striking symbols that leave a lasting impression. From sleek and modern to timeless and elegant, we tailor each design to reflect the essence of your brand. Trust Innomatrics Technologies to elevate your identity with logo designs that truly stand out in the digital realm.</p>
             </div>
           </div>
           <div className="flex w-full md:w-[56%]">

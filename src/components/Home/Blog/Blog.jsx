@@ -73,14 +73,6 @@ const Blog = () => {
                     {post.excerpt}
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-x-4">
-                  <Link
-                    to="#"
-                    className="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-500"
-                  >
-                    Read more <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
               </div>
             </article>
           ))}

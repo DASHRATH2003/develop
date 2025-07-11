@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef, useEffect, useState, useRef } from "react";
 import app from "../../../assets/AppDev.jpg";
 import app2 from "../../../assets/app2.jpg";
 import approach from "../../../assets/approach.jpg";
@@ -24,6 +24,7 @@ import {
   FaLayerGroup,
   FaCheckCircle
 } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const AppDev = forwardRef((props, ref) => {
   useEffect(() => {
@@ -216,6 +217,89 @@ const AppDev = forwardRef((props, ref) => {
     }
   ];
 
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      rating: 5,
+      quote: "Innomatrics delivered our healthcare app ahead of schedule while exceeding all quality expectations. Their expertise in HIPAA compliance was outstanding.",
+      name: "Dr. Rajesh Mehta",
+      position: "CTO, MediTech Solutions India",
+      initials: "RM"
+    },
+    {
+      rating: 5,
+      quote: "The e-commerce platform they built helped us increase our online sales by 75%. Their technical expertise is remarkable.",
+      name: "Priya Sharma",
+      position: "CEO, ShopEasy India",
+      initials: "PS"
+    },
+    {
+      rating: 5,
+      quote: "Outstanding work on our fintech application. The team's attention to security and performance was exceptional.",
+      name: "Vikram Patel",
+      position: "Director, PaySecure Technologies",
+      initials: "VP"
+    },
+    {
+      rating: 5,
+      quote: "The educational app they developed has transformed how we deliver online learning.",
+      name: "Dr. Anjali Singh",
+      position: "Founder, EduTech India",
+      initials: "AS"
+    },
+    {
+      rating: 5,
+      quote: "Their expertise in AI and ML integration helped us create a revolutionary fitness tracking app.",
+      name: "Arjun Kapoor",
+      position: "CIO, FitTech Solutions",
+      initials: "AK"
+    },
+    {
+      rating: 5,
+      quote: "The food delivery app they built for us has excellent performance and user experience.",
+      name: "Neha Gupta",
+      position: "COO, FoodExpress India",
+      initials: "NG"
+    },
+    {
+      rating: 5,
+      quote: "Innomatrics helped us digitize our real estate business with an innovative property listing app.",
+      name: "Rahul Verma",
+      position: "MD, HomeSearch Properties",
+      initials: "RV"
+    },
+    {
+      rating: 5,
+      quote: "The travel booking app they developed has significantly improved our customer engagement.",
+      name: "Sanjay Kumar",
+      position: "CEO, TravelEase India",
+      initials: "SK"
+    },
+    {
+      rating: 5,
+      quote: "Their team's expertise in IoT integration helped us create a smart home automation app.",
+      name: "Amit Shah",
+      position: "Director, SmartHome Tech",
+      initials: "AS"
+    },
+    {
+      rating: 5,
+      quote: "The logistics management app they built has streamlined our entire supply chain operations.",
+      name: "Deepak Agarwal",
+      position: "CEO, LogiTech Solutions",
+      initials: "DA"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 3000); // Change testimonial every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50" ref={ref}>
       {/* Hero Section */}
@@ -255,7 +339,7 @@ const AppDev = forwardRef((props, ref) => {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            At Innomatrics Technologies, we specialize in creating high-performance mobile applications that deliver 
+            At Innomatrics Tech, we specialize in creating high-performance mobile applications that deliver 
             exceptional user experiences and measurable business results. With over 10 years of experience, our team 
             of certified developers builds apps that are scalable, secure, and tailored to your specific industry needs.
           </p>
@@ -402,7 +486,7 @@ const AppDev = forwardRef((props, ref) => {
 
         {/* Why Choose Innomatrics */}
         <div className="mb-20 bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-12 text-white">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Innomatrics Technologies?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Innomatrics Tech?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">5+</div>
@@ -428,43 +512,49 @@ const AppDev = forwardRef((props, ref) => {
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             What Our Clients Say
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 mr-2">★★★★★</div>
-                <div className="text-gray-600">5.0 Rating</div>
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="relative overflow-hidden">
+              <div className="flex">
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{
+                      opacity: currentTestimonial === index ? 1 : 0,
+                      x: currentTestimonial === index ? 0 : 100,
+                      display: currentTestimonial === index ? 'block' : 'none'
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full md:w-1/2 mx-auto bg-white p-8 rounded-xl shadow-lg"
+                  >
+                    <div className="flex items-center mb-4">
+                      <div className="text-yellow-400 mr-2">{'★'.repeat(testimonial.rating)}</div>
+                      <div className="text-gray-600">{testimonial.rating}.0 Rating</div>
+                    </div>
+                    <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
+                    <div className="flex items-center">
+                      <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
+                        {testimonial.initials}
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">{testimonial.name}</p>
+                        <p className="text-gray-500">{testimonial.position}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              <p className="text-gray-600 italic mb-6">
-                "Innomatrics delivered our healthcare app ahead of schedule while exceeding all quality expectations. 
-                Their team's expertise in HIPAA compliance was particularly impressive."
-              </p>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
-                  DR
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">Dr. Robert Chen</p>
-                  <p className="text-gray-500">CMO, HealthPlus Systems</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 mr-2">★★★★★</div>
-                <div className="text-gray-600">5.0 Rating</div>
-              </div>
-              <p className="text-gray-600 italic mb-6">
-                "The e-commerce app developed by Innomatrics increased our mobile revenue by 65% in the first year. 
-                Their attention to detail in UX design made all the difference."
-              </p>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
-                  SJ
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">Sarah Johnson</p>
-                  <p className="text-gray-500">Director of Digital, UrbanStyle</p>
-                </div>
+              <div className="flex justify-center mt-8 gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                      currentTestimonial === index ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -474,7 +564,7 @@ const AppDev = forwardRef((props, ref) => {
         <div className="text-center bg-white rounded-xl shadow-lg p-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Build Your Mobile App?</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Let's discuss how Innomatrics Technologies can help you create an app that delights users and grows your business.
+            Let's discuss how Innomatrics Tech can help you create an app that delights users and grows your business.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link

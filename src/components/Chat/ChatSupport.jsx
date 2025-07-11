@@ -42,7 +42,7 @@ const ChatSupport = () => {
   const getWelcomeMessage = () => {
     return {
       type: 'received',
-      text: 'Welcome to Innomatrics Technologies!\n\nPlease select your inquiry type:\n1. Job Opportunities\n2. Technical Support\n3. Business Collaboration\n4. Other Inquiries',
+      text: 'Welcome to Innomatrics Tech!\n\nPlease select your inquiry type:\n1. Job Opportunities\n2. Technical Support\n3. Business Collaboration\n4. Other Inquiries',
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
   };
@@ -66,7 +66,7 @@ We're currently hiring for multiple positions:
 • React.js Developers
 • Node.js Developers
 • Python Developers
-• Java Developers
+• App Development
 
 You can:
 1. View all job openings on our Careers page
@@ -116,7 +116,7 @@ Our business team will contact you within 24 hours to discuss further.`;
 For immediate assistance:
 • Email: hello@innomatricstech.com
 • Phone: +91 8431655799
-• Business Hours: Mon-Fri, 9 AM - 6 PM IST`;
+• Business Hours: Mon-Fri, 9:30 AM - 6:30 PM IST`;
   };
 
   const toggleChat = () => {

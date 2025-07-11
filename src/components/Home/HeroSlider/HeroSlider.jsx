@@ -6,7 +6,7 @@ import './HeroSlider.css';
 import homeBg from '../../../assets/inomat.jpg';
 import webDevHero from '../../../assets/webdevelopment1.jpg';
 import digiHero from '../../../assets/010101.jpg';
-import serviceBg from '../../../assets/itit.jpg';
+import serviceBg from '../../../assets/it1.webp';
 import Appdeve from '../../../assets/Appdevelopment.jpg';
 
 const HeroSlider = () => {
@@ -15,7 +15,7 @@ const HeroSlider = () => {
   const slides = [
     {
       image: homeBg,
-      title: "Innomatrics Technologies",
+      title: "Innomatrics Tech",
       subtitle: "Innovate Inspire Integrate",
       description: "Empowering businesses with cutting-edge technology solutions"
     },
@@ -33,9 +33,9 @@ const HeroSlider = () => {
     },
     {
       image: serviceBg,
-      title: "IT Services",
-      subtitle: "End-to-End Technology Solutions",
-      description: "Comprehensive IT services to transform your business"
+      title: "DevOps",
+      subtitle: "End-to-End DevOps Implementation with AWS and Docker",
+      description: "Automating deployment, monitoring, and infrastructure using modern DevOps tools"
     },
     {
       image: Appdeve,
@@ -95,11 +95,7 @@ const HeroSlider = () => {
                       Get a Quote
                     </button>
                   </Link>
-                  <Link to="/services">
-                    <button className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white/10 transition-all duration-300">
-                      Our Services
-                    </button>
-                  </Link>
+                 
                 </div>
               </div>
             </div>

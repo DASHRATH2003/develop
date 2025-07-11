@@ -31,37 +31,37 @@ const testimonials = [
   {
     id: 1,
     quote: "Being part of an organization that focuses on helping employees and clients succeed is the best thing anyone can ask for in their career.",
-    name: "Sarah Chen",
-    role: "Senior Developer",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+    name: "Sathish G",
+    role: "App Developer",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWo1OOAaunfIMLNr5aEWBUlli2XyCnoY4vSdo084gFRA1cBhT2v9XSnnC1DN4fzvMkF2w&usqp=CAU"
   },
   {
     id: 2,
     quote: "What I love most are the coworkers and the freedom to ideate. There are endless opportunities where one can make an impact. The leadership's approach to innovation is truly inspiring.",
-    name: "Michael Rodriguez",
-    role: "Technical Lead",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+    name: "Ashok Bonga",
+    role: "App Developer",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
   },
   {
     id: 3,
     quote: "The collaborative environment at Innomatrics fosters creativity and growth. Every day brings new challenges and opportunities to learn from talented professionals.",
-    name: "Emily Watson",
+    name: "Rakesh SG",
     role: "Product Manager",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvdRorUCLbX8qiYq5deN8s955LjOSbSY6ARZwxFs3onTXCgjcegoL7wo1d10qV2K4XrS8&usqp=CAU"
   },
   {
     id: 4,
     quote: "Working with Innomatrics has transformed our digital presence. Their team's expertise in web development and dedication to quality is exceptional.",
-    name: "David Kim",
-    role: "UX Designer",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+    name: "Dashrath Yadav",
+    role: "Web Developer",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3TgOAELcJ8IzkL9LhlpqgqjT8zKaRlf4ijOftocd0X_C6Y30_QiPShg_rIu7YsA8VWPs&usqp=CAU"
   },
   {
     id: 5,
     quote: "The level of professionalism and technical expertise at Innomatrics is outstanding. They've consistently delivered innovative solutions that exceed our expectations.",
-    name: "Priya Sharma",
-    role: "Cloud Architect",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+    name: "Pramesh prami",
+    role: "Manager",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLsQM2TMQmLbfWyqQJTjkkYjdRdOtoON5ODg&s"
   }
 ];
 
@@ -246,9 +246,7 @@ const Career = () => {
           <p className="text-lg text-white opacity-90 mb-6">
             Join our global team and shape the future with us.
           </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all">
-            Explore Jobs
-          </button>
+          
         </div>
       </div>
 
@@ -264,10 +262,13 @@ const Career = () => {
               impacts the world, <br />
               and the future
             </h2>
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition inline-flex items-center">
-              Explore Jobs
-              <span className="ml-2 text-xl">›</span>
-            </button>
+            <button
+  onClick={() => setIsModalOpen(true)}  // ✅ open the modal on click
+  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition inline-flex items-center"
+>
+  Explore Jobs
+  <span className="ml-2 text-xl">›</span>
+</button>
           </div>
           <div>
             <div className="bg-[#143b82] text-white font-semibold text-lg px-4 py-2 inline-block mb-4 rbgounded-sm shadow">

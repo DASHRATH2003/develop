@@ -1,6 +1,7 @@
 import React from "react";
 import "./About.css";
 import Companyimage from "../../assets/Companyimage.jpg";
+import {Link} from "react-router-dom";
 
 const CompanyOverview = () => {
   return (
@@ -38,10 +39,10 @@ const CompanyOverview = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div className="space-y-6">
               <h2 className="text-3xl font-semibold text-gray-900">
-                Innomatrics Technologies
+                Innomatrics Tech
               </h2>
               <p className="text-lg text-gray-600">
-                Innomatrics Technologies is a premier technology solutions
+                Innomatrics Tech is a premier technology solutions
                 provider headquartered in Bangalore, with a global presence
                 serving clients across over all india . Since
                 our founding in 2023, we've been at the forefront of digital
@@ -271,16 +272,15 @@ const CompanyOverview = () => {
               Ready to Transform Your Business?
             </h2>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
-              Partner with Innomatrics Technologies to leverage cutting-edge
+              Partner with Innomatrics Tech to leverage cutting-edge
               solutions tailored to your unique needs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/contact">
               <button className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg transition-colors duration-300">
                 Contact Us
-              </button>
-              <button className="bg-transparent hover:bg-blue-700 text-white font-bold py-3 px-8 border-2 border-white rounded-lg transition-colors duration-300">
-                Learn More
-              </button>
+              </button></Link>
+              
             </div>
           </div>
         </div>

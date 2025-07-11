@@ -1,6 +1,7 @@
 import React from "react";
 import "./About.css";
 import VisionMissionImage from "../../assets/ourmission.jpeg";
+import {Link} from "react-router-dom";
 const VisionMission = () => {
   const coreValues = [
     {
@@ -431,12 +432,14 @@ const VisionMission = () => {
             team, we'd love to connect.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/careers">
             <button className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg transition-colors duration-300">
               Explore Careers
-            </button>
-            <button className="bg-transparent hover:bg-blue-700 text-white font-bold py-3 px-8 border-2 border-white rounded-lg transition-colors duration-300">
+            </button></Link>
+           <Link to="/contact">
+           <button className="bg-transparent hover:bg-blue-700 text-white font-bold py-3 px-8 border-2 border-white rounded-lg transition-colors duration-300">
               Contact Our Team
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>
