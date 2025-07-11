@@ -7,7 +7,8 @@ const Join = () => {
       <div className="flex flex-col w-full md:w-[62%]">
         <div className="text-xl text-orange-600">JOIN A TEAM OF</div>
         <div className="mt-2 text-sm md:text-4xl font-semibold text-zinc-800 w-full md:w-3/4">
-          <p>Leaders Innovators Thinkers Problem Solvers</p>
+        <p class="text-gray-500 font-semibold">Leaders Innovators Thinkers Problem Solvers</p>
+
         </div>
         <button className="bg-orange-600 rounded-md w-1/2 md:w-1/3 h-12 my-12 text-zinc-800 font-semibold hover:bg-black hover:text-white transition ease-in-out duration-300">
           Work With Us

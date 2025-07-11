@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import './HeroSlider.css';
 
 // Import images
-import homeBg from '../../../assets/innomatricstech.jpg';
+import homeBg from '../../../assets/inomat.jpg';
 import webDevHero from '../../../assets/webdevelopment1.jpg';
 import digiHero from '../../../assets/010101.jpg';
 import serviceBg from '../../../assets/itit.jpg';
+import Appdeve from '../../../assets/Appdevelopment.jpg';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,22 +16,32 @@ const HeroSlider = () => {
     {
       image: homeBg,
       title: "Innomatrics Technologies",
-      subtitle: "Innovate Inspire Integrate"
+      subtitle: "Innovate Inspire Integrate",
+      description: "Empowering businesses with cutting-edge technology solutions"
     },
     {
       image: webDevHero,
       title: "Web Development",
-      subtitle: "Custom Solutions for Your Digital Presence"
+      subtitle: "Custom Solutions for Your Digital Presence",
+      description: "Create stunning, responsive websites that drive results"
     },
     {
       image: digiHero,
       title: "Digital Marketing",
-      subtitle: "Reach Your Target Audience Effectively"
+      subtitle: "Reach Your Target Audience Effectively",
+      description: "Strategic digital marketing solutions to grow your business"
     },
     {
       image: serviceBg,
       title: "IT Services",
-      subtitle: "End-to-End Technology Solutions"
+      subtitle: "End-to-End Technology Solutions",
+      description: "Comprehensive IT services to transform your business"
+    },
+    {
+      image: Appdeve,
+      title: "App Development",
+      subtitle: "End-to-End Technology Solutions",
+      description: "Comprehensive IT services to transform your business"
     }
   ];
 
@@ -55,23 +66,43 @@ const HeroSlider = () => {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 transform translate-y-0 transition-transform duration-700 text-shadow-lg">
-              {slide.title}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 transform translate-y-0 transition-transform duration-700 delay-200 text-shadow-lg">
-              {slide.subtitle}
-            </p>
-            <Link to="/contact">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-                Get a Quote
-              </button>
-            </Link>
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          </div>
+
+          {/* Content Container */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-xl ml-4 md:ml-12 text-white">
+                <h1 className="text-4xl md:text-6xl font-bold mb-4 transform translate-y-0 transition-transform duration-700 text-shadow-lg">
+                  {slide.title}
+                </h1>
+                <p className="text-xl md:text-2xl mb-4 text-blue-200 font-semibold">
+                  {slide.subtitle}
+                </p>
+                <p className="text-lg mb-8 text-gray-200">
+                  {slide.description}
+                </p>
+                <div className="flex gap-4">
+                  <Link to="/contact">
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+                      Get a Quote
+                    </button>
+                  </Link>
+                  <Link to="/services">
+                    <button className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white/10 transition-all duration-300">
+                      Our Services
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       ))}

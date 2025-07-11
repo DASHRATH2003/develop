@@ -21,21 +21,38 @@ const Blog = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="relative py-16">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 z-0" 
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-blue-900/90"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Latest <span className="text-blue-600">Insights</span>
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Our Latest Insights
           </h2>
+          <p className="mt-4 text-lg text-gray-300">
+            Stay updated with the latest trends and insights in technology and digital innovation
+          </p>
         </div>
   
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {blogPosts.map((post, index) => (
             <article 
               key={index} 
-              className="flex flex-col items-start group transition-all duration-300 hover:-translate-y-2"
+              className="flex flex-col items-start bg-white rounded-lg overflow-hidden group transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="relative w-full rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="relative w-full overflow-hidden">
                 <img
                   src={post.image}
                   alt={post.title}
@@ -44,8 +61,8 @@ const Blog = () => {
                 />
               </div>
   
-              <div className="max-w-xl mt-4 px-2">
-                <div className="group relative">
+              <div className="flex flex-col flex-1 p-6">
+                <div className="flex-1">
                   <h3 className="text-xl font-semibold leading-7 text-gray-900 group-hover:text-blue-600 transition-colors">
                     <Link to="#">
                       <span className="absolute inset-0" aria-hidden="true" />
@@ -55,6 +72,14 @@ const Blog = () => {
                   <p className="mt-3 text-base leading-7 text-gray-600">
                     {post.excerpt}
                   </p>
+                </div>
+                <div className="mt-4 flex items-center gap-x-4">
+                  <Link
+                    to="#"
+                    className="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-500"
+                  >
+                    Read more <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
               </div>
             </article>

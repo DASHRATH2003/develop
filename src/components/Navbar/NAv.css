@@ -265,3 +265,13 @@ margin-top: 7%;
   text-decoration: none;
   display: block;
 }
+
+.navbar {
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: linear-gradient(to right, #3f51b5, #673ab7) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

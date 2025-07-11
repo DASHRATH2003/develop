@@ -3,105 +3,40 @@ import React from 'react';
 const Industries = () => {
   const industries = [
     {
-      title: "WEB DEVELOPMENT",
-      subtitle: "Creating Powerful Digital Experiences",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "HEALTHCARE",
+      subtitle: "We revolutionize healthcare delivery through innovative digital solutions",
+      image: "https://burst.shopifycdn.com/photos/doctor-reaches-towards-shelf.jpg?width=1000&format=pjpg&exif=0&iptc=0"
     },
     {
-      title: "MOBILE DEVELOPMENT",
-      subtitle: "Innovative Apps for Modern Business",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "BANKING, FINANCIAL SERVICES & INSURANCE",
+      subtitle: "We empower the BFSI sector with secure, scalable, and intelligent digital solutions that drive innovation and trust",
+      image: "https://www.shutterstock.com/image-photo/bfsi-banking-financial-services-insurance-600nw-2433179231.jpg"
     },
     {
-      title: "CLOUD SOLUTIONS",
-      subtitle: "Scalable Infrastructure for Growth",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "NGO ORGANIZATIONS",
+      subtitle: "We support NGOs and nonprofit organizations by delivering impactful digital solutions.",
+      image: "https://www.shutterstock.com/image-vector/nongovernmental-organization-ngo-vector-illustration-260nw-1811798761.jpg"
     },
     {
-      title: "AI & MACHINE LEARNING",
-      subtitle: "Intelligent Solutions for Tomorrow",
-      image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "TOURS AND TRAVELS",
+      subtitle: "We help tours and travel businesses create immersive digital experiences that attract, engage, and retain customers.",
+      image: "https://divyatourstravels.in/public/img/jk.jpg"
     },
     {
-      title: "E-COMMERCE",
-      subtitle: "Digital Retail Excellence",
-      image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "CONSTRUCTION FIRMS",
+      subtitle: "We empower construction firms with innovative digital solutions that streamline project management",
+      image: "https://plus.unsplash.com/premium_photo-1681691912442-68c4179c530c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29uc3RydWN0aW9ufGVufDB8fDB8fHww"
     },
     {
-      title: "FINTECH",
-      subtitle: "Revolutionary Financial Solutions",
-      image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "SECURITY",
+      subtitle: "We deliver cutting-edge digital solutions tailored for the security industry, enhancing protection.",
+      image: "https://t4.ftcdn.net/jpg/04/72/18/19/360_F_472181971_ZCXWPAgsA2Yp6kEUhkSQDLvLvGuLhZxW.jpg"
     },
-    {
-      title: "HEALTHCARE IT",
-      subtitle: "Digital Health Innovation",
-      image: "https://images.unsplash.com/photo-1563213126-a4273aed2016?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "EDTECH",
-      subtitle: "Transforming Digital Learning",
-      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "CYBERSECURITY",
-      subtitle: "Protecting Digital Assets",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "IOT SOLUTIONS",
-      subtitle: "Connected Device Innovation",
-      image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "REAL ESTATE TECH",
-      subtitle: "Digital Property Solutions",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "ENTERPRISE SOFTWARE",
-      subtitle: "Powering Business Operations",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "DATA ANALYTICS",
-      subtitle: "Insights Driving Success",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "DIGITAL MARKETING",
-      subtitle: "Strategic Online Growth",
-      image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "BLOCKCHAIN",
-      subtitle: "Decentralized Solutions",
-      image: "https://images.unsplash.com/photo-1644143379190-08a5f055de1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "SUPPLY CHAIN TECH",
-      subtitle: "Optimizing Logistics Flow",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "AR/VR SOLUTIONS",
-      subtitle: "Immersive Experiences",
-      image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "AUTOMATION",
-      subtitle: "Streamlining Workflows",
-      image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "SAAS PLATFORMS",
-      subtitle: "Cloud-Based Solutions",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "API INTEGRATION",
-      subtitle: "Connecting Digital Systems",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    }
+   
+   
+    
+   
+
   ];
 
   return (

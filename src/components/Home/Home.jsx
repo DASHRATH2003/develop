@@ -105,9 +105,9 @@ const Home = forwardRef((props, ref) => {
                     </div>
                   </div>
                   <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Expert Team</h3>
-                  <p className="mt-5 text-base text-gray-500">
-                    Our team consists of highly skilled professionals with years of experience in delivering cutting-edge solutions.
-                  </p>
+                  <p className="mt-5 text-base text-gray-600 font-medium leading-relaxed">
+  Our team consists of highly skilled professionals with years of experience in delivering cutting-edge solutions.
+</p>
                 </div>
               </div>
             </div>
@@ -127,9 +127,10 @@ const Home = forwardRef((props, ref) => {
                     </div>
                   </div>
                   <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Quality Assurance</h3>
-                  <p className="mt-5 text-base text-gray-500">
-                    We follow rigorous quality control processes to ensure the highest standards in every project we deliver.
-                  </p>
+                  <p className="mt-5 text-base text-gray-600 font-medium leading-relaxed">
+  We follow rigorous quality control processes to ensure the highest standards in every project we deliver.
+</p>
+
                 </div>
               </div>
             </div>
@@ -149,7 +150,7 @@ const Home = forwardRef((props, ref) => {
                     </div>
                   </div>
                   <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Timely Delivery</h3>
-                  <p className="mt-5 text-base text-gray-500">
+                  <p className="mt-5 text-base text-gray-600 font-medium leading-relaxed">
                     We understand the importance of time and ensure project completion within agreed timelines.
                   </p>
                 </div>
