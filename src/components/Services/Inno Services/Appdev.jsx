@@ -7,7 +7,7 @@ import a2 from "../../../assets/appServices/usercentric.webp";
 import a3 from "../../../assets/appServices/customDev.jpg";
 import a4 from "../../../assets/appServices/crossPlatform.png";
 import a5 from "../../../assets/appServices/qualityTest.png";
-import a6 from "../../../assets/appServices/maintainenece.jpg";
+import a6 from "../../../assets/appdev11.jpeg";
 import "./Appdev.css";
 import { Link } from 'react-router-dom';
 import { 

@@ -179,7 +179,7 @@ const WebDev = forwardRef((props, ref) => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?w=2000&t=st=1709704844~exp=1709705444~hmac=49a8c4842faa0f1f6b5b7f5c3c0c4e4a4e4e4e4a4e4e4e4a4e4e4e4a4e4e4e4a')",
+            backgroundImage: "url('https://w0.peakpx.com/wallpaper/59/567/HD-wallpaper-web-designing-training-in-pune-web-design-web-design-training-in-pune-website-design-training-web-development-course-in-pune-web-development-training-in-india-website-design-training-in-india.jpg')",
           }}
         ></div>
         <div className="absolute inset-0"></div>

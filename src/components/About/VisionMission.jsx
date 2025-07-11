@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import VisionMissionImage from "../../assets/ourmission.jpeg";
+import aboutCorporate from "../../assets/aboutCorporate.jpg";
 import {Link} from "react-router-dom";
 const VisionMission = () => {
   const coreValues = [
@@ -157,35 +157,35 @@ const VisionMission = () => {
   ];
 
   return (
-    <div className="vision-mission py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <div
-          className="relative w-full h-[400px] flex items-center"
-          style={{
-            backgroundImage: `url(${VisionMissionImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-          }}
-        >
-          {/* Overlay to darken image */}
-          <div className="absolute inset-0 "></div>
+    <div className="vision-mission">
+      {/* Hero Section - Full width */}
+      <div
+        className="relative w-full h-[400px] flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(${aboutCorporate})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/70"></div>
 
-          {/* Text Content Left-Aligned */}
-          <div className="relative z-10 w-full px-4 sm:px-8">
-            <div className="text-white max-w-full">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Our Vision & Mission
-              </h1>
-              <div className="w-20 h-1 bg-white mb-5"></div>
-              <p className="text-lg md:text-xl">
-                Guiding principles that drive our innovation and define our
-                commitment to excellence
-              </p>
-            </div>
-          </div>
+        {/* Text Content */}
+        <div className="relative z-10 w-full text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
+            Our Vision & Mission
+          </h1>
+          <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
+          <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto px-4">
+            Guiding principles that drive our innovation and define our
+            commitment to excellence in technology solutions
+          </p>
         </div>
+      </div>
 
+      {/* Rest of the content with padding */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Vision & Mission Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           {/* Vision Section */}

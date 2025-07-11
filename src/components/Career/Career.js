@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FiMapPin, FiBriefcase, FiClock, FiDollarSign, FiX } from "react-icons/fi";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import careerBg from "../../assets/careerBg.jpg";
+import emailjs from "@emailjs/browser";
 
 const staticJobs = [
   {
@@ -33,7 +34,7 @@ const testimonials = [
     quote: "Being part of an organization that focuses on helping employees and clients succeed is the best thing anyone can ask for in their career.",
     name: "Sathish G",
     role: "App Developer",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWo1OOAaunfIMLNr5aEWBUlli2XyCnoY4vSdo084gFRA1cBhT2v9XSnnC1DN4fzvMkF2w&usqp=CAU"
+    image: "https://avatars.githubusercontent.com/u/124010734?v=4"
   },
   {
     id: 2,
@@ -54,7 +55,7 @@ const testimonials = [
     quote: "Working with Innomatrics has transformed our digital presence. Their team's expertise in web development and dedication to quality is exceptional.",
     name: "Dashrath Yadav",
     role: "Web Developer",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3TgOAELcJ8IzkL9LhlpqgqjT8zKaRlf4ijOftocd0X_C6Y30_QiPShg_rIu7YsA8VWPs&usqp=CAU"
+    image: "https://avatars.githubusercontent.com/u/118556564?v=4"
   },
   {
     id: 5,
@@ -110,6 +111,7 @@ const Career = () => {
   const [isFirstScroll, setIsFirstScroll] = useState(true);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -118,6 +120,10 @@ const Career = () => {
     experience: "",
     resume: null
   });
+
+  useEffect(() => {
+    emailjs.init("iQsjiARc7-03nKSZz"); // Your EmailJS public key
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -135,20 +141,56 @@ const Career = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log("Form submitted:", formData);
-    // Reset form and close modal
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      role: "",
-      experience: "",
-      resume: null
-    });
-    setIsModalOpen(false);
+    setLoading(true);
+
+    try {
+      // Convert resume file to base64
+      const reader = new FileReader();
+      reader.readAsDataURL(formData.resume);
+      
+      reader.onload = async () => {
+        const base64Resume = reader.result;
+
+        // Send email using EmailJS
+        await emailjs.send(
+          "service_mch4m6h", // Your EmailJS service ID
+          "template_career", // Your EmailJS template ID for career submissions
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            role: formData.role,
+            experience: formData.experience,
+            resume_url: base64Resume,
+          }
+        );
+
+        alert("Your application has been submitted successfully!");
+        
+        // Reset form and close modal
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          role: "",
+          experience: "",
+          resume: null
+        });
+        setIsModalOpen(false);
+      };
+
+      reader.onerror = (error) => {
+        throw new Error("Error reading file");
+      };
+
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      alert("There was an error submitting your application. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const nextTestimonial = () => {
@@ -560,121 +602,109 @@ const Career = () => {
       {/* Resume Submission Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-4 relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
-            >
-              <FiX size={20} />
-            </button>
-            
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Submit Your Resume</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="bg-white rounded-lg p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Apply Now</h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <FiX className="w-6 h-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name *
+                  Full Name
                 </label>
                 <input
                   type="text"
                   name="name"
-                  required
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF5733] focus:border-transparent"
-                  placeholder="Enter your full name"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address *
+                  Email
                 </label>
                 <input
                   type="email"
                   name="email"
-                  required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF5733] focus:border-transparent"
-                  placeholder="Enter your email"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number *
+                  Phone
                 </label>
                 <input
                   type="tel"
                   name="phone"
-                  required
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF5733] focus:border-transparent"
-                  placeholder="Enter your phone number"
+                  required
+                  pattern="[0-9]{10}"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Preferred Role *
-                </label>
-                <select
-                  name="role"
-                  required
-                  value={formData.role}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF5733] focus:border-transparent"
-                >
-                  <option value="">Select a role</option>
-                  <option value="software-developer">Software Developer</option>
-                  <option value="ui-ux-designer">UI/UX Designer</option>
-                  <option value="project-manager">Project Manager</option>
-                  <option value="data-scientist">Data Scientist</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Years of Experience *
+                  Role You're Applying For
                 </label>
                 <input
-                  type="number"
-                  name="experience"
-                  required
-                  min="0"
-                  max="50"
-                  value={formData.experience}
+                  type="text"
+                  name="role"
+                  value={formData.role}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF5733] focus:border-transparent"
-                  placeholder="Enter years of experience"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Upload Resume *
+                  Years of Experience
+                </label>
+                <input
+                  type="text"
+                  name="experience"
+                  value={formData.experience}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Resume
                 </label>
                 <input
                   type="file"
                   name="resume"
+                  onChange={handleFileChange}
                   required
                   accept=".pdf,.doc,.docx"
-                  onChange={handleFileChange}
-                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF5733] focus:border-transparent text-sm"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
-                <p className="text-xs text-gray-500 mt-0.5">
-                  Accepted formats: PDF, DOC, DOCX (Max size: 5MB)
-                </p>
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-2 bg-[#FF5733] text-white font-medium rounded-lg hover:bg-[#E64A2E] transition-colors mt-4"
+                disabled={loading}
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200 disabled:bg-blue-400"
               >
-                Submit Application
+                {loading ? "Submitting..." : "Submit Application"}
               </button>
             </form>
           </div>
