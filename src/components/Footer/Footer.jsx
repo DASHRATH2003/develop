@@ -55,7 +55,7 @@ const Footer = () => {
                 <FaLinkedin size={24} />
               </a>
               <a 
-                href="https://www.google.com/business/innomatricstech" 
+                href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0LMs1Lcu2sMwxYLRSNaiwMDQwNTYzTDZPNE0yS04ytDKoME1KMrawNLRMSzE0N0kyMfGSyMzLy89NLCnKTC5WKElNzsjLz8lPz0wtBgCTQRi5&q=innomatrics+technologies&rlz=1C1VDKB_enIN1002IN1002&oq=innomatri&gs_lcrp=EgZjaHJvbWUqFQgCEC4YJxivARjHARiABBiKBRiOBTIGCAAQRRg8MgYIARBFGDwyFQgCEC4YJxivARjHARiABBiKBRiOBTIGCAMQRRg7MgYIBBBFGDsyBggFEEUYPDIGCAYQRRg8MgYIBxBFGD3SAQg0NDQwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-blue-300 hover:text-white transition-colors"

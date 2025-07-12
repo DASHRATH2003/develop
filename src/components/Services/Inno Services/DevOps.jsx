@@ -326,12 +326,7 @@ const DevOps = () => {
               >
                 Get Started
               </Link>
-              <Link
-                to="/contact"
-                className="bg-transparent hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg border-2 border-white transition-all duration-300 inline-block"
-              >
-                Schedule a Call
-              </Link>
+              
             </div>
           </motion.div>
         </div>

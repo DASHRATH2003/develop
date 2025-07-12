@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MdLocalHospital, MdAccountBalance, MdApartment, MdDirectionsCar, MdBusiness, MdLock } from 'react-icons/md';
 
 const Industry = () => {
   const [activeIndustry, setActiveIndustry] = useState('banking');
@@ -7,42 +8,42 @@ const Industry = () => {
   const industries = [
     {
       id: 'healthcare',
-      icon: "🏥",
+      icon: <MdLocalHospital className="text-2xl" />,
       title: "Healthcare",
       description: "Revolutionizing healthcare delivery through innovative digital solutions that enhance patient care, streamline operations, and improve healthcare outcomes for a better tomorrow.",
       image: "https://innomatricstech.com/static/media/healthcare.e62a4eb7627020872da5.jpg"
     },
     {
       id: 'banking',
-      icon: "🏦",
+      icon: <MdAccountBalance className="text-2xl" />,
       title: "Banking, Financial Services & Insurance",
       description: "Pioneering transformative shifts in the financial landscape by harnessing the collective expertise of our seasoned professionals in banking, financial services, insurance, and payments, to craft innovative solutions that redefine industry standards and empower individuals and businesses to thrive in an ever-evolving economic ecosystem.",
       image: "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 'ngo',
-      icon: "🏢",
+      icon: <MdApartment className="text-2xl" />,
       title: "NGO Organizations",
       description: "Dedicatedly empowering communities and catalyzing meaningful change through concerted efforts that prioritize inclusivity, collaboration, and sustainable practices, thereby fostering a brighter, more equitable future for all.",
       image: "https://innomatricstech.com/static/media/ngo.f4d06299e1fe648175d1.jpg"
     },
     {
       id: 'tours',
-      icon: "✈️",
+      icon: <MdDirectionsCar className="text-2xl" />,
       title: "Tours And Travels",
       description: "Transforming travel experiences through cutting-edge technology solutions that streamline bookings, enhance customer experiences, and revolutionize the way people explore the world.",
       image: "https://innomatricstech.com/static/media/tours.5a2b2fb7493d15de0a69.jpg"
     },
     {
       id: 'construction',
-      icon: "🏗️",
+      icon: <MdBusiness className="text-2xl" />,
       title: "Construction Firms",
       description: "Building the future through innovative digital solutions that optimize project management, enhance collaboration, and drive efficiency in construction operations.",
       image: "https://innomatricstech.com/static/media/construction.5fcfec7212b510106d76.jpg"
     },
     {
       id: 'security',
-      icon: "🔒",
+      icon: <MdLock className="text-2xl" />,
       title: "Security",
       description: "Protecting digital assets and infrastructure with state-of-the-art security solutions that ensure peace of mind in an increasingly connected world.",
       image: "https://innomatricstech.com/static/media/security.3064eeb1e8cf302453f9.jpg"
@@ -68,7 +69,7 @@ const Industry = () => {
                   }`}
                   onMouseEnter={() => setActiveIndustry(industry.id)}
                 >
-                  <span className="text-[#0096FF] text-xl">{industry.icon}</span>
+                  <span className="text-[#0096FF]">{industry.icon}</span>
                   <h3 className="text-base font-medium text-gray-800">{industry.title}</h3>
                 </div>
               ))}

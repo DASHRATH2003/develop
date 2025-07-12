@@ -39,7 +39,7 @@ const CompanyOverview = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div className="space-y-6">
               <h2 className="text-3xl font-semibold text-gray-900">
-                Innomatrics Tech
+                Innomatrics Technologies
               </h2>
               <p className="text-lg text-gray-600">
                 Innomatrics Tech is a premier technology solutions

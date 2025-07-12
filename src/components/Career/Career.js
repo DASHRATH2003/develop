@@ -31,10 +31,10 @@ const staticJobs = [
 const testimonials = [
   {
     id: 1,
-    quote: "Being part of an organization that focuses on helping employees and clients succeed is the best thing anyone can ask for in their career.",
-    name: "Sathish G",
-    role: "App Developer",
-    image: "https://avatars.githubusercontent.com/u/124010734?v=4"
+    quote: "Working with a team that encourages innovation and values every contribution has been a rewarding journey. I'm proud to be part of an organization where growth and collaboration are at the core.",
+    name: "Dashrath yadav",
+    role: "Web Developer",
+    image: "https://avatars.githubusercontent.com/u/118556564?v=4"
   },
   {
     id: 2,
@@ -53,9 +53,9 @@ const testimonials = [
   {
     id: 4,
     quote: "Working with Innomatrics has transformed our digital presence. Their team's expertise in web development and dedication to quality is exceptional.",
-    name: "Dashrath Yadav",
-    role: "Web Developer",
-    image: "https://avatars.githubusercontent.com/u/118556564?v=4"
+    name: "Sathish G",
+    role: "App Developer",
+    image: "https://avatars.githubusercontent.com/u/124010734?v=4"
   },
   {
     id: 5,
@@ -110,6 +110,7 @@ const Career = () => {
   const containerRef = useRef(null);
   const [isFirstScroll, setIsFirstScroll] = useState(true);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -120,6 +121,19 @@ const Career = () => {
     experience: "",
     resume: null
   });
+
+  // Modify the testimonial transition
+  useEffect(() => {
+    const testimonialInterval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+        setIsTransitioning(false);
+      }, 700); // Match this with transition duration
+    }, 4000); // Total time for each testimonial
+
+    return () => clearInterval(testimonialInterval);
+  }, []);
 
   useEffect(() => {
     emailjs.init("iQsjiARc7-03nKSZz"); // Your EmailJS public key
@@ -269,6 +283,17 @@ const Career = () => {
       }
     };
   }, []);
+
+  // Helper function to get proper transform value
+  const getTransformValue = (index) => {
+    if (currentTestimonial === testimonials.length - 1 && index === 0) {
+      return 100; // Next testimonial
+    }
+    if (currentTestimonial === 0 && index === testimonials.length - 1) {
+      return -100; // Previous testimonial
+    }
+    return (index - currentTestimonial) * 100;
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -466,49 +491,45 @@ const Career = () => {
               </div>
 
               {/* Right Side - Testimonial Slider */}
-              <div className="relative bg-[#143b82] p-8 rounded-lg">
-                <div className="relative min-h-[300px]">
+              <div className="relative bg-[#143b82] p-8 rounded-lg h-[400px]">
+                <div className="h-full relative overflow-hidden">
                   {testimonials.map((testimonial, index) => (
                     <div
                       key={testimonial.id}
-                      className={`absolute w-full transition-opacity duration-500 ${
-                        index === currentTestimonial ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                      }`}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        transform: `translateX(${getTransformValue(index)}%)`,
+                        transition: isTransitioning ? 'transform 0.7s ease-in-out' : 'none',
+                        opacity: Math.abs(getTransformValue(index)) <= 100 ? 1 : 0,
+                        pointerEvents: index === currentTestimonial ? 'auto' : 'none'
+                      }}
                     >
-                      <p className="text-xl leading-relaxed mb-8">
-                        "{testimonial.quote}"
-                      </p>
-                      <div className="flex items-center">
-                        <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-300 mr-4">
-                          <img 
-                            src={testimonial.image} 
-                            alt={testimonial.name}
-                            className="w-full h-full object-cover"
-                          />
+                      <div className="h-full flex flex-col">
+                        <div className="flex items-center mb-6">
+                          <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-300 mr-4 flex-shrink-0">
+                            <img 
+                              src={testimonial.image} 
+                              alt={testimonial.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <h4 className="font-semibold text-xl truncate">{testimonial.name}</h4>
+                            <p className="text-blue-200 truncate">{testimonial.role}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-xl">{testimonial.name}</h4>
-                          <p className="text-blue-200">{testimonial.role}</p>
-                        </div>
+                        <p className="text-xl leading-relaxed line-clamp-4">
+                          "{testimonial.quote}"
+                        </p>
                       </div>
                     </div>
                   ))}
-                </div>
 
-                {/* Navigation Buttons */}
-                <div className="absolute bottom-4 right-4 flex space-x-2">
-                  <button
-                    onClick={prevTestimonial}
-                    className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition"
-                  >
-                    <FiChevronLeft size={24} />
-                  </button>
-                  <button
-                    onClick={nextTestimonial}
-                    className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition"
-                  >
-                    <FiChevronRight size={24} />
-                  </button>
+                  {/* Removing navigation dots and arrow controls */}
                 </div>
               </div>
             </div>
@@ -522,7 +543,7 @@ const Career = () => {
                   alt="Business Meeting"
                   className="w-full h-48 object-cover rounded-lg mb-4"
                 />
-                <h3 className="text-xl font-semibold mb-2">Business Excellence</h3>
+                <h3 className="text-xl font-semibold mb-2 text-white">Business Excellence</h3>
                 <p className="text-blue-200">Driving innovation and excellence in every project we undertake.</p>
               </div>
 
@@ -535,7 +556,7 @@ const Career = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-lg flex items-end p-6">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-2">Learn more about our CSR →</h3>
+                    <h3 className="text-2xl font-semibold mb-2 text-white">Learn more about our CSR →</h3>
                     <p className="text-blue-200">Making a positive impact in our communities.</p>
                   </div>
                 </div>
@@ -601,115 +622,115 @@ const Career = () => {
 
       {/* Resume Submission Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900">Apply Now</h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <FiX className="w-6 h-6" />
-              </button>
-            </div>
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6">
+    <div className="bg-white rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-5">
+      
+      {/* Header */}
+      <div className="flex justify-between items-center border-b border-red-500 pb-3 mb-4">
+        <h2 className="text-xl font-semibold text-red-600">Apply Now</h2>
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="text-red-500 hover:text-red-700"
+        >
+          <FiX className="w-5 h-5" />
+        </button>
+      </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  pattern="[0-9]{10}"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Role You're Applying For
-                </label>
-                <input
-                  type="text"
-                  name="role"
-                  value={formData.role}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Years of Experience
-                </label>
-                <input
-                  type="text"
-                  name="experience"
-                  value={formData.experience}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Resume
-                </label>
-                <input
-                  type="file"
-                  name="resume"
-                  onChange={handleFileChange}
-                  required
-                  accept=".pdf,.doc,.docx"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200 disabled:bg-blue-400"
-              >
-                {loading ? "Submitting..." : "Submit Application"}
-              </button>
-            </form>
-          </div>
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Full Name */}
+        <div>
+          <label className="block text-sm font-medium text-red-600 mb-1">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
         </div>
-      )}
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm font-medium text-red-600 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label className="block text-sm font-medium text-red-600 mb-1">Phone</label>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            required
+            pattern="[0-9]{10}"
+            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        {/* Role */}
+        <div>
+          <label className="block text-sm font-medium text-red-600 mb-1">Role You're Applying For</label>
+          <input
+            type="text"
+            name="role"
+            value={formData.role}
+            onChange={handleInputChange}
+            required
+            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        {/* Experience */}
+        <div>
+          <label className="block text-sm font-medium text-red-600 mb-1">Years of Experience</label>
+          <input
+            type="text"
+            name="experience"
+            value={formData.experience}
+            onChange={handleInputChange}
+            required
+            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        {/* Resume Upload */}
+        <div>
+          <label className="block text-sm font-medium text-red-600 mb-1">Resume</label>
+          <input
+            type="file"
+            name="resume"
+            onChange={handleFileChange}
+            required
+            accept=".pdf,.doc,.docx"
+            className="w-full border border-red-500 text-red-600 rounded-md px-2 py-2 file:bg-red-600 file:text-white file:border-0 file:px-4 file:py-1 file:rounded-md file:cursor-pointer hover:file:bg-red-700"
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition disabled:bg-red-400"
+        >
+          {loading ? "Submitting..." : "Submit Application"}
+        </button>
+      </form>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };

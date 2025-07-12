@@ -64,7 +64,7 @@ function NAv() {
         ref={navRef}
         className={`w-full z-50 top-0 fixed transition-all duration-300 ${
           scrolled
-            ? "bg-gradient-to-r from-blue-800/80 via-purple-800/80 to-indigo-900/80 backdrop-blur-sm"
+            ? "bg-gradient-to-r from-blue-300 via-blue-800 to-blue-100 shadow-lg backdrop-blur-sm"
             : "bg-transparent"
         } ${showInfoBar ? "" : "top-0"}`}
       >
@@ -155,6 +155,7 @@ function NAv() {
                 >
                   Contact Us
                 </Link>
+                
                 <Link
                   to="/quote"
                   className="nav-button secondary bg-red-500/90 hover:bg-red-600 text-white shadow-lg backdrop-blur-sm"

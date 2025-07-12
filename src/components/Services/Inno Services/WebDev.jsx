@@ -400,12 +400,7 @@ const WebDev = forwardRef((props, ref) => {
             >
               Start Your Project
             </Link>
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center px-8 py-3 border border-2 border-blue-600 text-lg font-bold rounded-md text-blue-600 hover:bg-blue-50 transition-colors duration-300"
-            >
-              View Our Portfolio
-            </Link>
+           
           </div>
         </div>
       </div>

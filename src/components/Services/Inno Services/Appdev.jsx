@@ -218,6 +218,13 @@ const AppDev = forwardRef((props, ref) => {
   ];
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [likes, setLikes] = useState(new Array(10).fill(0)); // Add this line for likes state
+
+  const handleLike = (index) => {
+    const newLikes = [...likes];
+    newLikes[index] += 1;
+    setLikes(newLikes);
+  };
 
   const testimonials = [
     {
@@ -527,9 +534,30 @@ const AppDev = forwardRef((props, ref) => {
                     transition={{ duration: 0.5 }}
                     className="w-full md:w-1/2 mx-auto bg-white p-8 rounded-xl shadow-lg"
                   >
-                    <div className="flex items-center mb-4">
-                      <div className="text-yellow-400 mr-2">{'★'.repeat(testimonial.rating)}</div>
-                      <div className="text-gray-600">{testimonial.rating}.0 Rating</div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className="text-yellow-400 mr-2">{'★'.repeat(testimonial.rating)}</div>
+                        <div className="text-gray-600">{testimonial.rating}.0 Rating</div>
+                      </div>
+                      <div className="flex items-center">
+                        <button 
+                          onClick={() => handleLike(index)}
+                          className="flex items-center space-x-1 text-blue-600 hover:text-blue-800"
+                        >
+                          <svg 
+                            className="w-6 h-6" 
+                            fill="currentColor" 
+                            viewBox="0 0 20 20"
+                          >
+                            <path 
+                              fillRule="evenodd" 
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" 
+                              clipRule="evenodd" 
+                            />
+                          </svg>
+                          <span>{likes[index]}</span>
+                        </button>
+                      </div>
                     </div>
                     <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
                     <div className="flex items-center">
@@ -573,12 +601,7 @@ const AppDev = forwardRef((props, ref) => {
             >
               Start Your Project
             </Link>
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center px-8 py-3 border border-2 border-blue-600 text-lg font-bold rounded-md text-blue-600 hover:bg-blue-50 transition-colors duration-300"
-            >
-              View Our Portfolio
-            </Link>
+           
           </div>
         </div>
       </div>
