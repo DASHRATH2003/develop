@@ -15,7 +15,7 @@ const HeroSlider = () => {
   const slides = [
     {
       image: homeBg,
-      title: "Innomatrics Tech",
+      title: "Innomatrics Technologies",
       subtitle: "Innovate Inspire Integrate",
       description: "Empowering businesses with cutting-edge technology solutions"
     },

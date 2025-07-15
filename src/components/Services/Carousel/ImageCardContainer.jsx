@@ -1,6 +1,6 @@
 import React from 'react';
 import c1 from '../../../assets/AppDev.jpg';
-import c2 from '../../../assets/webDesign.jpg';
+import c2 from '../../../assets/devops.jpg';
 import c3 from '../../../assets/webDevelopment.jpg';
 import c4 from '../../../assets/digitalMarkt.webp';
 import c5 from '../../../assets/brandDesign.jpg';
@@ -36,7 +36,7 @@ const ImageCardContainer = () => {
     },
     {
       imageUrl: c2,
-      text: 'Web Design',
+      text: 'DevOps',
       linkUrl: "/webdesign"
     },
     {

@@ -341,51 +341,7 @@ const WebDev = forwardRef((props, ref) => {
         </div>
 
         {/* Testimonials */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            What Our Clients Say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 mr-2">★★★★★</div>
-                <div className="text-gray-600">5.0 Rating</div>
-              </div>
-              <p className="text-gray-600 italic mb-6">
-                "Innomatrics transformed our digital presence with their web application. Their team delivered 
-                beyond our expectations with a solution that's both powerful and easy to use."
-              </p>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
-                  JS
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">John Smith</p>
-                  <p className="text-gray-500">CEO, TechCorp</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 mr-2">★★★★★</div>
-                <div className="text-gray-600">5.0 Rating</div>
-              </div>
-              <p className="text-gray-600 italic mb-6">
-                "The e-commerce platform developed by Innomatrics increased our online sales by 120% in the first 
-                quarter. Their attention to detail and technical expertise is unmatched."
-              </p>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
-                  MJ
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">Maria Johnson</p>
-                  <p className="text-gray-500">Marketing Director, RetailPlus</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         {/* CTA Section */}
         <div className="text-center bg-white rounded-xl shadow-lg p-12">

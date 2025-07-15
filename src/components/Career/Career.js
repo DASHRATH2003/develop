@@ -136,7 +136,7 @@ const Career = () => {
   }, []);
 
   useEffect(() => {
-    emailjs.init("iQsjiARc7-03nKSZz"); // Your EmailJS public key
+    emailjs.init("6VY09sJt6V10-gvtv"); // Your EmailJS public key
   }, []);
 
   const handleInputChange = (e) => {
@@ -169,8 +169,8 @@ const Career = () => {
 
         // Send email using EmailJS
         await emailjs.send(
-          "service_mch4m6h", // Your EmailJS service ID
-          "template_career", // Your EmailJS template ID for career submissions
+          "service_jrw5k1p", // Your EmailJS service ID
+          "service_jrw5k1p", // Your EmailJS template ID for career submissions
           {
             name: formData.name,
             email: formData.email,

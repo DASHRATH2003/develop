@@ -13,7 +13,7 @@ const InquiryForm = () => {
   const [status, setStatus] = useState({ type: "", message: "" });
 
   useEffect(() => {
-    emailjs.init("iQsjiARc7-03nKSZz");
+    emailjs.init("6VY09sJt6V10-gvtv");
   }, []);
 
   const resetForm = () => {
@@ -23,8 +23,8 @@ const InquiryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const serviceId = "service_mch4m6h";
-    const templateId = "template_t7wlj2d";
+    const serviceId = "service_jrw5k1p";
+    const templateId = "template_x896ksc";
 
     try {
       setLoading(true);

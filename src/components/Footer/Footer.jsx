@@ -31,13 +31,20 @@ const Footer = () => {
                 <FaFacebook size={24} />
               </a>
               <a 
-                href="https://twitter.com/innomatricstech" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-blue-300 hover:text-white transition-colors"
-              >
-                <FaTwitter size={24} />
-              </a>
+  href="https://twitter.com/innomatricstech" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="hover:opacity-80 transition-opacity"
+>
+<img 
+  src="https://www.thinkdesignagency.co.uk/wp-content/uploads/2023/07/Twitter-rebrands-as-X.jpg" 
+  alt="Twitter X" 
+  width={36} 
+  height={48} 
+  className="rounded"
+/>
+
+</a>
               <a 
                 href="https://www.instagram.com/innomatrics_tech/" 
                 target="_blank" 

@@ -195,3 +195,11 @@
     font-size: 1.125rem;
   }
 }
+
+.testimonial-container {
+  scroll-snap-type: x mandatory;
+}
+
+.testimonial-pair {
+  scroll-snap-align: start;
+}

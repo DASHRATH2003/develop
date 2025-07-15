@@ -300,12 +300,22 @@ const AppDev = forwardRef((props, ref) => {
   ];
 
   useEffect(() => {
+    const totalPairs = Math.ceil(testimonials.length / 2);
     const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 3000); // Change testimonial every 3 seconds
+      setCurrentTestimonial((prev) => (prev + 1) % totalPairs);
+    }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
+  const goToNext = () => {
+    const totalPairs = Math.ceil(testimonials.length / 2);
+    setCurrentTestimonial((prev) => (prev + 1) % totalPairs);
+  };
+
+  const goToPrev = () => {
+    const totalPairs = Math.ceil(testimonials.length / 2);
+    setCurrentTestimonial((prev) => (prev - 1 + totalPairs) % totalPairs);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50" ref={ref}>
@@ -515,78 +525,7 @@ const AppDev = forwardRef((props, ref) => {
         </div>
 
         {/* Testimonials */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            What Our Clients Say
-          </h2>
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="relative overflow-hidden">
-              <div className="flex">
-                {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{
-                      opacity: currentTestimonial === index ? 1 : 0,
-                      x: currentTestimonial === index ? 0 : 100,
-                      display: currentTestimonial === index ? 'block' : 'none'
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full md:w-1/2 mx-auto bg-white p-8 rounded-xl shadow-lg"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className="text-yellow-400 mr-2">{'★'.repeat(testimonial.rating)}</div>
-                        <div className="text-gray-600">{testimonial.rating}.0 Rating</div>
-                      </div>
-                      <div className="flex items-center">
-                        <button 
-                          onClick={() => handleLike(index)}
-                          className="flex items-center space-x-1 text-blue-600 hover:text-blue-800"
-                        >
-                          <svg 
-                            className="w-6 h-6" 
-                            fill="currentColor" 
-                            viewBox="0 0 20 20"
-                          >
-                            <path 
-                              fillRule="evenodd" 
-                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" 
-                              clipRule="evenodd" 
-                            />
-                          </svg>
-                          <span>{likes[index]}</span>
-                        </button>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
-                    <div className="flex items-center">
-                      <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
-                        {testimonial.initials}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">{testimonial.name}</p>
-                        <p className="text-gray-500">{testimonial.position}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              <div className="flex justify-center mt-8 gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                      currentTestimonial === index ? 'bg-blue-600' : 'bg-gray-300'
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
         {/* CTA Section */}
         <div className="text-center bg-white rounded-xl shadow-lg p-12">
