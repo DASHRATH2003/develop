@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FiMapPin, FiBriefcase, FiClock, FiDollarSign, FiX } from "react-icons/fi";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiCheck } from "react-icons/fi";
 import careerBg from "../../assets/careerBg.jpg";
 import emailjs from "@emailjs/browser";
 
@@ -111,6 +111,7 @@ const Career = () => {
   const [selectedJob, setSelectedJob] = useState(staticJobs[0]);
   const [currentValueSlide, setCurrentValueSlide] = useState(0);
   const containerRef = useRef(null);
+  const formRef = useRef(null);
   const [isFirstScroll, setIsFirstScroll] = useState(true);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -122,214 +123,57 @@ const Career = () => {
     email: "",
     phone: "",
     role: "",
-    experience: "",
-    resume: null
+    experience: ""
   });
 
-  // Modify the testimonial transition
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
+  // Testimonial transition effect
   useEffect(() => {
     const testimonialInterval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
         setIsTransitioning(false);
-      }, 700); // Match this with transition duration
-    }, 4000); // Total time for each testimonial
+      }, 700);
+    }, 4000);
 
     return () => clearInterval(testimonialInterval);
   }, []);
 
+  // Auto-scrolling for career highlights
   useEffect(() => {
-    // emailjs.init("6VY09sJt6V10-gvtv"); // Your EmailJS public key
+    const container = containerRef.current;
+    if (!container) return;
+
+    const content = container.querySelector('.scroll-content');
+    const items = content.children;
+    const clonedItems = Array.from(items).map(item => item.cloneNode(true));
+    clonedItems.forEach(item => content.appendChild(item));
+
+    let scrollInterval;
+    const startScrolling = () => {
+      scrollInterval = setInterval(() => {
+        const cardWidth = 400;
+        const gap = 24;
+        const scrollAmount = cardWidth + gap;
+        
+        if (container.scrollLeft >= (items.length * scrollAmount) - 1) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += scrollAmount;
+        }
+      }, 3000);
+    };
+
+    startScrolling();
+
+    return () => {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+      }
+    };
   }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
-
-  const compressFile = async (file) => {
-    // If file is not PDF, or size is under 1MB, return as is
-    if (file.type !== 'application/pdf' || file.size <= 1024 * 1024) {
-      return file;
-    }
-
-    try {
-      // Convert PDF to base64
-      const base64 = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.readAsDataURL(file);
-      });
-
-      // Return the original file if it's already small enough
-      if (base64.length <= MAX_FILE_SIZE) {
-        return file;
-      }
-
-      // Create a new file with compressed base64
-      const compressedBase64 = base64.slice(0, MAX_FILE_SIZE);
-      const compressedBlob = await fetch(compressedBase64).then(res => res.blob());
-      return new File([compressedBlob], file.name, { type: file.type });
-    } catch (error) {
-      console.error('Error compressing file:', error);
-      return file;
-    }
-  };
-
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    
-    if (!file) return;
-
-    // Check file type
-    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    if (!allowedTypes.includes(file.type)) {
-      alert('Please upload PDF or Word document only');
-      e.target.value = '';
-      return;
-    }
-
-    // No need to check file size as Firebase can handle large files
-    setFormData(prev => ({
-      ...prev,
-      resume: file
-    }));
-  };
-
-  // EmailJS configuration
-  const EMAILJS_CONFIG = {
-    serviceId: "service_jrw5k1p",
-    templateId: "template_bi8brd5",
-    publicKey: "6VY09sJt6V10-gvtv",
-  };
-
-  const convertToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
-    });
-  };
-
-  const sendEmailChunk = async (params) => {
-    try {
-      const response = await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        params,
-        EMAILJS_CONFIG.publicKey
-      );
-      return response;
-    } catch (error) {
-      console.error("Error sending chunk:", error);
-      throw error;
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setUploadProgress(0);
-
-    try {
-      const file = formData.resume;
-      
-      if (!file) {
-        alert('Please select a resume file');
-        setLoading(false);
-        return;
-      }
-
-      try {
-        // Convert file to base64
-        const base64Data = await convertToBase64(file);
-        
-        // Split base64 into chunks (max 50KB per chunk)
-        const chunkSize = 45 * 1024; // 45KB
-        const chunks = [];
-        for (let i = 0; i < base64Data.length; i += chunkSize) {
-          chunks.push(base64Data.slice(i, i + chunkSize));
-        }
-
-        // Get current date and time
-        const now = new Date();
-        const timestamp = now.toLocaleString();
-
-        // Send first chunk with all form data
-        const firstChunkResponse = await sendEmailChunk({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          role: formData.role,
-          experience: formData.experience,
-          time: timestamp,
-          filename: file.name,
-          totalChunks: chunks.length,
-          currentChunk: 1,
-          fileData: chunks[0]
-        });
-
-        // Update progress
-        setUploadProgress((1 / chunks.length) * 100);
-
-        // Send remaining chunks if any
-        if (chunks.length > 1) {
-          for (let i = 1; i < chunks.length; i++) {
-            await sendEmailChunk({
-              email: formData.email, // Reference for combining chunks
-              filename: file.name,
-              totalChunks: chunks.length,
-              currentChunk: i + 1,
-              fileData: chunks[i]
-            });
-            
-            // Update progress
-            setUploadProgress(((i + 1) / chunks.length) * 100);
-          }
-        }
-
-        alert("Your application has been submitted successfully!");
-        
-        // Reset form and close modal
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          role: "",
-          experience: "",
-          resume: null
-        });
-        setIsModalOpen(false);
-        setUploadProgress(0);
-
-      } catch (error) {
-        console.error("Submission Error:", error);
-        alert("Error submitting application. Please try again with a smaller file or different format.");
-      }
-    } catch (error) {
-      console.error("Form Error:", error);
-      alert("Error processing form. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => 
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
-  };
 
   const valueSlides = [
     {
@@ -352,6 +196,80 @@ const Career = () => {
     }
   ];
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      // Send email to HR
+      const response = await emailjs.send(
+        "service_jrw5k1p",
+        "template_bi8brd5",
+        {
+          to_name: "HR Team",
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          role: formData.role,
+          experience: formData.experience,
+          message: `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Role Applied For: ${formData.role}
+Experience: ${formData.experience}
+          `
+        },
+        "6VY09sJt6V10-gvtv"
+      );
+
+      console.log("EmailJS Response:", response);
+
+      if (response.status === 200) {
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          role: "",
+          experience: ""
+        });
+        
+        // Show success popup
+        setShowSuccessPopup(true);
+        setTimeout(() => {
+          setShowSuccessPopup(false);
+          setIsModalOpen(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("Error sending application. Please try again or contact support.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Navigation functions
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => 
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
   const nextValueSlide = () => {
     setCurrentValueSlide((prev) => (prev + 1) % valueSlides.length);
   };
@@ -362,49 +280,12 @@ const Career = () => {
     );
   };
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Clone first set of items and append to end for smooth infinite scroll
-    const content = container.querySelector('.scroll-content');
-    const items = content.children;
-    const clonedItems = Array.from(items).map(item => item.cloneNode(true));
-    clonedItems.forEach(item => content.appendChild(item));
-
-    let scrollInterval;
-    const startScrolling = () => {
-      scrollInterval = setInterval(() => {
-        const cardWidth = 400; // Width of each card
-        const gap = 24; // Gap between cards (6 * 4 = 24px for gap-6)
-        const scrollAmount = cardWidth + gap;
-        
-        if (container.scrollLeft >= (items.length * scrollAmount) - 1) {
-          // When we reach the cloned items, quickly and quietly reset to start
-          container.scrollLeft = 0;
-        } else {
-          container.scrollLeft += scrollAmount;
-        }
-      }, 3000);
-    };
-
-    startScrolling();
-
-    // Cleanup
-    return () => {
-      if (scrollInterval) {
-        clearInterval(scrollInterval);
-      }
-    };
-  }, []);
-
-  // Helper function to get proper transform value
   const getTransformValue = (index) => {
     if (currentTestimonial === testimonials.length - 1 && index === 0) {
-      return 100; // Next testimonial
+      return 100;
     }
     if (currentTestimonial === 0 && index === testimonials.length - 1) {
-      return -100; // Previous testimonial
+      return -100;
     }
     return (index - currentTestimonial) * 100;
   };
@@ -427,14 +308,16 @@ const Career = () => {
           <p className="text-lg text-white opacity-90 mb-6">
             Join our global team and shape the future with us.
           </p>
-          
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition"
+          >
+            Apply Now
+          </button>
         </div>
       </div>
 
-      {/* We Value People Section */}
-     
-
-      {/* 2-Column Section (Like Your Second Image) */}
+      {/* 2-Column Section */}
       <div className="bg-[#f8f8ff] py-16 px-6 md:px-20">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -444,26 +327,25 @@ const Career = () => {
               and the future
             </h2>
             <button
-  onClick={() => setIsModalOpen(true)}  // ✅ open the modal on click
-  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition inline-flex items-center"
->
-  Explore Jobs
-  <span className="ml-2 text-xl">›</span>
-</button>
+              onClick={() => setIsModalOpen(true)}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition inline-flex items-center"
+            >
+              Explore Jobs
+              <span className="ml-2 text-xl">›</span>
+            </button>
           </div>
           <div>
-            <div className="bg-[#143b82] text-white font-semibold text-lg px-4 py-2 inline-block mb-4 rbgounded-sm shadow">
+            <div className="bg-[#143b82] text-white font-semibold text-lg px-4 py-2 inline-block mb-4 rounded-sm shadow">
               Software Engineer
             </div>
             <p className="text-gray-700 text-lg leading-relaxed">
-            Give your career an edge at Innomatrics Tech with a dynamic work environment and a global culture of innovation. At Innomatrics, we take pride in fostering a workplace where passion drives progress. Our commitment to excellence is reflected in our diverse, inclusive, and collaborative teams — all working toward a shared vision of delivering impactful, high-quality solutions consistently.
-
-
+              Give your career an edge at Innomatrics Tech with a dynamic work environment and a global culture of innovation. At Innomatrics, we take pride in fostering a workplace where passion drives progress. Our commitment to excellence is reflected in our diverse, inclusive, and collaborative teams — all working toward a shared vision of delivering impactful, high-quality solutions consistently.
             </p>
           </div>
         </div>
       </div>
 
+      {/* Value Slides Section */}
       <div className="bg-white py-16 px-6 md:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -480,37 +362,13 @@ const Career = () => {
                   onClick={prevValueSlide}
                   className="w-12 h-12 rounded-full border-2 border-orange-500 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors group"
                 >
-                  <svg
-                    className="w-6 h-6 text-orange-500 group-hover:text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
+                  <FiChevronLeft className="w-6 h-6 text-orange-500 group-hover:text-white" />
                 </button>
                 <button
                   onClick={nextValueSlide}
                   className="w-12 h-12 rounded-full border-2 border-orange-500 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors group"
                 >
-                  <svg
-                    className="w-6 h-6 text-orange-500 group-hover:text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                  <FiChevronRight className="w-6 h-6 text-orange-500 group-hover:text-white" />
                 </button>
               </div>
             </div>
@@ -588,6 +446,7 @@ const Career = () => {
         </div>
       </div>
 
+      {/* Discover Universe Section */}
       <div className="bg-[#00235B] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="py-16 px-4">
@@ -642,8 +501,6 @@ const Career = () => {
                       </div>
                     </div>
                   ))}
-
-                  {/* Removing navigation dots and arrow controls */}
                 </div>
               </div>
             </div>
@@ -680,14 +537,6 @@ const Career = () => {
         </div>
       </div>
 
-      
-
-      {/* Discover Universe Section */}
-      
-
-      {/* Testimonials Section */}
-      
-
       {/* Submit Resume Section */}
       <div className="relative">
         {/* Background Image */}
@@ -705,159 +554,156 @@ const Career = () => {
           <div className="max-w-lg ml-auto bg-white rounded-lg p-8 shadow-xl">
             <div className="text-[#FF5733] font-medium mb-2">JOIN OUR TEAM</div>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Can&apos;t find your job?<br />
-              Don&apos;t worry!
+              Can't find your job?<br />
+              Don't worry!
             </h2>
             <p className="text-gray-600 mb-8">
               Our team will reach out to you when we have the opening.
             </p>
-            <button 
-              className="inline-flex items-center px-6 py-3 bg-[#FF5733] text-white font-medium rounded-lg hover:bg-[#E64A2E] transition-colors"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Submit Your Resume
-              <svg 
-                className="ml-2 w-5 h-5" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button 
+                className="inline-flex items-center px-6 py-3 bg-[#FF5733] text-white font-medium rounded-lg hover:bg-[#E64A2E] transition-colors"
+                onClick={() => setIsModalOpen(true)}
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M9 5l7 7-7 7" 
-                />
-              </svg>
-            </button>
+                Submit Application
+                <FiChevronRight className="ml-2 w-5 h-5" />
+              </button>
+              <a 
+                href="https://in.indeed.com/cmp/Innomatrics-Technologies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-[#2557A7] text-white font-medium rounded-lg hover:bg-[#1E4B8F] transition-colors"
+              >
+                Apply Now
+                
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Resume Submission Modal */}
-      {isModalOpen && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6">
-    <div className="bg-white rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-5">
-      
-      {/* Header */}
-      <div className="flex justify-between items-center border-b border-red-500 pb-3 mb-4">
-        <h2 className="text-xl font-semibold text-red-600">Apply Now</h2>
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="text-red-500 hover:text-red-700"
-        >
-          <FiX className="w-5 h-5" />
-        </button>
-      </div>
-
-      {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Full Name */}
-        <div>
-          <label className="block text-sm font-medium text-red-600 mb-1">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
-        </div>
-
-        {/* Email */}
-        <div>
-          <label className="block text-sm font-medium text-red-600 mb-1">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label className="block text-sm font-medium text-red-600 mb-1">Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            required
-            pattern="[0-9]{10}"
-            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
-        </div>
-
-        {/* Role */}
-        <div>
-          <label className="block text-sm font-medium text-red-600 mb-1">Role You're Applying For</label>
-          <input
-            type="text"
-            name="role"
-            value={formData.role}
-            onChange={handleInputChange}
-            required
-            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
-        </div>
-
-        {/* Experience */}
-        <div>
-          <label className="block text-sm font-medium text-red-600 mb-1">Years of Experience</label>
-          <input
-            type="text"
-            name="experience"
-            value={formData.experience}
-            onChange={handleInputChange}
-            required
-            className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
-        </div>
-
-        {/* Resume Upload */}
-        <div>
-          <label className="block text-sm font-medium text-red-600 mb-1">Resume</label>
-          <input
-            type="file"
-            name="resume"
-            onChange={handleFileChange}
-            required
-            accept=".pdf,.doc,.docx"
-            className="w-full border border-red-500 text-red-600 rounded-md px-2 py-2 file:bg-red-600 file:text-white file:border-0 file:px-4 file:py-1 file:rounded-md file:cursor-pointer hover:file:bg-red-700"
-          />
-        </div>
-
-        {/* Progress bar */}
-        {loading && uploadProgress > 0 && (
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
-            <div 
-              className="bg-red-600 h-2.5 rounded-full transition-all duration-300"
-              style={{ width: `${uploadProgress}%` }}
-            ></div>
-            <p className="text-sm text-gray-600 mt-1 text-center">
-              Uploading: {Math.round(uploadProgress)}%
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full mx-4 text-center">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FiCheck className="w-8 h-8 text-green-500" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Application Received!</h3>
+            <p className="text-gray-600 mb-4">
+              Thank you for your interest. Our HR team will contact you soon for further process.
+            </p>
+            <p className="text-sm text-gray-500">
+              Please check your email for confirmation.
             </p>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition disabled:bg-red-400"
-        >
-          {loading ? "Submitting..." : "Submit Application"}
-        </button>
-      </form>
-    </div>
-  </div>
-)}
+      {/* Application Form Modal */}
+      {isModalOpen && !showSuccessPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6">
+          <div className="bg-white rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-5">
+            
+            {/* Header */}
+            <div className="flex justify-between items-center border-b border-red-500 pb-3 mb-4">
+              <h2 className="text-xl font-semibold text-red-600">Fill this form</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-red-500 hover:text-red-700"
+              >
+                <FiX className="w-5 h-5" />
+              </button>
+            </div>
 
+            {/* Form */}
+            <form 
+              onSubmit={handleSubmit} 
+              className="space-y-4"
+            >
+              {/* Full Name */}
+              <div>
+                <label className="block text-sm font-medium text-red-600 mb-1">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Enter your full name"
+                />
+              </div>
 
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-medium text-red-600 mb-1">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Enter your email address"
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-medium text-red-600 mb-1">Phone</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  pattern="[0-9]{10}"
+                  className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Enter 10-digit phone number"
+                />
+              </div>
+
+              {/* Role */}
+              <div>
+                <label className="block text-sm font-medium text-red-600 mb-1">Role You're Applying For</label>
+                <input
+                  type="text"
+                  name="role"
+                  value={formData.role}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Enter the position you're applying for"
+                />
+              </div>
+
+              {/* Experience */}
+              <div>
+                <label className="block text-sm font-medium text-red-600 mb-1">Years of Experience</label>
+                <input
+                  type="text"
+                  name="experience"
+                  value={formData.experience}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 border border-red-500 text-red-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Enter your years of experience"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-red-600 text-white py-3 px-4 rounded-md hover:bg-red-700 transition disabled:bg-red-400 font-medium"
+              >
+                {loading ? "Submitting..." : "Submit"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
