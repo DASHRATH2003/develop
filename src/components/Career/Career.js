@@ -3,8 +3,6 @@ import { FiMapPin, FiBriefcase, FiClock, FiDollarSign, FiX } from "react-icons/f
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import careerBg from "../../assets/careerBg.jpg";
 import emailjs from "@emailjs/browser";
-import { storage } from "../../firebase/config";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // Initialize EmailJS with your public key
 emailjs.init("6VY09sJt6V10-gvtv");
