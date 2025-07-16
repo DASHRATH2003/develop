@@ -3,6 +3,8 @@ import { FiMapPin, FiBriefcase, FiClock, FiDollarSign, FiX } from "react-icons/f
 import { FiChevronLeft, FiChevronRight, FiCheck } from "react-icons/fi";
 import careerBg from "../../assets/careerBg.jpg";
 import emailjs from "@emailjs/browser";
+import ashok from "../../assets/profile.jpeg"
+
 
 // Initialize EmailJS with your public key
 emailjs.init("6VY09sJt6V10-gvtv");
@@ -44,7 +46,7 @@ const testimonials = [
     quote: "What I love most are the coworkers and the freedom to ideate. There are endless opportunities where one can make an impact. The leadership's approach to innovation is truly inspiring.",
     name: "Ashok Bonga",
     role: "App Developer",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+    image: ashok // <- updated path
   },
   {
     id: 3,
