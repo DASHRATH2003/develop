@@ -43,55 +43,64 @@ const Industries = () => {
 
   return (
     <div className="bg-white">
-      <div className="relative py-20 mb-16">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] w-full">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('https://www.shutterstock.com/image-photo/industry-40-modern-factory-project-600nw-1936499776.jpg')",
           }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 "></div>
-        <div className="container mx-auto px-4 relative">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
-            Industries We Serve
-          </h2>
-          <p className="text-blue-100 text-center max-w-4xl mx-auto text-lg">
-            At Innomatrics Technologies, we deliver cutting-edge software solutions across diverse industries. 
-            Our expertise spans the entire digital spectrum, enabling businesses to transform and thrive in the digital age.
-          </p>
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-transparent" />
+        <div className="relative h-full flex items-center">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Industries We Serve
+            </h2>
+            <p className="text-blue-100 max-w-3xl mx-auto text-lg">
+              At Innomatrics Technologies, we deliver cutting-edge software solutions across diverse industries. 
+              Our expertise spans the entire digital spectrum, enabling businesses to transform and thrive in the digital age.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry, index) => (
-            <div key={index} className="group relative bg-white rounded-lg overflow-hidden shadow-lg">
-              <div className="relative h-[300px] overflow-hidden">
-                <img
-                  src={industry.image}
-                  alt={industry.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/30"></div>
+      {/* Industries Grid */}
+      <div className="w-full py-16">
+        <div className="max-w-[1600px] mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industries.map((industry, index) => (
+              <div 
+                key={index} 
+                className="group relative bg-white overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative h-[300px] overflow-hidden">
+                  <img
+                    src={industry.image}
+                    alt={industry.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                </div>
+                
+                <div className="p-6 relative">
+                  <h3 className="text-xl font-bold text-[#FF4500] mb-3">
+                    {industry.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4 line-clamp-2">
+                    {industry.subtitle}
+                  </p>
+                  <Link 
+                    to={`/industries/${industry.id}`}
+                    className="inline-block bg-[#FF4500] text-white px-6 py-2 rounded-md hover:bg-[#FF5722] transition-colors duration-300"
+                  >
+                    Learn More
+                  </Link>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </div>
               </div>
-              
-              <div className="p-6 relative">
-                <h3 className="text-xl font-bold text-red-500 mb-2">
-                  {industry.title}
-                </h3>
-                <p className="text-gray-700 font-medium mb-4">
-                  {industry.subtitle}
-                </p>
-                <Link 
-                  to={`/industries/${industry.id}`}
-                  className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors duration-300"
-                >
-                  Learn More
-                </Link>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

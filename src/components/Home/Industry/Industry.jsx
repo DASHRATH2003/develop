@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MdLocalHospital, MdAccountBalance, MdApartment, MdDirectionsCar, MdBusiness, MdLock } from 'react-icons/md';
+import {
+  MdLocalHospital,
+  MdAccountBalance,
+  MdApartment,
+  MdDirectionsCar,
+  MdBusiness,
+  MdLock
+} from 'react-icons/md';
 
 const Industry = () => {
   const [activeIndustry, setActiveIndustry] = useState('banking');
@@ -51,13 +58,13 @@ const Industry = () => {
   ];
 
   return (
-    <div className="bg-white py-8">
-      <div className="container mx-auto px-4">
+    <div className="bg-white py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-[#00235B] mb-8">
           Industries we have collaborated with
         </h2>
 
-        <div className="flex flex-col lg:flex-row gap-4">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Left side menu */}
           <div className="lg:w-1/4">
             <div>
@@ -65,7 +72,9 @@ const Industry = () => {
                 <div
                   key={industry.id}
                   className={`flex items-center gap-2 py-2 px-3 cursor-pointer transition-all duration-300 hover:bg-gray-50 ${
-                    activeIndustry === industry.id ? 'border-l-4 border-[#FF4500]' : 'border-l-4 border-transparent'
+                    activeIndustry === industry.id
+                      ? 'border-l-4 border-[#FF4500] bg-gray-50'
+                      : 'border-l-4 border-transparent'
                   }`}
                   onMouseEnter={() => setActiveIndustry(industry.id)}
                 >
@@ -104,13 +113,13 @@ const Industry = () => {
 
                   {/* Image Section */}
                   <div className="lg:w-1/2">
-                    <div className="relative h-[280px] rounded-lg overflow-hidden">
+                    <div className="relative h-[320px] rounded-lg overflow-hidden shadow">
                       <img
                         src={industry.image}
                         alt={industry.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
                   </div>
                 </div>
@@ -123,4 +132,4 @@ const Industry = () => {
   );
 };
 
-export default Industry; 
+export default Industry;

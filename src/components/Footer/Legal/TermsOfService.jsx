@@ -1,132 +1,83 @@
-import React, { useEffect } from 'react';
-import { FaGavel, FaUserShield, FaFileContract, FaHandshake, FaExclamationTriangle, FaFileAlt } from 'react-icons/fa';
+import React from 'react';
 
 const TermsOfService = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-900 to-purple-900 text-white py-16 mb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <FaGavel className="mx-auto h-16 w-16 text-blue-300 mb-4" />
-            <h1 className="text-4xl font-bold mb-4">Terms of Service</h1>
-            <p className="text-xl text-blue-200">Please read these terms carefully before using our services</p>
-          </div>
+    <div className="w-full">
+      {/* Banner Image Section */}
+      <div className="relative h-[50vh] w-full">
+        <img 
+          src="https://watermark.lovepik.com/photo/20211130/large/lovepik-customer-service-team-group-picture_501226993.jpg"
+          alt="Terms of Service Banner" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <h1 className="text-4xl font-bold text-white">Terms of Service</h1>
         </div>
       </div>
 
       {/* Content Section */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          {/* Last Updated */}
-          <div className="text-gray-600 mb-8">
-            Last Updated: March 15, 2024
+      <div className="container mx-auto px-8 py-12">
+        <div className="max-w-4xl">
+          <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
+          
+          <div className="space-y-6">
+            <p className="text-gray-700">
+              Welcome to Innomatrics Technologies! These Terms of Service ("Terms") govern your access to and use of our website, services, and products provided by Innomatrics Technologies ("Innomatrics", "we", "our", or "us"). By accessing or using any part of our services, you agree to be bound by these Terms. If you do not agree to all the terms and conditions of this agreement, then you may not access our services.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">1. Acceptance of Terms</h2>
+            <p className="text-gray-700">
+              By accessing or using our services, you agree to be bound by these Terms and all applicable laws and regulations. If you do not agree with any of these Terms, you are prohibited from using or accessing our services.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">2. Use of Services</h2>
+            <p className="text-gray-700">
+              You agree to use our services only for lawful purposes and in accordance with these Terms. You are responsible for maintaining the confidentiality of any account information and passwords associated with your use of our service.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">3. Intellectual Property</h2>
+            <p className="text-gray-700">
+              All content included in or made available through our services, such as text, graphics, logos, images, and software, is the property of Innomatrics Technologies or its licensors and is protected by copyright, trademark, and other intellectual property laws.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">4. User Content</h2>
+            <p className="text-gray-700">
+              You retain ownership of any content you submit, post, or display on or through our services ("User Content"). By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, copy, reproduce, process, adapt, modify, publish, transmit, display, and distribute such User Content.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">5. Prohibited Activities</h2>
+            <p className="text-gray-700">
+              You agree not to engage in any of the following prohibited activities: (a) use our services for any illegal purpose; (b) transmit any viruses, worms, or other malicious software; (c) interfere with or disrupt our services or servers; (d) attempt to gain unauthorized access to our services or any accounts, computer systems, or networks connected to our services; (e) collect or harvest any personally identifiable information from our services; (f) impersonate any person or entity, or falsely state or misrepresent your affiliation with a person or entity.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">6. Termination</h2>
+            <p className="text-gray-700">
+              We may terminate or suspend your access to our services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">7. Disclaimer</h2>
+            <p className="text-gray-700">
+              Our services are provided on an "as is" and "as available" basis. We do not warrant that our services will be uninterrupted, secure, or error-free.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">8. Limitation of Liability</h2>
+            <p className="text-gray-700">
+              In no event shall Innomatrics Technologies, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4">9. Changes to Terms</h2>
+            <p className="text-gray-700">
+              We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+            </p>
+
+            <p className="text-gray-700 mt-6">
+              If you have any questions about these Terms, please contact us at hello@innomatricstech.com
+            </p>
+
+            <p className="text-gray-600 mt-4 text-sm">
+              Last updated: 19-06-2024
+            </p>
           </div>
-
-          {/* Agreement */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaHandshake className="mr-3 text-blue-600" />
-              Agreement to Terms
-            </h2>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <p className="text-gray-600 mb-4">
-                By accessing or using Innomatrics Technologies' services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.
-              </p>
-            </div>
-          </section>
-
-          {/* Use License */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaFileContract className="mr-3 text-blue-600" />
-              Use License
-            </h2>
-            <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-xl font-medium text-gray-800 mb-4">Permitted Use</h3>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Access our services for personal or business use</li>
-                  <li>Use features and functionalities as provided</li>
-                  <li>Download or print materials for personal use</li>
-                </ul>
-              </div>
-              <div className="bg-red-50 rounded-lg p-6">
-                <h3 className="text-xl font-medium text-gray-800 mb-4">Restrictions</h3>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Modify or copy the materials</li>
-                  <li>Use materials for commercial purposes</li>
-                  <li>Remove any copyright or proprietary notations</li>
-                  <li>Transfer the materials to another person</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* User Responsibilities */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaUserShield className="mr-3 text-blue-600" />
-              User Responsibilities
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-xl font-medium text-gray-800 mb-4">Account Security</h3>
-                <ul className="text-gray-600 space-y-2">
-                  <li>• Maintain account confidentiality</li>
-                  <li>• Update account information</li>
-                  <li>• Report unauthorized access</li>
-                </ul>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-xl font-medium text-gray-800 mb-4">Content Guidelines</h3>
-                <ul className="text-gray-600 space-y-2">
-                  <li>• Provide accurate information</li>
-                  <li>• Respect intellectual property</li>
-                  <li>• Follow community guidelines</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Disclaimer */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaExclamationTriangle className="mr-3 text-blue-600" />
-              Disclaimer
-            </h2>
-            <div className="bg-yellow-50 rounded-lg p-6">
-              <p className="text-gray-600 mb-4">
-                Our services are provided "as is". We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
-              </p>
-            </div>
-          </section>
-
-          {/* Modifications */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaFileAlt className="mr-3 text-blue-600" />
-              Modifications to Terms
-            </h2>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <p className="text-gray-600 mb-4">
-                We reserve the right to revise these terms of service at any time without notice. By using our services, you agree to be bound by the current version of these terms of service.
-              </p>
-            </div>
-          </section>
-
-          {/* Contact Information */}
-          <section>
-            <div className="border-t pt-8">
-              <p className="text-gray-600">
-                If you have any questions about these Terms of Service, please contact us at legal@innomatricstech.com or call us at +91 8431655799.
-              </p>
-            </div>
-          </section>
         </div>
       </div>
     </div>

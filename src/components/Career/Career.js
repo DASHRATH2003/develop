@@ -308,12 +308,7 @@ Experience: ${formData.experience}
           <p className="text-lg text-white opacity-90 mb-6">
             Join our global team and shape the future with us.
           </p>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition"
-          >
-            Apply Now
-          </button>
+          
         </div>
       </div>
 
