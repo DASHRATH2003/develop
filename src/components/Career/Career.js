@@ -3,6 +3,11 @@ import { FiMapPin, FiBriefcase, FiClock, FiDollarSign, FiX } from "react-icons/f
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import careerBg from "../../assets/careerBg.jpg";
 import emailjs from "@emailjs/browser";
+import { storage } from "../../firebase/config";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+// Initialize EmailJS with your public key
+emailjs.init("6VY09sJt6V10-gvtv");
 
 const staticJobs = [
   {
@@ -113,6 +118,7 @@ const Career = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -136,7 +142,7 @@ const Career = () => {
   }, []);
 
   useEffect(() => {
-    emailjs.init("6VY09sJt6V10-gvtv"); // Your EmailJS public key
+    // emailjs.init("6VY09sJt6V10-gvtv"); // Your EmailJS public key
   }, []);
 
   const handleInputChange = (e) => {
@@ -147,39 +153,149 @@ const Career = () => {
     }));
   };
 
-  const handleFileChange = (e) => {
+  const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
+
+  const compressFile = async (file) => {
+    // If file is not PDF, or size is under 1MB, return as is
+    if (file.type !== 'application/pdf' || file.size <= 1024 * 1024) {
+      return file;
+    }
+
+    try {
+      // Convert PDF to base64
+      const base64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+      });
+
+      // Return the original file if it's already small enough
+      if (base64.length <= MAX_FILE_SIZE) {
+        return file;
+      }
+
+      // Create a new file with compressed base64
+      const compressedBase64 = base64.slice(0, MAX_FILE_SIZE);
+      const compressedBlob = await fetch(compressedBase64).then(res => res.blob());
+      return new File([compressedBlob], file.name, { type: file.type });
+    } catch (error) {
+      console.error('Error compressing file:', error);
+      return file;
+    }
+  };
+
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
+    
+    if (!file) return;
+
+    // Check file type
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (!allowedTypes.includes(file.type)) {
+      alert('Please upload PDF or Word document only');
+      e.target.value = '';
+      return;
+    }
+
+    // No need to check file size as Firebase can handle large files
     setFormData(prev => ({
       ...prev,
       resume: file
     }));
   };
 
+  // EmailJS configuration
+  const EMAILJS_CONFIG = {
+    serviceId: "service_jrw5k1p",
+    templateId: "template_bi8brd5",
+    publicKey: "6VY09sJt6V10-gvtv",
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const sendEmailChunk = async (params) => {
+    try {
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        params,
+        EMAILJS_CONFIG.publicKey
+      );
+      return response;
+    } catch (error) {
+      console.error("Error sending chunk:", error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setUploadProgress(0);
 
     try {
-      // Convert resume file to base64
-      const reader = new FileReader();
-      reader.readAsDataURL(formData.resume);
+      const file = formData.resume;
       
-      reader.onload = async () => {
-        const base64Resume = reader.result;
+      if (!file) {
+        alert('Please select a resume file');
+        setLoading(false);
+        return;
+      }
 
-        // Send email using EmailJS
-        await emailjs.send(
-          "service_jrw5k1p", // Your EmailJS service ID
-          "service_jrw5k1p", // Your EmailJS template ID for career submissions
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            role: formData.role,
-            experience: formData.experience,
-            resume_url: base64Resume,
+      try {
+        // Convert file to base64
+        const base64Data = await convertToBase64(file);
+        
+        // Split base64 into chunks (max 50KB per chunk)
+        const chunkSize = 45 * 1024; // 45KB
+        const chunks = [];
+        for (let i = 0; i < base64Data.length; i += chunkSize) {
+          chunks.push(base64Data.slice(i, i + chunkSize));
+        }
+
+        // Get current date and time
+        const now = new Date();
+        const timestamp = now.toLocaleString();
+
+        // Send first chunk with all form data
+        const firstChunkResponse = await sendEmailChunk({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          role: formData.role,
+          experience: formData.experience,
+          time: timestamp,
+          filename: file.name,
+          totalChunks: chunks.length,
+          currentChunk: 1,
+          fileData: chunks[0]
+        });
+
+        // Update progress
+        setUploadProgress((1 / chunks.length) * 100);
+
+        // Send remaining chunks if any
+        if (chunks.length > 1) {
+          for (let i = 1; i < chunks.length; i++) {
+            await sendEmailChunk({
+              email: formData.email, // Reference for combining chunks
+              filename: file.name,
+              totalChunks: chunks.length,
+              currentChunk: i + 1,
+              fileData: chunks[i]
+            });
+            
+            // Update progress
+            setUploadProgress(((i + 1) / chunks.length) * 100);
           }
-        );
+        }
 
         alert("Your application has been submitted successfully!");
         
@@ -193,15 +309,15 @@ const Career = () => {
           resume: null
         });
         setIsModalOpen(false);
-      };
+        setUploadProgress(0);
 
-      reader.onerror = (error) => {
-        throw new Error("Error reading file");
-      };
-
+      } catch (error) {
+        console.error("Submission Error:", error);
+        alert("Error submitting application. Please try again with a smaller file or different format.");
+      }
     } catch (error) {
-      console.error("Error submitting application:", error);
-      alert("There was an error submitting your application. Please try again.");
+      console.error("Form Error:", error);
+      alert("Error processing form. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -716,6 +832,19 @@ const Career = () => {
             className="w-full border border-red-500 text-red-600 rounded-md px-2 py-2 file:bg-red-600 file:text-white file:border-0 file:px-4 file:py-1 file:rounded-md file:cursor-pointer hover:file:bg-red-700"
           />
         </div>
+
+        {/* Progress bar */}
+        {loading && uploadProgress > 0 && (
+          <div className="w-full bg-gray-200 rounded-full h-2.5">
+            <div 
+              className="bg-red-600 h-2.5 rounded-full transition-all duration-300"
+              style={{ width: `${uploadProgress}%` }}
+            ></div>
+            <p className="text-sm text-gray-600 mt-1 text-center">
+              Uploading: {Math.round(uploadProgress)}%
+            </p>
+          </div>
+        )}
 
         {/* Submit Button */}
         <button

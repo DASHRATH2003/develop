@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import "./Footer.css";
+import { X } from "lucide-react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGoogle } from "react-icons/fa";
 import logo from "../../assets/innomatric_logo_only.png";
 
@@ -34,16 +38,9 @@ const Footer = () => {
   href="https://twitter.com/innomatricstech" 
   target="_blank" 
   rel="noopener noreferrer" 
-  className="hover:opacity-80 transition-opacity"
+  className="bg-blue-850 rounded-full p-1 inline-block hover:opacity-80 transition-opacity"
 >
-<img 
-  src="https://www.thinkdesignagency.co.uk/wp-content/uploads/2023/07/Twitter-rebrands-as-X.jpg" 
-  alt="Twitter X" 
-  width={36} 
-  height={48} 
-  className="rounded"
-/>
-
+  <FontAwesomeIcon icon={faXTwitter} className="text-white text-xl" />
 </a>
               <a 
                 href="https://www.instagram.com/innomatrics_tech/" 

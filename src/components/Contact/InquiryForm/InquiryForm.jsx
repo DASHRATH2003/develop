@@ -11,6 +11,7 @@ const InquiryForm = () => {
   const phoneRef = useRef();
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     emailjs.init("6VY09sJt6V10-gvtv");
@@ -41,7 +42,13 @@ const InquiryForm = () => {
         type: "success",
         message: "Thank you for your message! We will get back to you soon.",
       });
+      setShowPopup(true);
       resetForm();
+      
+      // Hide popup after 3 seconds
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
     } catch (error) {
       console.error("Error sending email:", error);
       setStatus({
@@ -54,124 +61,136 @@ const InquiryForm = () => {
   };
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      className="w-full max-w-lg bg-white rounded-2xl p-8 shadow-lg"
-    >
-      {status.message && (
-        <div
-          className={`mb-6 p-4 rounded-lg ${
-            status.type === "success"
-              ? "bg-green-100 text-green-700 border border-green-200"
-              : "bg-red-100 text-red-700 border border-red-200"
-          }`}
-        >
-          {status.message}
+    <>
+      {/* Success Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full mx-4 text-center">
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Your Massage has been send Success!</h3>
+            <p className="text-gray-600 mb-4">{status.message}</p>
+            <button
+              onClick={() => setShowPopup(false)}
+              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+            >
+              OK
+            </button>
+          </div>
         </div>
       )}
 
-      <div className="mb-6">
-        <label htmlFor="name" className="block text-gray-600 text-sm mb-2">
-          Name
-        </label>
-        <input
-          type="text"
-          ref={nameRef}
-          id="name"
-          name="name"
-          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
-          placeholder="Enter your name"
-          required
-        />
-      </div>
-
-      <div className="mb-6">
-        <label htmlFor="email" className="block text-gray-600 text-sm mb-2">
-          Business Email Address
-        </label>
-        <input
-          type="email"
-          ref={emailRef}
-          id="email"
-          name="email"
-          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
-          placeholder="Enter your email"
-          required
-        />
-      </div>
-
-      <div className="mb-6">
-        <label htmlFor="phone" className="block text-gray-600 text-sm mb-2">
-          Phone Number
-        </label>
-        <input
-          type="tel"
-          ref={phoneRef}
-          id="phone"
-          name="phone"
-          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
-          placeholder="Enter your phone number"
-          required
-          pattern="[0-9]{10}"
-        />
-        <p className="text-sm text-gray-500 mt-1">
-          Enter 10 digit mobile number
-        </p>
-      </div>
-
-      <div className="mb-8">
-        <label htmlFor="message" className="block text-gray-600 text-sm mb-2">
-          Message
-        </label>
-        <textarea
-          ref={messageRef}
-          id="message"
-          name="message"
-          rows="4"
-          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
-          placeholder="Enter your message"
-          required
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className={`w-full font-medium py-3 px-6 rounded-xl transition duration-200 transform hover:translate-y-[-1px] active:translate-y-0 ${
-          loading
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-red-500 hover:bg-red-600 text-white"
-        }`}
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="w-full max-w-lg bg-white rounded-2xl p-8 shadow-lg"
       >
-        {loading ? (
-          <div className="flex items-center justify-center">
-            <svg
-              className="animate-spin h-5 w-5 mr-3 text-white"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-                fill="none"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              />
-            </svg>
-            Sending...
+        {status.type === "error" && status.message && (
+          <div className="mb-6 p-4 rounded-lg bg-red-100 text-red-700 border border-red-200">
+            {status.message}
           </div>
-        ) : (
-          "Send Message"
         )}
-      </button>
-    </form>
+
+        <div className="mb-6">
+          <label htmlFor="name" className="block text-gray-600 text-sm mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            ref={nameRef}
+            id="name"
+            name="name"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+
+        <div className="mb-6">
+          <label htmlFor="email" className="block text-gray-600 text-sm mb-2">
+            Business Email Address
+          </label>
+          <input
+            type="email"
+            ref={emailRef}
+            id="email"
+            name="email"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div className="mb-6">
+          <label htmlFor="phone" className="block text-gray-600 text-sm mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            ref={phoneRef}
+            id="phone"
+            name="phone"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
+            placeholder="Enter your phone number"
+            required
+            pattern="[0-9]{10}"
+          />
+          <p className="text-sm text-gray-500 mt-1">
+            Enter 10 digit mobile number
+          </p>
+        </div>
+
+        <div className="mb-8">
+          <label htmlFor="message" className="block text-gray-600 text-sm mb-2">
+            Message
+          </label>
+          <textarea
+            ref={messageRef}
+            id="message"
+            name="message"
+            rows="4"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition duration-200"
+            placeholder="Enter your message"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className={`w-full font-medium py-3 px-6 rounded-xl transition duration-200 transform hover:translate-y-[-1px] active:translate-y-0 ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-red-500 hover:bg-red-600 text-white"
+          }`}
+        >
+          {loading ? (
+            <div className="flex items-center justify-center">
+              <svg
+                className="animate-spin h-5 w-5 mr-3 text-white"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  fill="none"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
+              </svg>
+              Sending...
+            </div>
+          ) : (
+            "Send Message"
+          )}
+        </button>
+      </form>
+    </>
   );
 };
 
