@@ -14,30 +14,16 @@ const ChatSupport = () => {
 
   useEffect(() => {
     if (location.pathname === '/' && !sessionStorage.getItem('chatShown') && !hasShownPopup) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        setHasShownPopup(true);
-        sessionStorage.setItem('chatShown', 'true');
-        setChatMessages([{
-          type: 'received',
-          text: 'Hello! How can I help you today? 👋',
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        }]);
-      }, 3000);
-
-      return () => clearTimeout(timer);
+      setIsOpen(true);
+      setHasShownPopup(true);
+      sessionStorage.setItem('chatShown', 'true');
+      setChatMessages([{
+        type: 'received',
+        text: 'Hello! How can I help you today? 👋',
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      }]);
     }
   }, [location, hasShownPopup]);
-
-  useEffect(() => {
-    const chatButton = document.querySelector('.chat-button');
-    if (chatButton) {
-      chatButton.classList.add('pulse-animation');
-      setTimeout(() => {
-        chatButton.classList.remove('pulse-animation');
-      }, 2000);
-    }
-  }, []);
 
   const getWelcomeMessage = () => {
     return {
@@ -50,6 +36,26 @@ const ChatSupport = () => {
   const getAutomatedResponse = (userMessage) => {
     const lowerMessage = userMessage.toLowerCase();
     
+    // Response for "no any help" or similar messages
+    if (lowerMessage.includes('no any help') || 
+        lowerMessage.includes('no help') || 
+        lowerMessage === 'no' ||
+        lowerMessage.includes('not need') ||
+        lowerMessage.includes('dont need') ||
+        lowerMessage.includes("don't need") ||
+        lowerMessage.includes('nahi chahiye') ||
+        lowerMessage.includes('no need')) {
+      return `Thank you for visiting Innomatrics Technologies! 🙏
+
+If you need any assistance in the future, we're here to help:
+
+1. Email: hello@innomatricstech.com
+2. Phone: +91 8431655799
+3. Office hours: Mon-Fri, 9:30 AM - 6:30 PM IST
+
+Have a great day! 👋`;
+    }
+
     // Response for "ok" messages
     if (lowerMessage === 'ok' || lowerMessage === 'okay' || lowerMessage === 'thankyou' || lowerMessage === 'thank you' || lowerMessage === 'thanks') {
       return `Thank you for chatting with us! 😊
@@ -144,7 +150,17 @@ For immediate assistance:
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
-    if (isFirstMessage) {
+    const lowerMessage = message.toLowerCase();
+    const isNoNeedMessage = lowerMessage.includes('no any help') || 
+      lowerMessage.includes('no help') || 
+      lowerMessage === 'no' ||
+      lowerMessage.includes('not need') ||
+      lowerMessage.includes('dont need') ||
+      lowerMessage.includes("don't need") ||
+      lowerMessage.includes('nahi chahiye') ||
+      lowerMessage.includes('no need');
+
+    if (isFirstMessage && !isNoNeedMessage) {
       setChatMessages(prev => [...prev, newMessage, getWelcomeMessage()]);
       setIsFirstMessage(false);
     } else {
@@ -168,7 +184,7 @@ For immediate assistance:
         <div className="chat-window">
           <div className="chat-header">
             <div className="header-content">
-              <h3>Innomatrics Support</h3>
+           
               <span className="online-status">Online</span>
             </div>
             <button onClick={toggleChat} className="close-button">
