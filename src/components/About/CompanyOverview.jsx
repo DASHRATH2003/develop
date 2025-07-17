@@ -48,12 +48,12 @@ const CompanyOverview = () => {
       description: "Planning innovative solutions",
     },
     {
-      url: "https://img.freepik.com/free-photo/programming-code-with-laptop-background_1134-61.jpg?w=1380",
+      url: "https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595847.jpg?semt=ais_hybrid&w=740",
       title: "Technical Excellence",
       description: "Delivering high-quality code",
     },
     {
-      url: "https://img.freepik.com/free-photo/close-up-mobile-phone-app-development_23-2149092123.jpg?w=1380",
+      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNV3sSoOuhSAlNPRh3Q4hbccgXQ31Eqi22Gg&s",
       title: "Mobile Innovation",
       description: "Creating seamless mobile experiences",
     },
@@ -63,7 +63,7 @@ const CompanyOverview = () => {
       description: "Transforming data into insights",
     },
     {
-      url: "https://img.freepik.com/free-photo/medium-shot-people-working-together_23-2150170409.jpg?w=1380",
+      url: "https://images.squarespace-cdn.com/content/v1/5a887d31f6576efc0bfaf2ea/1550530665644-ES6C7BAT0WW6AOGH5E9U/strategy-driven-marketing-agency-client-partnership-business-growth-SEO-website-Chicago.jpg?format=2500w",
       title: "Team Collaboration",
       description: "Working together towards excellence",
     },
@@ -73,12 +73,12 @@ const CompanyOverview = () => {
       description: "Crafting quality solutions",
     },
     {
-      url: "https://img.freepik.com/free-photo/business-people-discussing-meeting_53876-102039.jpg?w=1380",
+      url: "https://www.shutterstock.com/image-photo/group-colleagues-engaging-discussion-during-600nw-2461746317.jpg",
       title: "Client Meetings",
       description: "Understanding client needs",
     },
     {
-      url: "https://img.freepik.com/free-photo/ai-technology-brain-background-digital-transformation-concept_53876-124672.jpg?w=1380",
+      url: "https://veriday.com/wp-content/uploads/2024/05/ai.jpeg",
       title: "AI Integration",
       description: "Embracing future technologies",
     },
@@ -91,7 +91,7 @@ const CompanyOverview = () => {
         className="relative w-full h-[500px] flex items-center"
         style={{
           backgroundImage:
-            "url('https://img.freepik.com/free-photo/business-people-working-together-project_23-2149333463.jpg?w=1380&t=st=1709728669~exp=1709729269~hmac=986d1f0122add297c559f7a899b6e8029fc6912e1f2fbf8ea3f1395ab0434e31')",
+            "url('https://media.istockphoto.com/id/871030872/photo/programming-code-abstract-technology-background-of-software-developer.jpg?s=612x612&w=0&k=20&c=lkfUNy8Sf3TpFBeIfpBAy6FB5XQwbwjdzypK_1uOQd8=')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -116,8 +116,7 @@ const CompanyOverview = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div data-aos="fade-right">
               <img
-                src="https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg?w=1380&t=st=1709728726~exp=1709729326~hmac=2c625b1b5d889c4ac214c7c9f40c738c3ca3ed1e7faa7c8d57d9b3ae99b89ac8"
-                alt="Team Collaboration"
+                src="https://plus.unsplash.com/premium_photo-1661347859297-859b8ae1d7c5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVzaW5lc3MlMjBtZWV0aW5nfGVufDB8fDB8fHww"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -139,7 +138,8 @@ const CompanyOverview = () => {
                 thinking to solve complex challenges and deliver exceptional
                 results.
               </p>
-            </div>
+              <p>We combine technical expertise with creative
+                thinking to solve complex.</p>            </div>
           </div>
 
           {/* Our Journey Section */}
@@ -249,7 +249,7 @@ const CompanyOverview = () => {
               </div>
               <div data-aos="fade-left">
                 <img
-                  src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?w=1380"
+                  src="https://miro.medium.com/v2/resize:fit:1200/1*V-Jp13LvtVc2IiY2fp4qYw.jpeg"
                   alt="Web Development"
                   className="rounded-lg shadow-2xl w-full h-[300px] object-cover"
                 />
