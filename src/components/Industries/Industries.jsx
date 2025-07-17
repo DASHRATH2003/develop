@@ -11,8 +11,8 @@ const Industries = () => {
     },
     {
       id: 'banking',
-      title: "BANKING, FINANCIAL SERVICES & INSURANCE",
-      subtitle: "We empower the BFSI sector with secure, scalable, and intelligent digital solutions that drive innovation and trust",
+      title: "BANKING",
+      subtitle: "We empower the BFSI sector with secure, scalable, and intelligent digital solution.",
       image: "https://www.shutterstock.com/image-photo/bfsi-banking-financial-services-insurance-600nw-2433179231.jpg"
     },
     {
@@ -87,15 +87,9 @@ const Industries = () => {
                   <h3 className="text-xl font-bold text-[#FF4500] mb-3">
                     {industry.title}
                   </h3>
-                  <p className="text-gray-700 mb-4 line-clamp-2">
+                  <p className="text-gray-700 mb-4">
                     {industry.subtitle}
                   </p>
-                  <Link 
-                    to={`/industries/${industry.id}`}
-                    className="inline-block bg-[#FF4500] text-white px-6 py-2 rounded-md hover:bg-[#FF5722] transition-colors duration-300"
-                  >
-                    Learn More
-                  </Link>
                   <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </div>

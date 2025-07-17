@@ -1,287 +1,446 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./About.css";
 import Companyimage from "../../assets/Companyimage.jpg";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const CompanyOverview = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
+  const achievements = [
+    {
+      title: "Projects Delivered",
+      count: "500+",
+      description: "Successful project completions across various industries",
+    },
+    {
+      title: "Client Satisfaction",
+      count: "98%",
+      description: "Positive feedback from our valued clients",
+    },
+    {
+      title: "Team Members",
+      count: "150+",
+      description: "Skilled professionals working together",
+    },
+    {
+      title: "Global Presence",
+      count: "10+",
+      description: "Countries where we've delivered solutions",
+    },
+  ];
+
+  const journeyImages = [
+    {
+      url: "https://img.freepik.com/free-photo/business-people-shaking-hands-together_53876-13391.jpg?w=1380",
+      title: "Client Partnerships",
+      description: "Building lasting relationships with our clients",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/group-people-working-out-business-plan-office_1303-15773.jpg?w=1380",
+      title: "Strategy Sessions",
+      description: "Planning innovative solutions",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/programming-code-with-laptop-background_1134-61.jpg?w=1380",
+      title: "Technical Excellence",
+      description: "Delivering high-quality code",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/close-up-mobile-phone-app-development_23-2149092123.jpg?w=1380",
+      title: "Mobile Innovation",
+      description: "Creating seamless mobile experiences",
+    },
+    {
+      url: "https://media.istockphoto.com/id/1867035079/photo/analytics-and-data-management-systems-business-analytics-and-data-management-systems-to-make.jpg?s=612x612&w=0&k=20&c=tFcJnBIWlkPhIumrPtkSJwFRNDMtdVfJ1CYbfUlx5fE=",
+      title: "Data Analytics",
+      description: "Transforming data into insights",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/medium-shot-people-working-together_23-2150170409.jpg?w=1380",
+      title: "Team Collaboration",
+      description: "Working together towards excellence",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/close-up-hands-typing-laptop_23-2149346354.jpg?w=1380",
+      title: "Development Process",
+      description: "Crafting quality solutions",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/business-people-discussing-meeting_53876-102039.jpg?w=1380",
+      title: "Client Meetings",
+      description: "Understanding client needs",
+    },
+    {
+      url: "https://img.freepik.com/free-photo/ai-technology-brain-background-digital-transformation-concept_53876-124672.jpg?w=1380",
+      title: "AI Integration",
+      description: "Embracing future technologies",
+    },
+  ];
+
   return (
     <div className="company-overview">
       {/* Hero Section */}
       <div
-        className="relative w-full h-[400px] flex items-center"
+        className="relative w-full h-[500px] flex items-center"
         style={{
-          backgroundImage: `url(${Companyimage})`, // ✅ Correct format
+          backgroundImage:
+            "url('https://img.freepik.com/free-photo/business-people-working-together-project_23-2149333463.jpg?w=1380&t=st=1709728669~exp=1709729269~hmac=986d1f0122add297c559f7a899b6e8029fc6912e1f2fbf8ea3f1395ab0434e31')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
+        data-aos="fade-down"
       >
-        {/* Overlay to make text readable */}
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-
-        {/* Text Content */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="w-full md:w-2/3 text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-5">
-              Company Overview
-            </h1>
-            <div className="w-20 h-1 bg-white mb-6"></div>
-            <p className="text-lg md:text-xl leading-relaxed">
-              Driving digital transformation through innovative technology
-              solutions since 2023
-            </p>
-          </div>
+        <div className="text-white max-w-4xl">
+  <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+    Innovating for Tomorrow
+  </h1>
+  <p className="text-lg md:text-xl text-gray-200">
+    Driving digital transformation through innovative technology solutions since 2023
+  </p>
+</div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="py-20 bg-gray-50">
+      {/* About Us Section */}
+      <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-semibold text-gray-900">
-                Innomatrics Technologies
-              </h2>
-              <p className="text-lg text-gray-600">
-                Innomatrics Tech is a premier technology solutions
-                provider headquartered in Bangalore, with a global presence
-                serving clients across over all india . Since
-                our founding in 2023, we've been at the forefront of digital
-                innovation, helping businesses transform their operations
-                through cutting-edge technology.
-              </p>
-              <p className="text-lg text-gray-600">
-                Our comprehensive suite of services includes custom software
-                development, enterprise solutions, mobile app development, UI/UX
-                design, cloud computing, and digital marketing services. We
-                serve diverse industries including healthcare, finance,
-                education, e-commerce, and manufacturing.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Excellence in Delivery
-                    </h3>
-                    <p className="mt-2 text-gray-600">
-                      We've successfully delivered over 500 projects with a 98%
-                      client satisfaction rate, maintaining rigorous quality
-                      standards throughout our development process.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Innovation First
-                    </h3>
-                    <p className="mt-2 text-gray-600">
-                      Our dedicated R&D team invests 15% of our revenue annually
-                      in emerging technologies like AI, blockchain, and IoT to
-                      keep our solutions at the cutting edge.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
+            <div data-aos="fade-right">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Innomatrics Team Working"
-                className="rounded-lg shadow-xl w-full"
+                src="https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg?w=1380&t=st=1709728726~exp=1709729326~hmac=2c625b1b5d889c4ac214c7c9f40c738c3ca3ed1e7faa7c8d57d9b3ae99b89ac8"
+                alt="Team Collaboration"
+                className="rounded-lg shadow-2xl"
               />
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg w-2/3">
-                <h4 className="font-bold text-gray-900">Our Commitment</h4>
-                <p className="text-sm text-gray-600">
-                  "To deliver transformative technology solutions that drive
-                  measurable business results"
-                </p>
-              </div>
+            </div>
+            <div className="space-y-6" data-aos="fade-left">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Who We Are
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Innomatrics Technologies is a forward-thinking technology
+                company that specializes in delivering innovative digital
+                solutions. Founded in 2023 in Bangalore, we've rapidly grown to
+                become a trusted partner for businesses seeking digital
+                transformation.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Our team of expert developers, designers, and strategists works
+                collaboratively to create custom solutions that drive real
+                business value. We combine technical expertise with creative
+                thinking to solve complex challenges and deliver exceptional
+                results.
+              </p>
             </div>
           </div>
 
-          {/* Company Milestones */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-20">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          {/* Our Journey Section */}
+          <div className="mb-20">
+            <h2
+              className="text-4xl font-bold text-center text-gray-900 mb-16"
+              data-aos="fade-up"
+            >
               Our Journey
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="text-center p-4 border-r border-gray-200 last:border-r-0">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2022
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {journeyImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                  data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+                  data-aos-delay={index * 100}
+                >
+                  <img
+                    src={image.url}
+                    alt={image.title}
+                    className="w-full h-72 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <h3 className="text-xl font-bold mb-2">{image.title}</h3>
+                      <p className="text-sm">{image.description}</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">Founded</h3>
-                <p className="text-gray-600">
-                  Established in Bangalore with 5 team members
-                </p>
-              </div>
-              <div className="text-center p-4 border-r border-gray-200 last:border-r-0">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2023
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Global Expansion
-                </h3>
-                <p className="text-gray-600">
-                  Opened first international office in India
-                </p>
-              </div>
-              <div className="text-center p-4 border-r border-gray-200 last:border-r-0">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2024
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">
-                  AI Division
-                </h3>
-                <p className="text-gray-600">
-                  Launched our artificial intelligence practice
-                </p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
-                  2025
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">Today</h3>
-                <p className="text-gray-600">
-                  150+ employees serving clients worldwide
-                </p>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Core Values */}
+          {/* Our Expertise */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Our Core Values
+            <h2
+              className="text-4xl font-bold text-center text-gray-900 mb-16"
+              data-aos="fade-up"
+            >
+              Our Expertise
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center h-16 w-16 bg-blue-100 rounded-full mb-6 mx-auto">
-                  <svg
-                    className="h-8 w-8 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-center text-gray-900 mb-4">
-                  Innovation
+
+            {/* Web Development Expertise */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+              <div className="space-y-6" data-aos="fade-right">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                  Web Development
                 </h3>
-                <p className="text-gray-600 text-center">
-                  We challenge conventional thinking to develop groundbreaking
-                  solutions that create real value for our clients.
+                <div className="w-16 h-1 bg-[#FF4500]"></div>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Our web development team creates powerful, scalable
+                  applications using cutting-edge technologies. We specialize in
+                  building responsive, user-friendly websites and web
+                  applications that drive business growth.
                 </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Custom Web Applications
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Responsive Design
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Performance Optimization
+                  </li>
+                </ul>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center h-16 w-16 bg-blue-100 rounded-full mb-6 mx-auto">
-                  <svg
-                    className="h-8 w-8 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-center text-gray-900 mb-4">
-                  Integrity
-                </h3>
-                <p className="text-gray-600 text-center">
-                  We conduct business with honesty, transparency, and respect,
-                  building trust through ethical practices.
-                </p>
+              <div data-aos="fade-left">
+                <img
+                  src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?w=1380"
+                  alt="Web Development"
+                  className="rounded-lg shadow-2xl w-full h-[300px] object-cover"
+                />
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center h-16 w-16 bg-blue-100 rounded-full mb-6 mx-auto">
-                  <svg
-                    className="h-8 w-8 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-center text-gray-900 mb-4">
-                  Collaboration
+            </div>
+
+            {/* Mobile Development Expertise */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+              <div data-aos="fade-right">
+                <img
+                  src="https://media.istockphoto.com/id/1174690086/photo/software-developer-freelancer-working-at-home.jpg?s=612x612&w=0&k=20&c=loFqul06ggwtkwqSmzZnYfA72Vk7nFQOvDSzAN6YbtQ="
+                  alt="Mobile Development"
+                  className="rounded-lg shadow-2xl w-full h-[300px] object-cover"
+                />
+              </div>
+              <div className="space-y-6" data-aos="fade-left">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                  Mobile Development
                 </h3>
-                <p className="text-gray-600 text-center">
-                  We believe in the power of teamwork, both within our
-                  organization and in partnership with our clients.
+                <div className="w-16 h-1 bg-[#FF4500]"></div>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  We create innovative mobile applications that engage users and
+                  deliver exceptional experiences. Our mobile development
+                  expertise spans across native and cross-platform solutions.
                 </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Native iOS & Android Apps
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Cross-platform Solutions
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Mobile UI/UX Design
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Digital Marketing Expertise */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6" data-aos="fade-right">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                  Digital Marketing
+                </h3>
+                <div className="w-16 h-1 bg-[#FF4500]"></div>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Our digital marketing strategies help businesses reach their
+                  target audience and achieve measurable results. We combine
+                  data-driven insights with creative excellence to deliver
+                  impactful campaigns.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    SEO Optimization
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Social Media Marketing
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg
+                      className="w-5 h-5 text-[#FF4500] mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Content Strategy
+                  </li>
+                </ul>
+              </div>
+              <div data-aos="fade-left">
+                <img
+                  src="https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94834.jpg?w=1380"
+                  alt="Digital Marketing"
+                  className="rounded-lg shadow-2xl w-full h-[300px] object-cover"
+                />
               </div>
             </div>
           </div>
 
-          {/* Leadership Team Preview */}
-          
+          {/* Achievements Section */}
+          <div className="bg-gray-50 rounded-2xl p-12 mb-20" data-aos="fade-up">
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
+              Our Achievements
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {achievements.map((achievement, index) => (
+                <div
+                  key={index}
+                  className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="text-4xl font-bold text-[#FF4500] mb-3">
+                    {achievement.count}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-gray-600">{achievement.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          {/* CTA Section */}
-          <div className="bg-blue-600 rounded-xl p-12 text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
+          {/* Call to Action */}
+          <div className="text-center" data-aos="fade-up">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
-              Partner with Innomatrics Tech to leverage cutting-edge
-              solutions tailored to your unique needs.
+            <p className="text-lg text-gray-600 mb-8">
+              Let's discuss how we can help you achieve your digital goals.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/contact">
-              <button className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg transition-colors duration-300">
-                Contact Us
-              </button></Link>
-              
-            </div>
+            <Link
+              to="/contact"
+              className="inline-block bg-[#FF4500] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#FF5722] transition-colors duration-300"
+            >
+              Get in Touch
+            </Link>
           </div>
         </div>
       </div>

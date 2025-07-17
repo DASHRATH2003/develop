@@ -151,6 +151,49 @@ const WhyUs = () => {
         </motion.div>
       </div>
 
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Image Section */}
+          <div data-aos="fade-right">
+            <img
+              src="https://thumbs.dreamstime.com/b/handwriting-text-writing-why-choose-us-question-concept-meaning-reasons-choosing-our-brand-over-others-arguments-conceptual-160898301.jpg" // Replace with your preferred image URL
+              alt="Why Choose Us"
+              className="w-full h-auto rounded-xl shadow-lg"
+            />
+          </div>
+
+          {/* Content Section */}
+          <div data-aos="fade-left">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Why Choose Our Software Company?
+            </h2>
+            <p className="text-gray-700 text-lg mb-6">
+              Choosing the right technology partner is crucial for your success.
+              Here’s why companies trust us to power their digital
+              transformation:
+            </p>
+            <ul className="space-y-4 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-blue-600 font-bold mr-2">✔</span>
+                Proven expertise in AI, Web & Mobile App Development
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 font-bold mr-2">✔</span>
+                Agile and scalable software delivery model
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 font-bold mr-2">✔</span>
+                Dedicated support & transparent communication
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 font-bold mr-2">✔</span>
+                Competitive pricing without compromising quality
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {/* Rest of the content */}
       <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
