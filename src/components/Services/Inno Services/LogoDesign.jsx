@@ -12,10 +12,15 @@ import l6 from "../../../assets/digitalMarketing/d6.webp";
 import { Link } from "react-router-dom";
 
 const ServicesCard = ({ image, title, description }) => (
-  <div className="bg-white shadow-md rounded-lg p-6 m-4 flex-1 hover:scale-105 transition ease-in-out duration-300">
-    <img src={image} className="w-full h-32 object-contain mb-4" alt={title} />
-    <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+    <div className="relative h-48">
+      <img src={image} className="w-full h-full object-cover" alt={title} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-600 leading-relaxed">{description}</p>
+    </div>
   </div>
 );
 
@@ -24,27 +29,33 @@ const LogoDesign = forwardRef((props, ref) => {
     {
       title: "Custom Logo Design",
       description: "We create unique and customized logo designs that perfectly represent your brand's identity and values.",
-    image: l1},
+      image: "https://img.freepik.com/free-vector/gradient-colored-abstract-logo-collection_52683-83016.jpg"
+    },
     {
       title: "Brand Identity Development",
       description: "Our team develops comprehensive brand identity packages, including logos, color schemes, and typography.",
-      image: l2},
+      image: "https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149052117.jpg"
+    },
     {
       title: "Rebranding Services",
       description: "Refresh your brand with our rebranding services, giving your business a modern and updated look.",
-      image: l3},
+      image: "https://img.freepik.com/free-vector/gradient-abstract-logo-template_23-2149014804.jpg"
+    },
     {
       title: "Logo Animation",
       description: "Enhance your logo with animation services, making it dynamic and engaging for digital platforms.",
-      image: l4},
+      image: "https://img.freepik.com/free-vector/motion-graphic-design-concept-illustration_114360-2420.jpg"
+    },
     {
       title: "Business Card Design",
       description: "We design professional business cards that incorporate your logo and brand identity, making a strong first impression.",
-      image: l5},
+      image: "https://img.freepik.com/free-vector/gradient-business-card-template_23-2149014921.jpg"
+    },
     {
       title: "Marketing Material Design",
       description: "Our team creates cohesive marketing materials, including brochures, flyers, and banners, featuring your logo and brand elements.",
-      image: l6},
+      image: "https://img.freepik.com/free-vector/gradient-business-branding-template_23-2149014923.jpg"
+    },
   ];
 
   return (
@@ -96,14 +107,29 @@ const LogoDesign = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="mx-auto p-6">
-        <div className="text-center mb-8 my-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Services We Offer</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
-          {services.map((service, index) => (
-            <ServicesCard key={index} title={service.title} description={service.description} image={service.image} />
-          ))}
+      {/* Services Section */}
+      <div className="w-full px-4 py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Services We Offer
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive branding and logo design solutions to establish your unique identity
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            {services.map((service, index) => (
+              <ServicesCard
+                key={index}
+                title={service.title}
+                description={service.description}
+                image={service.image}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

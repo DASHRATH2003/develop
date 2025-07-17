@@ -108,17 +108,56 @@ const DevOps = () => {
     },
   ];
 
+  const processSteps = [
+    {
+      title: "Continuous Integration",
+      description: "Automated code integration and testing",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9jW0UMLeFTAdXKjYBov2wOABDSYXu6jOR4w&s",
+      features: ["Automated builds", "Unit testing", "Code quality checks", "Integration testing"]
+    },
+    {
+      title: "Continuous Deployment",
+      description: "Automated deployment pipelines",
+      image: "https://miro.medium.com/v2/resize:fit:640/1*QYn03nv31ohSshObFzsY5w.png",
+      features: ["Automated releases", "Environment management", "Rollback capability", "Deployment tracking"]
+    },
+    {
+      title: "Infrastructure Management",
+      description: "Cloud and infrastructure automation",
+      image: "https://static.vecteezy.com/system/resources/thumbnails/036/781/015/small_2x/ai-generated-sustainable-energy-management-with-ai-ai-generated-photo.jpg",
+      features: ["Resource provisioning", "Scaling automation", "Infrastructure as Code", "Cost optimization"]
+    }
+  ];
+
+  const technologies = [
+    {
+      category: "Containerization",
+      image: "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
+      tools: ["Docker", "Kubernetes", "Container Registry", "Microservices"]
+    },
+    {
+      category: "Cloud Platforms",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png",
+      tools: ["AWS", "Azure", "Google Cloud", "Multi-cloud"]
+    },
+    {
+      category: "Monitoring",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU_X725VxT-HbXMyR2n9HN9YaiCWBcoxwF6A&s",
+      tools: ["Prometheus", "Grafana", "ELK Stack", "New Relic"]
+    }
+  ];
+
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
       <div className="relative bg-blue-900 text-white py-32 overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
           style={{
-            backgroundImage: "url('https://media.istockphoto.com/id/2015825825/photo/devops-software-development-operations-programmer-administration-system-life-cycle-quality.jpg?s=612x612&w=0&k=20&c=eih7PTfZpUkLiqiqnRuOVF047ufdEb4xa4aZSNo5UIo=')",
+            backgroundImage: "url('https://t3.ftcdn.net/jpg/13/83/35/94/360_F_1383359475_rZpmdRpSp6mPtQlxxP6TwQyqoqWI6jvB.jpg')",
           }}
         ></div>
-        <div className="absolute inset-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-blue-900/50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -126,18 +165,29 @@ const DevOps = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">DevOps Excellence</h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Transforming IT Operations Through DevOps Innovation
+            </h1>
             <div className="w-32 h-1 bg-blue-400 mx-auto mb-8"></div>
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
-              Accelerate your digital transformation with our comprehensive DevOps solutions and cloud expertise.
+              Streamline your development pipeline, enhance collaboration, and deliver value faster with our enterprise-grade DevOps solutions. Experience seamless integration, automated workflows, and robust security.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white hover:bg-blue-50 text-blue-700 font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300 shadow-lg"
-            >
-              Start Your DevOps Journey
-            </motion.button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white hover:bg-blue-50 text-blue-700 font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300 shadow-lg"
+              >
+                Schedule a Consultation
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-transparent hover:bg-blue-800 border-2 border-white text-white font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300"
+              >
+                View Our Solutions
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -302,6 +352,137 @@ const DevOps = () => {
                 <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Prometheus</span>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Visual Process Flow */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our DevOps Process</h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden"
+              >
+                <div className="relative h-48">
+                  <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">{step.title}</h3>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{step.description}</p>
+                  <ul className="space-y-2">
+                    {step.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-700">
+                        <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Technology Showcase */}
+      <div className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technology Stack</h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {technologies.map((tech, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl p-6 shadow-lg"
+              >
+                <div className="h-32 flex items-center justify-center mb-6">
+                  <img src={tech.image} alt={tech.category} className="h-full object-contain" />
+                </div>
+                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">{tech.category}</h3>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {tech.tools.map((tool, idx) => (
+                    <span key={idx} className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Implementation Workflow */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Implementation Workflow</h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute top-0 left-1/2 -ml-px h-full w-0.5 bg-gray-200"></div>
+            <div className="space-y-8">
+              {[
+                {
+                  title: "Assessment & Planning",
+                  description: "Evaluate current infrastructure and develop migration strategy",
+                  image: "https://www.netguru.com/hs-fs/hubfs/assessment.png?width=900&name=assessment.png"
+                },
+                {
+                  title: "Infrastructure Setup",
+                  description: "Configure cloud infrastructure and deployment pipelines",
+                  image: "https://www.netguru.com/hs-fs/hubfs/infrastructure.png?width=900&name=infrastructure.png"
+                },
+                {
+                  title: "Automation Implementation",
+                  description: "Implement CI/CD pipelines and automated testing",
+                  image: "https://www.netguru.com/hs-fs/hubfs/automation.png?width=900&name=automation.png"
+                },
+                {
+                  title: "Monitoring & Optimization",
+                  description: "Set up monitoring tools and optimize performance",
+                  image: "https://www.netguru.com/hs-fs/hubfs/monitoring.png?width=900&name=monitoring.png"
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} relative`}
+                >
+                  <div className="flex items-center w-full max-w-md">
+                    <div className={`w-full bg-white rounded-xl shadow-lg overflow-hidden ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}>
+                      <img src={step.image} alt={step.title} className="w-full h-48 object-cover" />
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                        <p className="text-gray-600">{step.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

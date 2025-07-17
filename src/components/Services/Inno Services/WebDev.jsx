@@ -9,7 +9,7 @@ import w5 from "../../../assets/webServices/w5.jpg";
 import w6 from "../../../assets/webServices/w6.avif";
 import "./WebDev.css";
 import { Link } from 'react-router-dom';
-import { FaCode, FaDesktop, FaMobile, FaShoppingCart, FaDatabase, FaCloud, FaLock, FaChartLine, FaUsers, FaShieldAlt, FaRocket, FaLightbulb } from 'react-icons/fa';
+import { FaCode, FaDesktop, FaMobile, FaShoppingCart, FaDatabase, FaCloud, FaLock, FaChartLine, FaUsers, FaShieldAlt, FaRocket, FaLightbulb, FaBuilding, FaChartLine as FaChartLineIcon, FaCogs } from 'react-icons/fa';
 import { FaReact, FaNodeJs, FaAngular, FaVuejs, FaPhp, FaPython } from 'react-icons/fa';
 import { SiMongodb, SiMysql } from 'react-icons/si';
 
@@ -199,6 +199,180 @@ const WebDev = forwardRef((props, ref) => {
                 Get Your Free Consultation
               </Link>
             </div>
+          </div>
+        </div>
+        
+      </div>
+
+      {/* Overview Section */}
+      <div className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Top Paragraph */}
+          <div className="mb-20 px-4 md:px-4">
+  <h2 className="text-xl font-bold text-orange-600 mb-4">OVERVIEW</h2>
+  <p className="text-base text-gray-800 leading-relaxed">
+    At Innomatrics, we understand the pace of today's digital transformation. Businesses must rapidly innovate to meet
+    customer demands, reduce technical debt, modernize legacy systems, and stay ahead with emerging technologies.
+    <br /><br />
+    Our team brings together deep technical expertise, domain knowledge, and hands-on experience to deliver
+    scalable, secure, and reliable software solutions. Whether it's full-stack web development, custom enterprise
+    applications, or cloud-native services — we build with performance, flexibility, and future-readiness in mind.
+    <br /><br />
+    We don’t just build software — we engineer outcomes that drive measurable business success.
+  </p>
+</div>
+
+
+          {/* Value Delivered Section */}
+       
+
+          {/* Bottom Content + Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Offerings</h3>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <FaCode className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-semibold text-gray-900">Application Development & Maintenance</h4>
+                    <p className="text-gray-600">Quality engineering & assurance with modern development practices</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <FaRocket className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-semibold text-gray-900">Digital Transformation</h4>
+                    <p className="text-gray-600">Transform your business with cutting-edge digital solutions</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <FaMobile className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-semibold text-gray-900">Mobile Application Development</h4>
+                    <p className="text-gray-600">Create powerful mobile experiences for your users</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <FaShieldAlt className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-lg font-semibold text-gray-900">DevSecOps</h4>
+                    <p className="text-gray-600">Secure and streamlined development operations</p>
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center px-6 py-3 border border-blue-600 text-lg font-semibold rounded-md text-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300"
+                  >
+                    Start Your Project
+                    <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative">
+              <img
+                src={app2}
+                alt="Web Development Services"
+                className="rounded-lg shadow-xl w-full object-cover"
+                style={{ height: '500px' }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 rounded-b-lg">
+                <p className="text-white text-lg">
+                  Reduce the time it takes for business ideas to become reality in production applications. We'll help you define, design, enhance, develop and maintain applications to meet your specific business requirements.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Case Studies and Testimonials Grid */}
+          <div className="mt-20">
+            <h2 className="text-xl font-bold text-orange-500 mb-4">VALUE DELIVERED</h2>
+            <h3 className="text-4xl font-bold text-gray-800 mb-12">Engineering excellence with real-world impact</h3>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                {/* Large Case Study */}
+                <div className="lg:col-span-2 relative overflow-hidden rounded-lg" style={{ minHeight: '400px' }}>
+                  <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1470&auto=format&fit=crop" alt="Case Study" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
+                    <div>
+                      <h4 className="text-blue-300 text-2xl mb-4">Case Study</h4>
+                      <p className="text-2xl font-semibold mb-4 text-white">
+  Innomatrics’ Custom Software Solution Streamlines Operations, Cuts Costs by $30M, and Boosts Team Productivity Across Global IT Infrastructure.
+</p>
+
+                      <Link to="/case-studies" className="text-orange-500 flex items-center hover:text-orange-400 text-lg">
+                        Learn More
+                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* First Testimonial */}
+                <div className="lg:col-span-3 relative overflow-hidden rounded-lg" style={{ minHeight: '400px' }}>
+                  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop" alt="Background" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
+                  <p className="text-xl mb-6 text-white">
+  "The Innomatrics team delivered beyond expectations — migrating massive datasets securely and flawlessly. Your expertise saved us time, money, and stress."
+</p>
+                    
+                  </div>
+                </div>
+
+                {/* Second Case Study */}
+                <div className="lg:col-span-3 relative overflow-hidden rounded-lg" style={{ minHeight: '400px' }}>
+                  <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1472&auto=format&fit=crop" alt="Case Study" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
+                    <h4 className="text-blue-300 text-xl mb-4">Case Study</h4>
+                    <p className="text-xl mb-4 text-white">
+                      Test automation solution significantly increases quality for leading telecom provider.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Second Testimonial */}
+                <div className="lg:col-span-2 relative overflow-hidden rounded-lg" style={{ minHeight: '400px' }}>
+                  <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1470&auto=format&fit=crop" alt="Background" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
+                    <p className="text-lg mb-6 text-white">
+                      "Thank you for all the work you did to help us relaunch Salesforce along with our core conversion. This project was extremely complex ... the team did an amazing job..."
+                    </p>
+                    
+                  
+                  </div>
+                </div>
+
+                {/* Third Testimonial */}
+                <div className="lg:col-span-5 relative overflow-hidden rounded-lg" style={{ minHeight: '400px' }}>
+                  <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1469&auto=format&fit=crop" alt="Background" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
+                    <p className="text-xl mb-6 text-white">
+                      "The testing team is proactive, professional and top notch. They are friendly, knowledgeable and worked to ensure our releases occurred on time and provided strong reporting along the way. This has been a great experience."
+                    </p>
+                   
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>

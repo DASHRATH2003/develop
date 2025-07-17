@@ -2,22 +2,19 @@ import React, { forwardRef } from "react";
 import app from "../../../assets/digitalMarkt.webp";
 import app2 from "../../../assets/digitalMarkt2.webp";
 import approach from "../../../assets/digitalMarktApproach.webp";
-import d1 from "../../../assets/digitalMarketing/d1.avif";
-import d2 from "../../../assets/digitalMarketing/d2.jpg";
-import d3 from "../../../assets/digitalMarketing/d3.avif";
-import d4 from "../../../assets/digitalMarketing/d4.avif";
-import d5 from "../../../assets/digitalMarketing/d5.png";
-import d6 from "../../../assets/digitalMarketing/d6.webp";
 import { Link } from "react-router-dom";
-
 import "./DigitalMarket.css";
 
-const ServicesCard = ({ title, description, image }) => (
-  <div className="bg-white shadow-md rounded-lg p-6 m-4 flex-1 hover:scale-105
-  transition ease-in-out duration-300">
-    <img src={image} className="w-full h-32 object-contain mb-4" alt={title} />
-    <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+const ServicesCard = ({ title, description, image, icon }) => (
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:shadow-2xl">
+    <div className="relative">
+      <img src={image} className="w-full h-48 object-cover" alt={title} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+    </div>
   </div>
 );
 
@@ -26,34 +23,33 @@ const SocialMedia = forwardRef((props, ref) => {
     {
       title: "Search Engine Optimization (SEO)",
       description: "Increase your website's visibility and rank higher in search engine results pages (SERPs) with our comprehensive SEO services, including keyword research, on-page optimization, link building, and content creation.",
-      image: d1,
+      image: "https://img.freepik.com/free-vector/seo-analytics-team-working-optimization-metrics_74855-13380.jpg",
     },
     {
       title: "Pay-Per-Click (PPC) Advertising",
       description: "Drive targeted traffic to your website and generate leads or sales with our expertly managed PPC campaigns on platforms like Google Ads, Bing Ads, and social media advertising.",
-      image: d2,
+      image: "https://media.designrush.com/articles/608361/conversions/12-Best-PPC-platforms-in-2024-(2)-details_mobile.jpg",
     },
     {
       title: "Social Media Marketing",
       description: "Build brand awareness, engage with your audience, and drive conversions through strategic social media marketing campaigns on platforms such as Facebook, Instagram, Twitter, LinkedIn, and more.",
-      image: d3,
+      image: "https://img.freepik.com/free-vector/social-media-marketing-mobile-phone-concept_23-2148434510.jpg",
     },
     {
       title: "Content Marketing",
       description: "Create valuable and relevant content that attracts, educates, and converts your audience, including blog posts, articles, infographics, videos, and more.",
-      image: d4,
+      image: "https://img.freepik.com/free-vector/content-marketing-concept-illustration_114360-7972.jpg",
     },
     {
       title: "Email Marketing",
       description: "Nurture leads and drive customer loyalty with personalized and targeted email marketing campaigns that deliver the right message to the right audience at the right time.",
-      image: d5,
+      image: "https://img.freepik.com/free-vector/email-marketing-internet-chatting-24-hours-support_335657-3009.jpg",
     },
     {
       title: "Conversion Rate Optimization (CRO)",
       description: "Optimize your website and marketing campaigns to improve conversion rates and maximize the return on your investment (ROI).",
-      image: d6,
+      image: "https://img.freepik.com/free-vector/conversion-rate-optimization-concept-illustration_114360-8723.jpg",
     },
-    
   ];
 
   return (
@@ -150,22 +146,29 @@ const SocialMedia = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className=" mx-auto p-6">
-        <div className="text-center mb-8 my-4">
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Services We Offer
-          </h2>
-        </div>
+      {/* Services Section */}
+      <div className="w-full px-4 py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Services We Offer
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive digital marketing solutions to help your business grow online
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <ServicesCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              image={service.image}
-            />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            {services.map((service, index) => (
+              <ServicesCard
+                key={index}
+                title={service.title}
+                description={service.description}
+                image={service.image}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

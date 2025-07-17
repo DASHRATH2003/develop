@@ -2,67 +2,132 @@ import React, { forwardRef } from "react";
 import app from "../../../assets/socialMedia.jpg";
 import app2 from "../../../assets/socialMedia2.jpg";
 import approach from "../../../assets/socialMediaapproach.jpg";
-import d1 from "../../../assets/digitalMarketing/d1.avif";
-import d2 from "../../../assets/digitalMarketing/d2.jpg";
-import d3 from "../../../assets/digitalMarketing/d3.avif";
-import d4 from "../../../assets/digitalMarketing/d4.avif";
-import d5 from "../../../assets/digitalMarketing/d5.png";
-import d6 from "../../../assets/digitalMarketing/d6.webp";
 import "./SocialMedia.css";
 import { Link } from "react-router-dom";
 
-const ServicesCard = ({image, title, description }) => (
-  <div className="bg-white shadow-md rounded-lg p-6 m-4 flex-1 hover:scale-105
-  transition ease-in-out duration-300">
-    <img src={image} className="w-full h-32 object-contain mb-4" alt={title} />
-    <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+const ServicesCard = ({ image, title, description, features }) => (
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+    <div className="relative h-48">
+      <img src={image} className="w-full h-full object-cover" alt={title} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-600 leading-relaxed mb-4">{description}</p>
+      <ul className="space-y-2">
+        {features.map((feature, idx) => (
+          <li key={idx} className="flex items-start text-gray-600 text-sm">
+            <svg className="w-4 h-4 text-blue-600 mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 );
 
-const SocialMedia= forwardRef((props,ref)=> {
+const SocialMedia = forwardRef((props, ref) => {
   const services = [
     {
       title: "Social Media Strategy",
-      description:
-        "We develop a comprehensive social media strategy tailored to your business goals, target audience, and competitive landscape to ensure maximum engagement and ROI.",
-   image: d1 },
+      description: "We develop comprehensive social media strategies that align with your business goals and target audience.",
+      image: "https://img.freepik.com/free-vector/social-media-marketing-mobile-phone-concept_23-2148434510.jpg",
+      features: [
+        "Competitor analysis and market research",
+        "Platform-specific content strategies",
+        "Audience targeting and segmentation",
+        "Campaign planning and execution",
+        "Performance metrics definition"
+      ]
+    },
     {
-      title: "Content Creation",
-      description:
-        "Our creative team produces high-quality, visually appealing, and engaging content that resonates with your audience and enhances your brand's social media presence.",
-        image: d2},
+      title: "Content Creation & Management",
+      description: "Our creative team produces engaging, brand-aligned content that resonates with your audience.",
+      image: "https://img.freepik.com/free-vector/content-marketing-concept-illustration_114360-7972.jpg",
+      features: [
+        "Custom graphics and visual content",
+        "Engaging copywriting and captions",
+        "Video content production",
+        "Content calendar management",
+        "Brand voice consistency"
+      ]
+    },
     {
       title: "Platform Management",
-      description:
-        "We manage your social media accounts across all major platforms, including Facebook, Instagram, Twitter, LinkedIn, and more, to maintain a consistent and active online presence.",
-        image: d3},
-    {
-      title: "Community Engagement",
-      description:
-        "We actively engage with your audience by responding to comments, messages, and reviews to build strong relationships and foster a loyal community around your brand.",
-        image: d4},
+      description: "We manage your presence across all major social media platforms to maintain consistent engagement.",
+      image: "https://img.freepik.com/free-vector/social-media-concept-illustration_114360-7572.jpg",
+      features: [
+        "Profile optimization",
+        "Regular posting schedule",
+        "Community engagement",
+        "Comment moderation",
+        "Crisis management"
+      ]
+    },
     {
       title: "Social Media Advertising",
-      description:
-        "Our team creates and manages targeted social media ad campaigns to reach your ideal audience, increase brand awareness, and drive conversions and sales.",
-        image: d5},
+      description: "Strategic paid social campaigns that drive conversions and maximize your ROI.",
+      image: "https://img.freepik.com/free-vector/digital-marketing-concept-illustration_114360-7493.jpg",
+      features: [
+        "Ad campaign strategy",
+        "Audience targeting",
+        "A/B testing",
+        "Budget optimization",
+        "Performance tracking"
+      ]
+    },
     {
-      title: "Analytics and Reporting",
-      description:
-        "We provide detailed analytics and performance reports to track the effectiveness of your social media campaigns, allowing for data-driven decisions and continuous improvement.",
-        image: d6},
-    // {
-    //   title: "Influencer Marketing",
-    //   description:
-    //     "We collaborate with influencers and brand ambassadors to amplify your reach, build credibility, and drive engagement through authentic and trusted voices in your industry.",
-    // },
-    // {
-    //   title: "Reputation Management",
-    //   description:
-    //     "Our team monitors and manages your brand's online reputation, addressing any negative feedback promptly and highlighting positive reviews to maintain a positive public perception.",
-    // },
+      title: "Influencer Marketing",
+      description: "Connect with relevant influencers to amplify your brand's reach and credibility.",
+      image: "https://img.freepik.com/free-vector/influencer-concept-illustration_114360-679.jpg",
+      features: [
+        "Influencer identification",
+        "Partnership management",
+        "Campaign coordination",
+        "Performance tracking",
+        "ROI measurement"
+      ]
+    },
+    {
+      title: "Analytics & Reporting",
+      description: "Comprehensive analytics and insights to measure and improve your social media performance.",
+      image: "https://img.freepik.com/free-vector/data-analysis-concept-illustration_114360-8013.jpg",
+      features: [
+        "Real-time performance tracking",
+        "Custom reporting dashboards",
+        "Competitor analysis",
+        "ROI measurement",
+        "Strategy optimization"
+      ]
+    },
+    {
+      title: "Community Management",
+      description: "Build and nurture an engaged community around your brand through active social media management.",
+      image: "https://img.freepik.com/free-vector/community-management-concept-illustration_114360-3557.jpg",
+      features: [
+        "Response management",
+        "Community guidelines",
+        "User-generated content",
+        "Brand advocacy programs",
+        "Crisis management"
+      ]
+    },
+    {
+      title: "Social Media Training",
+      description: "Empower your team with the knowledge and skills to maintain an effective social media presence.",
+      image: "https://img.freepik.com/free-vector/training-concept-illustration_114360-2664.jpg",
+      features: [
+        "Platform best practices",
+        "Content creation workshops",
+        "Analytics training",
+        "Strategy development",
+        "Tool utilization"
+      ]
+    }
   ];
+
   return (
     <div className="flex flex-col items-center pt:0 md:pt-10 pb-20 bg-white shadow-sm" ref={ref}>
       <div
@@ -158,22 +223,30 @@ const SocialMedia= forwardRef((props,ref)=> {
       </div>
       {/* //-------------------------------------------// */}
 
-      <div className=" mx-auto p-6">
-        <div className="text-center mb-8 my-4">
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Services We Offer
-          </h2>
-        </div>
+      {/* Services Section */}
+      <div className="w-full px-4 py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Comprehensive Social Media Services
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Transform your social media presence with our full suite of strategic services designed to engage your audience and drive business growth
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <ServicesCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              image={service.image}
-            />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            {services.map((service, index) => (
+              <ServicesCard
+                key={index}
+                title={service.title}
+                description={service.description}
+                image={service.image}
+                features={service.features}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
