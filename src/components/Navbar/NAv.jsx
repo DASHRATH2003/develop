@@ -304,9 +304,6 @@ function NAv() {
                   <Link to="/devops" className="nav-item block pl-4" onClick={closeMenu}>
                     DevOps
                   </Link>
-                  <Link to="/webdesign" className="nav-item block pl-4" onClick={closeMenu}>
-                    Web Design
-                  </Link>
                 </div>
               )}
             </div>
