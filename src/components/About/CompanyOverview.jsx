@@ -121,7 +121,7 @@ const CompanyOverview = () => {
               />
             </div>
             <div className="space-y-6" data-aos="fade-left">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-red-600 mb-6">
                 Who We Are
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
@@ -145,7 +145,7 @@ const CompanyOverview = () => {
           {/* Our Journey Section */}
           <div className="mb-20">
             <h2
-              className="text-4xl font-bold text-center text-gray-900 mb-16"
+              className="text-4xl font-bold text-center text-red-600 mb-16"
               data-aos="fade-up"
             >
               Our Journey
@@ -177,7 +177,7 @@ const CompanyOverview = () => {
           {/* Our Expertise */}
           <div className="mb-20">
             <h2
-              className="text-4xl font-bold text-center text-gray-900 mb-16"
+              className="text-4xl font-bold text-center text-red-600 mb-16"
               data-aos="fade-up"
             >
               Our Expertise
@@ -186,7 +186,7 @@ const CompanyOverview = () => {
             {/* Web Development Expertise */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
               <div className="space-y-6" data-aos="fade-right">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                <h3 className="text-3xl font-bold text-red-600 mb-4">
                   Web Development
                 </h3>
                 <div className="w-16 h-1 bg-[#FF4500]"></div>
@@ -266,7 +266,7 @@ const CompanyOverview = () => {
                 />
               </div>
               <div className="space-y-6" data-aos="fade-left">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                <h3 className="text-3xl font-bold text-red-600 mb-4">
                   Mobile Development
                 </h3>
                 <div className="w-16 h-1 bg-[#FF4500]"></div>
@@ -331,7 +331,7 @@ const CompanyOverview = () => {
             {/* Digital Marketing Expertise */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6" data-aos="fade-right">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                <h3 className="text-3xl font-bold text-red-600 mb-4">
                   Digital Marketing
                 </h3>
                 <div className="w-16 h-1 bg-[#FF4500]"></div>
@@ -404,7 +404,7 @@ const CompanyOverview = () => {
 
           {/* Achievements Section */}
           <div className="bg-gray-50 rounded-2xl p-12 mb-20" data-aos="fade-up">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
+            <h2 className="text-4xl font-bold text-center text-red-600 mb-16">
               Our Achievements
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -429,7 +429,7 @@ const CompanyOverview = () => {
 
           {/* Call to Action */}
           <div className="text-center" data-aos="fade-up">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-red-600 mb-6">
               Ready to Transform Your Business?
             </h2>
             <p className="text-lg text-gray-600 mb-8">

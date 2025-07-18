@@ -48,19 +48,16 @@ const Industries = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://www.shutterstock.com/image-photo/industry-40-modern-factory-project-600nw-1936499776.jpg')",
+            backgroundImage: "url('https://cdn.pixabay.com/photo/2017/03/03/09/49/earth-2113658_640.jpg')",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-transparent" />
-        <div className="relative h-full flex items-center">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="absolute inset-0 bg-gradient-to-r " />
+        <div className="relative h-full flex flex-col justify-center">
+          <div className="container mx-auto px-4">
+            <h1 className="text-5xl  mt-24 ml-[-450px] md:text-6xl font-bold text-white mb-6 text-center">
               Industries We Serve
-            </h2>
-            <p className="text-blue-100 max-w-3xl mx-auto text-lg">
-              At Innomatrics Technologies, we deliver cutting-edge software solutions across diverse industries. 
-              Our expertise spans the entire digital spectrum, enabling businesses to transform and thrive in the digital age.
-            </p>
+            </h1>
+           
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const Blog = () => {
       <div 
         className="absolute inset-0 z-0" 
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')",
+          backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpl05gE4Ai8s5Pv2B96Pic8U_MlyoUgsIcXAGn2yYf45E8x3NV7tCATf8xC-qXlCrskcI&usqp=CAU')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

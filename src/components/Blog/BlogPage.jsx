@@ -60,13 +60,22 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-blue-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div 
+        className="relative h-[60vh] text-white"
+        style={{
+          backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFPxEuA0sDXYWGWZGqZo23nAWwo4Y_tJ_J0Mm0n_TYgWJZDK4vhVHMPKPATV7QKbmwDOQ&usqp=CAU')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
+        <div className="absolute inset-0"></div>
+        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
           <div className="text-center">
-            <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl  ml-[-400px] font-bold sm:text-5xl md:text-6xl mb-4">
               Our Latest Insights
             </h1>
-            <p className="mt-4 text-xl text-blue-200">
+            <p className="mt-4  ml-[-200px] text-xl text-blue-100">
               Stay updated with the latest trends and insights in technology and digital innovation
             </p>
           </div>
@@ -98,13 +107,13 @@ const BlogPage = () => {
           {filteredPosts.map((post, index) => (
             <article
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
-              <div className="relative">
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 right-4">
                   <span className="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-sm font-medium text-white">
@@ -114,12 +123,8 @@ const BlogPage = () => {
               </div>
 
               <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500">
-                  <time dateTime={post.date}>{post.date}</time>
-                </div>
-
-                <h3 className="mt-3 text-xl font-semibold text-gray-900 group-hover:text-blue-600">
-                  <Link to={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                <h3 className="mt-2 text-xl font-semibold text-gray-900 group-hover:text-blue-600 line-clamp-2">
+                  <Link to={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-blue-600 transition-colors duration-200">
                     {post.title}
                   </Link>
                 </h3>
@@ -127,6 +132,18 @@ const BlogPage = () => {
                 <p className="mt-3 text-base text-gray-500 line-clamp-3">
                   {post.excerpt}
                 </p>
+
+                <div className="mt-4 flex items-center justify-between">
+                  <Link 
+                    to={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
+                  >
+                    Read More 
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </article>
           ))}

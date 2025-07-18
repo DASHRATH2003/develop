@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import app from "../../../assets/digitalMarkt.webp";
 import app2 from "../../../assets/digitalMarkt2.webp";
 import approach from "../../../assets/digitalMarktApproach.webp";
@@ -18,12 +18,44 @@ const ServicesCard = ({ title, description, image, icon }) => (
   </div>
 );
 
-const SocialMedia = forwardRef((props, ref) => {
+const DigitalMarketing = forwardRef((props, ref) => {
+  const [hoveredService, setHoveredService] = useState(null);
+
+  const offerings = {
+    items: [
+      "Search Engine Optimization (SEO)",
+      "Pay-Per-Click (PPC) Advertising",
+      "Social Media Marketing",
+      "Content Marketing",
+      "Email Marketing",
+      "Conversion Rate Optimization (CRO)"
+    ],
+    description: "At Innomatrics, we help businesses grow their online presence with data-driven strategies and creative campaigns. From SEO to social media and paid ads, we focus on driving measurable results.",
+    images: {
+      default: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+      "Search Engine Optimization (SEO)": "https://w0.peakpx.com/wallpaper/1018/455/HD-wallpaper-search-engine-optimization-seo-marketing.jpg",
+      "Pay-Per-Click (PPC) Advertising": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+      "Social Media Marketing": "https://img.freepik.com/premium-photo/social-media-icons-logos-with-3d-space-rocket-digital-social-media-marketing-background_125322-391.jpg",
+      "Content Marketing": "https://community.nasscom.in/sites/default/files/media/images/Content%20marketing.jpg",
+      "Email Marketing": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+      "Conversion Rate Optimization (CRO)": "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+    },
+    descriptions: {
+      default: "At Innomatrics, we help businesses grow their online presence with data-driven strategies and creative campaigns.",
+      "Search Engine Optimization (SEO)": "Boost your organic visibility and drive qualified traffic with our comprehensive SEO strategies.",
+      "Pay-Per-Click (PPC) Advertising": "Get immediate results with targeted advertising campaigns that deliver measurable ROI.",
+      "Social Media Marketing": "Engage your audience and build brand loyalty through strategic social media campaigns.",
+      "Content Marketing": "Tell your brand story with compelling content that attracts and converts your target audience.",
+      "Email Marketing": "Nurture leads and drive conversions with personalized email marketing campaigns.",
+      "Conversion Rate Optimization (CRO)": "Turn more visitors into customers with data-driven optimization strategies."
+    }
+  };
+
   const services = [
     {
       title: "Search Engine Optimization (SEO)",
       description: "Increase your website's visibility and rank higher in search engine results pages (SERPs) with our comprehensive SEO services, including keyword research, on-page optimization, link building, and content creation.",
-      image: "https://img.freepik.com/free-vector/seo-analytics-team-working-optimization-metrics_74855-13380.jpg",
+      image: "https://img.freepik.com/premium-photo/person-manage-search-engine-optimization-seo-digital-marketing-with-social-media-content_34141-1030.jpg",
     },
     {
       title: "Pay-Per-Click (PPC) Advertising",
@@ -54,93 +86,140 @@ const SocialMedia = forwardRef((props, ref) => {
 
   return (
     <div className="flex flex-col items-center pt:0 md:pt-10 pb-20 bg-white shadow-sm" ref={ref}>
-       <div
-        id="DigitalDiv"  className="BgDiv relative flex flex-col items-start self-stretch px-20 py-20 font-medium text-center leading-[108%] min-h-[276px] text-zinc-900 max-md:px-5 max-md:max-w-full"
-          style={{ height: "60vh" }}
-        >
+      {/* Hero Section */}
+      <div
+        id="DigitalDiv" className="BgDiv relative flex flex-col items-start self-stretch px-20 py-20 font-medium text-center leading-[108%] min-h-[276px] text-zinc-900 max-md:px-5 max-md:max-w-full"
+        style={{ 
+          height: "60vh",
+          backgroundImage: "url('https://images.unsplash.com/photo-1634176866089-b633f4aec882?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          position: "relative"
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        
+        <div className="flex flex-col my-12 items-start justify-start gap-4 text-start relative z-10">
+          <h1 className="text-3xl my-4 font-bold text-white md:text-white md:text-5xl">
+            Digital Marketing
+          </h1>
           
-          <div className="flex flex-col my-12 items-start justify-start gap-4 text-start">
-            <h1 className="text-3xl my-4 font-bold text-white md:text-white md:text-5xl">
-              Digital Marketing
-            </h1>
-            
-            
-            <hr className="text-sky-600 w-[140%] " />
-          </div>
-          {/* <div className="relative justify-center -my-10 space-x-2">
-            <button className="text-white 
-              bg-zinc-700 focus:ring-4 
-              focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2
-              text-center dark:bg-blue-600 dark:focus:ring-blue-800
-              hover:bg-white hover:text-black hover:transform hover:scale-105
-              hover:shadow-lg transition duration-300 ease-in-out">
-              Start a project together
-            </button>
-            <button className="text-zinc-700 
-              bg-white focus:ring-4 
-              focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2
-              text-center dark:bg-blue-600 dark:focus:ring-blue-800
-              hover:bg-zinc-800 hover:text-white hover:transform hover:scale-105
-              hover:shadow-lg transition duration-300 ease-in-out">
-              Read More
-            </button>
-          </div> */}
+          <hr className="text-sky-600 w-[140%] " />
         </div>
+      </div>
 
-      <div className="mt-16 max-w-[90vw]">
-        <div className="flex flex-col md:flex-row gap-5">
-          <div className="flex flex-col w-full md:w-[44%]">
-            <div className="text-xl text-lime-400">Digital Marketing</div>
-            <div className="mt-2 text-sm md:text-base text-neutral-500">
-              We focus on providing the right tool for product innovation and
-              digital communication
-            </div>
-            <div className="mt-2 text-sm md:text-base text-zinc-800">
-              <p>
-                Innomatrics Tech is your trusted partner for driving
-                online visibility, engagement, and growth through strategic
-                digital marketing solutions. With our expertise in the
-                ever-evolving digital landscape, we'll help you reach your
-                target audience, amplify your brand presence, and achieve your
-                business goals.
+      {/* Overview Section */}
+      <div className="mb-20 px-6 md:px-8">
+        <h2 className="text-xl font-bold text-orange-600 mb-4 mt-8">OVERVIEW</h2>
+        <p className="text-lg text-gray-900 leading-relaxed">
+          At Innomatrics, we understand the fast-changing landscape of the digital marketplace. To thrive in today's connected world, businesses must leverage data-driven strategies, enhance customer engagement, and optimize their digital platforms. Our team brings together deep expertise in digital technologies, domain knowledge, and hands-on experience to build scalable, measurable marketing solutions.
+        </p>
+      </div>
+
+      {/* Offerings Section with Hover Effect */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div>
+            <h3 className="text-2xl font-bold text-red-600 mb-6">OUR OFFERINGS</h3>
+            <div className="space-y-4">
+              {offerings.items.map((item) => (
+                <div 
+                  key={item}
+                  className="group relative"
+                  onMouseEnter={() => setHoveredService(item)}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <h4 className="text-lg font-semibold text-gray-900 cursor-pointer group-hover:text-red-600 transition-colors duration-300">
+                    {item}
+                  </h4>
+                </div>
+              ))}
+
+              <p className="text-gray-600 mt-6">
+                {offerings.description}
               </p>
             </div>
           </div>
-          <div className="flex flex-auto w-full md:w-[40%]">
+
+          
+
+          {/* Right Image */}
+          <div className="relative">
             <img
-              loading="lazy"
-              src={app2}
-              className="w-full h-auto aspect-w-16 aspect-h-10"
-              style={{ borderRadius: "5%", boxShadow: "gray 3px 10px 10px" }}
-              alt="Digital Marketing"
+              src={hoveredService ? offerings.images[hoveredService] || offerings.images.default : offerings.images.default}
+              alt={hoveredService || "Our Digital Marketing Offerings"}
+              className="rounded-lg shadow-xl w-full object-cover transition-opacity duration-500"
+              style={{ height: '400px' }}
             />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 rounded-b-lg">
+              <p className="text-white text-lg">
+                {hoveredService ? offerings.descriptions[hoveredService] || offerings.descriptions.default : offerings.descriptions.default}
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-16 max-w-[65vw]">
-        <div className="flex flex-col md:flex-row gap-20 -mx-12 md:-mx-36">
-          <div className="flex w-full md:w-1/2">
-            <img
-              loading="lazy"
-              src={approach}
-              className="w-full h-auto rounded-lg shadow-lg"
-              alt="Our Approach"
-            />
+      <div className="w-full px-4 py-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-xl font-bold text-red-500">THE INFINITE DIFFERENCE</h2>
+            <h3 className="text-4xl font-bold text-gray-900 mt-4">
+              Digital efficiency & enhanced marketing value
+              
+            </h3>
           </div>
 
-          <div className="flex flex-col w-full md:w-1/2">
-            <div className="text-justify mb-8">
-              <h1 className="text-3xl font-bold text-gray-800">Our Approach</h1>
-              <p className="mt-4 text-gray-600">
-                We believe that effective digital marketing is about more than
-                just tactics - it's about developing a comprehensive strategy
-                that aligns with your business objectives and resonates with
-                your target audience. Our approach begins with a deep
-                understanding of your industry, competitors, and target market,
-                allowing us to craft tailored digital marketing solutions that
-                deliver measurable results.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left side - Hexagonal Image */}
+            <div className="relative">
+              <img 
+                src="https://img.freepik.com/premium-vector/artificial-intelligence-ai-robot-digital-brain-artificial-thinking-process-machine-learning-digital-transformation-big-data-concept_127544-850.jpg"
+                alt="Digital Marketing Innovation"
+                className="w-full rounded-lg shadow-xl object-cover h-[500px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-transparent rounded-lg"></div>
+            </div>
+
+            {/* Right side - Features */}
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Partnerships with Leading Platforms</h4>
+                <p className="text-gray-700">
+                  We have strategic partnerships with leading digital marketing platforms providing us with access to advanced tools, expert resources, and industry knowledge repositories.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Advanced Marketing Tools</h4>
+                <p className="text-gray-700">
+                  Leverage our comprehensive suite of marketing automation tools based on common use cases to optimize your digital presence while keeping costs minimal.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Proven ROI</h4>
+                <p className="text-gray-700">
+                  Our clients consistently achieve significant results, with typical cost savings between 40%-80% through our optimized digital marketing strategies.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-6 mt-8">
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-red-500">40%</div>
+                  <div className="text-sm text-gray-600">Minimum ROI</div>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-red-500">80%</div>
+                  <div className="text-sm text-gray-600">Maximum ROI</div>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-red-500">100+</div>
+                  <div className="text-sm text-gray-600">Active Projects</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +229,7 @@ const SocialMedia = forwardRef((props, ref) => {
       <div className="w-full px-4 py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-red-600 mb-4">
               Services We Offer
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
@@ -177,7 +256,7 @@ const SocialMedia = forwardRef((props, ref) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-gray-900">Join Us On The Digital Marketing Journey</h2>
+              <h2 className="text-4xl font-bold text-red-600">Join Us On The Digital Marketing Journey</h2>
               <p className="text-lg text-gray-600">
                 Ready to take your digital presence to the next level? Partner with Innomatrics for comprehensive digital marketing solutions that drive real results and sustainable growth for your business.
               </p>
@@ -207,13 +286,7 @@ const SocialMedia = forwardRef((props, ref) => {
                   <p className="text-gray-700">Dedicated Marketing Experts</p>
                 </div>
               </div>
-              <div className="pt-6">
-                <Link to="/contact">
-                  <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
-                    Start Your Digital Journey
-                  </button>
-                </Link>
-              </div>
+              
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600/10 rounded-3xl transform rotate-3"></div>
@@ -226,8 +299,11 @@ const SocialMedia = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+
+      {/* New Digital Innovation Section */}
+     
     </div>
   );
 });
 
-export default SocialMedia;
+export default DigitalMarketing;

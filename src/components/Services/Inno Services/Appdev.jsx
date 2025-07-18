@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState, useRef } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import app from "../../../assets/AppDev.jpg";
 import app2 from "../../../assets/app2.jpg";
 import approach from "../../../assets/approach.jpg";
@@ -8,6 +8,14 @@ import a3 from "../../../assets/appServices/customDev.jpg";
 import a4 from "../../../assets/appServices/crossPlatform.png";
 import a5 from "../../../assets/appServices/qualityTest.png";
 import a6 from "../../../assets/appdev11.jpeg";
+import D1 from "../../../assets/D1.webp";
+import D2 from "../../../assets/D2.jpg";
+import D3 from "../../../assets/D31.jpg";
+import D4 from "../../../assets/uidesign.png";
+import D5 from "../../../assets/cloud1.png";
+import D6 from "../../../assets/end.jpg";
+import B6 from "../../../assets/angle.png";
+
 import "./Appdev.css";
 import { Link } from "react-router-dom";
 import {
@@ -27,9 +35,94 @@ import {
 import { motion } from "framer-motion";
 
 const AppDev = forwardRef((props, ref) => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  const [hoveredService, setHoveredService] = useState(null);
+  const [activeTab, setActiveTab] = useState("technology");
+
+  // Technology Offerings
+  const techOfferings = {
+    title: "Technology Offerings",
+    items: [
+      "Custom Mobile App Development",
+      "Cross-Platform & Hybrid App Solutions",
+      "Enterprise Mobility & Scalable Architecture",
+      "UI/UX Design Tailored for Mobile Users",
+      "— Mechanical Engineering & Prototyping",
+      "Cloud-Integrated App Development",
+      "End-to-End App Development & Support",
+    ],
+    description:
+      "Development of mechanical systems and product design with improved ROI and faster time to market.",
+    images: {
+      default: D1,
+      "Custom Mobile App Development": D1,
+      "Cross-Platform & Hybrid App Solutions": D2,
+      "Enterprise Mobility & Scalable Architecture": D3,
+      "UI/UX Design Tailored for Mobile Users": D4,
+      "Cloud-Integrated App Development": D5,
+      "End-to-End App Development & Support": D6,
+    },
+    descriptions: {
+      default:
+        "Development of mechanical systems and product design with improved ROI and faster time to market.",
+      "Platform Engineering":
+        "Comprehensive platform engineering services to build scalable and robust technology foundations.",
+      "Verification Testing":
+        "Rigorous testing methodologies to ensure product quality and reliability.",
+      "Product Lifecycle Management":
+        "End-to-end management of your product from conception to retirement.",
+      "Product Development":
+        "Innovative product development solutions tailored to your business needs.",
+      "Mechanical Engineering & Prototyping":
+        "Advanced mechanical engineering services with rapid prototyping capabilities.",
+      "Embedded Engineering":
+        "Expert embedded systems development for IoT and connected devices.",
+      "Intelligence of Things":
+        "Smart solutions leveraging IoT technologies for data-driven insights.",
+      "Systems & Hardware Engineering":
+        "Complete systems and hardware engineering services.",
+      "Enterprise Content Management":
+        "Sophisticated content management solutions for large organizations.",
+    },
+  };
+
+  // Business Offerings
+  const bizOfferings = {
+    title: "Business Offerings",
+    items: [
+      "Custom Software for Modern Enterprises",
+      "Scalable Digital Product Development Solutions",
+      "Cloud-Native and DevOps Expertise",
+      "Secure, Agile App Development Services",
+      "Transforming Ideas Into Digital Solutions",
+    ],
+    description:
+      "Maximize the profitability of your product portfolio through a holistic review and assessment based on years of industry experience and proven best practices. Our approach centers around key levers including Value Analysis / Value Engineering (VAVE), alternative sourcing, modularization, design optimization and alternative approaches.",
+    images: {
+      default: a2,
+      "Custom Software for Modern Enterprises": a3,
+      "Scalable Digital Product Development Solutions": a4,
+      "Cloud-Native and DevOps Expertise": a5,
+      "Secure, Agile App Development Services": B6,
+      "Transforming Ideas Into Digital Solutions": app,
+    },
+    descriptions: {
+      default:
+        "Maximize the profitability of your product portfolio through a holistic review and assessment based on years of industry experience and proven best practices.",
+      "Asset Value Realization":
+        "Strategies to maximize the value of your existing assets and investments.",
+      "Legacy Product Management":
+        "Modern approaches to managing and extending legacy product lines.",
+      "Supplier Rationalization and Consolidation":
+        "Optimizing your supplier base for efficiency and cost savings.",
+      "Center of Excellence Creation":
+        "Establishing centers of excellence to drive innovation and best practices.",
+      "Profitability Improvement for Products":
+        "Comprehensive approaches to enhance product profitability through various levers.",
+    },
+  };
+
+  const currentOfferings =
+    activeTab === "technology" ? techOfferings : bizOfferings;
 
   const platforms = [
     {
@@ -230,164 +323,242 @@ const AppDev = forwardRef((props, ref) => {
     },
   ];
 
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [likes, setLikes] = useState(new Array(10).fill(0)); // Add this line for likes state
-
-  const handleLike = (index) => {
-    const newLikes = [...likes];
-    newLikes[index] += 1;
-    setLikes(newLikes);
-  };
-
-  const testimonials = [
-    {
-      rating: 5,
-      quote:
-        "Innomatrics delivered our healthcare app ahead of schedule while exceeding all quality expectations. Their expertise in HIPAA compliance was outstanding.",
-      name: "Dr. Rajesh Mehta",
-      position: "CTO, MediTech Solutions India",
-      initials: "RM",
-    },
-    {
-      rating: 5,
-      quote:
-        "The e-commerce platform they built helped us increase our online sales by 75%. Their technical expertise is remarkable.",
-      name: "Priya Sharma",
-      position: "CEO, ShopEasy India",
-      initials: "PS",
-    },
-    {
-      rating: 5,
-      quote:
-        "Outstanding work on our fintech application. The team's attention to security and performance was exceptional.",
-      name: "Vikram Patel",
-      position: "Director, PaySecure Technologies",
-      initials: "VP",
-    },
-    {
-      rating: 5,
-      quote:
-        "The educational app they developed has transformed how we deliver online learning.",
-      name: "Dr. Anjali Singh",
-      position: "Founder, EduTech India",
-      initials: "AS",
-    },
-    {
-      rating: 5,
-      quote:
-        "Their expertise in AI and ML integration helped us create a revolutionary fitness tracking app.",
-      name: "Arjun Kapoor",
-      position: "CIO, FitTech Solutions",
-      initials: "AK",
-    },
-    {
-      rating: 5,
-      quote:
-        "The food delivery app they built for us has excellent performance and user experience.",
-      name: "Neha Gupta",
-      position: "COO, FoodExpress India",
-      initials: "NG",
-    },
-    {
-      rating: 5,
-      quote:
-        "Innomatrics helped us digitize our real estate business with an innovative property listing app.",
-      name: "Rahul Verma",
-      position: "MD, HomeSearch Properties",
-      initials: "RV",
-    },
-    {
-      rating: 5,
-      quote:
-        "The travel booking app they developed has significantly improved our customer engagement.",
-      name: "Sanjay Kumar",
-      position: "CEO, TravelEase India",
-      initials: "SK",
-    },
-    {
-      rating: 5,
-      quote:
-        "Their team's expertise in IoT integration helped us create a smart home automation app.",
-      name: "Amit Shah",
-      position: "Director, SmartHome Tech",
-      initials: "AS",
-    },
-    {
-      rating: 5,
-      quote:
-        "The logistics management app they built has streamlined our entire supply chain operations.",
-      name: "Deepak Agarwal",
-      position: "CEO, LogiTech Solutions",
-      initials: "DA",
-    },
-  ];
-
   useEffect(() => {
-    const totalPairs = Math.ceil(testimonials.length / 2);
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % totalPairs);
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
-  const goToNext = () => {
-    const totalPairs = Math.ceil(testimonials.length / 2);
-    setCurrentTestimonial((prev) => (prev + 1) % totalPairs);
-  };
-
-  const goToPrev = () => {
-    const totalPairs = Math.ceil(testimonials.length / 2);
-    setCurrentTestimonial((prev) => (prev - 1 + totalPairs) % totalPairs);
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50" ref={ref}>
       {/* Hero Section */}
-      <div className="relative bg-blue-900 text-white py-32 overflow-hidden">
+      <div className="relative bg-blue-900 text-white py-40 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://mldlprodstorage.blob.core.windows.net/live/2021/10/mahindra-eden-desktop.webp')",
+              "url('https://media.istockphoto.com/id/1224273124/vector/3d-abstract-concept-world-or-earth-internationalization-and-globalization.jpg?s=612x612&w=0&k=20&c=_F_dEzH9_4QXnLxwwTNReBiUwARHSuEPGlj1UeScbXI=')",
           }}
         ></div>
         <div className="absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl mb-6">
+            <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl mb-8 text-left">
               Mobile App Development Services
             </h1>
-            <p className="mt-4 text-xl text-blue-200 max-w-3xl mx-auto">
+            <p className="text-xl text-white max-w-1xl mt-1 text-left">
               Transform your ideas into powerful, user-friendly mobile
               applications that deliver real value
             </p>
-            <div className="mt-8">
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-8 py-3 border border-transparent text-lg font-bold rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300 shadow-lg"
-              >
-                Get Your Free Consultation
-              </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-20 px-6 md:px-8">
+        <h2 className="text-xl font-bold text-orange-600 mb-4 mt-8">
+          OVERVIEW
+        </h2>
+        <p className="text-lg text-gray-900 leading-relaxed">
+          At Innomatrics, we understand the rapid evolution of the mobile-first
+          world. Businesses must innovate quickly to launch impactful apps,
+          reduce time-to-market, and stay competitive with emerging
+          technologies. Mobile app development demands agility and continuous
+          innovation.
+          <br />
+          Our team brings together deep expertise in native and cross-platform
+          technologies, domain knowledge, and hands-on experience to build
+          scalable, secure, and user-centric mobile applications. Whether it's
+          iOS, Android, or hybrid solutions — we develop with performance,
+          flexibility, and future-readiness in mind.
+        </p>
+      </div>
+
+      {/* Offerings Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Tabs */}
+        <div className="flex border-b border-gray-200 mb-8">
+          <button
+            className={`py-2 px-4 font-medium text-sm focus:outline-none ${
+              activeTab === "technology"
+                ? "text-blue-600 border-b-2 border-red-600"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => {
+              setActiveTab("technology");
+              setHoveredService(null);
+            }}
+          >
+            Technology Offerings
+          </button>
+          <button
+            className={`py-2 px-4 font-medium text-sm focus:outline-none ${
+              activeTab === "business"
+                ? "text-red-400 border-b-2 border-blue-600"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => {
+              setActiveTab("business");
+              setHoveredService(null);
+            }}
+          >
+            Business Offerings
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div>
+            <h3 className="text-2xl font-bold text-red-500 mb-6">
+              OUR OFFERINGS
+            </h3>
+            <div className="space-y-4">
+              {currentOfferings.items.map((item) => (
+                <div
+                  key={item}
+                  className="group relative"
+                  onMouseEnter={() => setHoveredService(item.replace("— ", ""))}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <h4 className="text-lg font-semibold text-gray-600 cursor-pointer group-hover:text-red-400 transition-colors duration-300">
+                    {item}
+                  </h4>
+                </div>
+              ))}
+
+              <p className="text-gray-600 mt-6">
+                {currentOfferings.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="relative">
+            <img
+              src={
+                hoveredService
+                  ? currentOfferings.images[hoveredService] ||
+                    currentOfferings.images.default
+                  : currentOfferings.images.default
+              }
+              alt={hoveredService || currentOfferings.title}
+              className="rounded-lg shadow-xl w-full object-cover transition-opacity duration-500"
+              style={{ height: "500px" }}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 rounded-b-lg">
+              <p className="text-white text-lg">
+                {hoveredService
+                  ? currentOfferings.descriptions[hoveredService] ||
+                    currentOfferings.descriptions.default
+                  : currentOfferings.descriptions.default}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
+      {/* New Value Section */}
+
+      {/* New Technology Innovation Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl ml-[-700px] font-bold text-red-400 mb-4">
+            TECHNOLOGY INNOVATION
+          </h1> 
+          <p className="text-2xl ml-[-700px] text-gray-700 ">Pioneering solution for tomorrow's challanges</p>
+        
+          
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {/* Box 1 */}
+          <div className="bg-blue-900 rounded-lg p-6 text-white relative overflow-hidden transform transition-transform hover:scale-105">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-800/50 to-transparent"></div>
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-blue-300 mb-3">
+                Cloud Innovation
+              </h3>
+              <p className="text-sm mb-4">
+                "Implemented cloud-native architecture reducing deployment time
+                by 75% and improving scalability for enterprise applications."
+              </p>
+              <p className="text-blue-200 text-sm">
+                Cloud Architecture Team Lead
+              </p>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-700/30 rounded-full blur-xl"></div>
+          </div>
+
+          {/* Box 2 */}
+          <div className="bg-blue-900 rounded-lg p-6 text-white relative overflow-hidden transform transition-transform hover:scale-105">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-800/50 to-transparent"></div>
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-blue-300 mb-3">
+                AI Integration
+              </h3>
+              <p className="text-sm mb-4">
+                "Developed ML-powered analytics platform processing 1M+ data
+                points daily with 99.9% accuracy in predictive modeling."
+              </p>
+              <div className="text-blue-400 hover:text-blue-300 cursor-pointer inline-flex items-center">
+                Learn More <span className="ml-2">→</span>
+              </div>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-700/30 rounded-full blur-xl"></div>
+          </div>
+
+          {/* Box 3 */}
+          <div className="bg-blue-900 rounded-lg p-6 text-white relative overflow-hidden transform transition-transform hover:scale-105">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-800/50 to-transparent"></div>
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-blue-300 mb-3">
+                DevOps Excellence
+              </h3>
+              <p className="text-sm mb-4">
+                "Automated deployment pipeline with continuous monitoring and
+                self-healing capabilities for critical infrastructure."
+              </p>
+              <p className="text-blue-200 text-sm">
+                Infrastructure & Operations
+              </p>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-700/30 rounded-full blur-xl"></div>
+          </div>
+
+          {/* Box 4 */}
+          <div className="bg-blue-900 rounded-lg p-6 text-white relative overflow-hidden transform transition-transform hover:scale-105">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-800/50 to-transparent"></div>
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-blue-300 mb-3">
+                Security First
+              </h3>
+              <p className="text-sm mb-4">
+                "Enhanced system security with zero-trust architecture
+                implementation, reducing security incidents by 90%."
+              </p>
+              <p className="text-blue-200 text-sm">Cybersecurity Director</p>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-700/30 rounded-full blur-xl"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Rest of your existing sections... */}
       {/* Introduction */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 px-4 md:px-20">
+        <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-12">
           {/* Left: Text Content */}
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl ml-[-50px] font-bold text-red-600 mb-4">
               Transform Your Business with Mobile Technology
             </h2>
-            <div className="w-24 h-1 bg-blue-600 mb-6"></div>
-            <p className="text-xl text-gray-600">
+            <div className="w-24 h-1 ml-[-50px] bg-blue-600 mb-6"></div>
+            <p className="text-xl ml-[-50px] text-gray-700">
               At Innomatrics Tech, we specialize in creating high-performance
               mobile applications that deliver exceptional user experiences and
               measurable business results. With over 10 years of experience, our
               team of certified developers builds apps that are scalable,
               secure, and tailored to your specific industry needs.
+              enterprise systems, we combine design thinking with
+              powerful technology to deliver high-performance platforms tailored
+              to your industry.
             </p>
           </div>
 
@@ -396,43 +567,47 @@ const AppDev = forwardRef((props, ref) => {
             <img
               src="https://img.freepik.com/free-photo/representations-user-experience-interface-design_23-2150038906.jpg?semt=ais_hybrid&w=740"
               alt="Mobile App Development"
-              className="w-full max-w-sm rounded-lg shadow-lg"
+              className="w-full rounded-lg shadow-lg max-w-[600px]"
             />
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-start gap-12 mb-20 px-4 md:px-16">
-  {/* Left: Larger Image */}
-  <div className="md:w-1/2 flex justify-center">
-    <img
-      src="https://images.shiksha.com/mediadata/images/articles/1511182566phpUYd3Dx.jpeg"
-      alt="Digital Solutions"
-      className="w-full mr-6 max-w-md rounded-2xl shadow-2xl"
-    />
-  </div>
+        <div className="flex mt-10 flex-col md:flex-row items-start gap-12">
+          {/* Left: Larger Image */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <img
+              src="https://images.shiksha.com/mediadata/images/articles/1511182566phpUYd3Dx.jpeg"
+              alt="Digital Solutions"
+              className="w-full max-w-2xl rounded-2xl shadow-2xl mt-6"
+            />
+          </div>
 
-  {/* Right: Bigger Content */}
-  <div className="md:w-1/2">
-    <h2 className="text-4xl font-semibold text-gray-900 mb-6 leading-tight">
-      Build Scalable
-    </h2>
-    <div className="w-28 h-1 bg-blue-600 mb-6"></div>
-    <p className="text-lg text-gray-700 leading-relaxed mr-7">
-      Innomatrics helps you bring your ideas to life with custom-built software solutions that are fast, secure,
-      and scalable. From mobile apps to enterprise systems, we combine design thinking with powerful technology
-      to deliver high-performance platforms tailored to your industry. Let's build the future — together.
-    </p>
-  </div>
-</div>
-
-
-        {/* Platforms Section */}
+          {/* Right: Bigger Content */}
+          <div className="w-full md:w-1/2 ">
+            <h2 className="text-4xl mt-5 font-semibold text-red-600 mb-6 leading-tight">
+              Build Scalable
+            </h2>
+            <div className="w-28 h-1 bg-blue-600 mb-6 "></div>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Innomatrics helps you bring your ideas to life with custom-built
+              software solutions that are fast, secure, and scalable. From
+              mobile apps to enterprise systems, we combine design thinking with
+              powerful technology to deliver high-performance platforms tailored
+              to your industry. Let's build the future — together.
+              enterprise systems, we combine design thinking with
+              powerful technology to deliver high-performance platforms tailored
+              to your industry. Let's build the future — together.
+            </p>
+          </div>
+        </div>
 
         {/* Services Grid */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+        <div className="mb-20 mt-10">
+          <h2 className="text-3xl font-bold text-center text-red-600 mb-12">
             Comprehensive App Development Services
+            <div className="w-28 h-1 bg-red-600 mb-6 mt-2 ml-80 "></div>
           </h2>
+         
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div
@@ -476,8 +651,9 @@ const AppDev = forwardRef((props, ref) => {
           </div>
         </div>
 
+        {/* Platforms Section */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-red-600 mb-12">
             Our Platform Expertise
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -538,7 +714,7 @@ const AppDev = forwardRef((props, ref) => {
 
         {/* Development Process Section */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-red-600 mb-12">
             Our Proven Development Methodology
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -564,12 +740,14 @@ const AppDev = forwardRef((props, ref) => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  
+
                   {/* Content Side */}
                   <div className="md:w-1/2 p-6">
                     <div className="flex items-center mb-4">
                       <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <span className="text-blue-600 font-bold">{step.number}</span>
+                        <span className="text-blue-600 font-bold">
+                          {step.number}
+                        </span>
                       </div>
                       <div className="flex items-center">
                         {step.icon}
@@ -581,7 +759,10 @@ const AppDev = forwardRef((props, ref) => {
                     <p className="text-gray-600 mb-4">{step.description}</p>
                     <ul className="space-y-2">
                       {step.activities.map((activity, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
+                        <li
+                          key={idx}
+                          className="flex items-center text-gray-600"
+                        >
                           <svg
                             className="w-4 h-4 text-blue-600 mr-2"
                             fill="currentColor"
@@ -606,7 +787,7 @@ const AppDev = forwardRef((props, ref) => {
 
         {/* Case Studies */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-red-600 mb-12">
             Success Stories
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -660,11 +841,9 @@ const AppDev = forwardRef((props, ref) => {
           </div>
         </div>
 
-        {/* Testimonials */}
-
         {/* CTA Section */}
         <div className="text-center bg-white rounded-xl shadow-lg p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-red-600 mb-4">
             Ready to Build Your Mobile App?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">

@@ -164,7 +164,7 @@ const WhyUs = () => {
 
           {/* Content Section */}
           <div data-aos="fade-left">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-red-600 mb-6">
               Why Choose Our Software Company?
             </h2>
             <p className="text-gray-700 text-lg mb-6">
@@ -294,7 +294,7 @@ const WhyUs = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="text-3xl font-bold text-gray-900"
+                  className="text-3xl font-bold text-red-600"
                 >
                   What Sets Us Apart
                 </motion.h2>
@@ -406,7 +406,7 @@ const WhyUs = () => {
           {/* Updated Testimonials Section */}
           {/* Updated Testimonials Section */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            <h2 className="text-3xl font-bold text-center text-red-600 mb-12">
               What Our Clients Say
             </h2>
 
@@ -481,7 +481,7 @@ const WhyUs = () => {
             viewport={{ once: true }}
             className="bg-white rounded-xl shadow-lg p-8 md:p-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-red-600 mb-4">
               Ready to Work With Us?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">

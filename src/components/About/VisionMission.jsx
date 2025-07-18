@@ -209,7 +209,7 @@ const VisionMission = () => {
                   </svg>
                 </div>
               </div>
-              <h2 className="ml-4 text-3xl font-bold text-gray-900">Our Vision</h2>
+              <h2 className="ml-4 text-3xl font-bold text-red-600">Our Vision</h2>
             </div>
             <p className="text-lg text-gray-600 leading-relaxed">
               To be the most trusted global partner for digital transformation, recognized for pioneering technology solutions that redefine industries and create sustainable value for businesses worldwide.
@@ -253,7 +253,7 @@ const VisionMission = () => {
                   </svg>
                 </div>
               </div>
-              <h2 className="ml-4 text-3xl font-bold text-gray-900">Our Mission</h2>
+              <h2 className="ml-4 text-3xl font-bold text-red-600">Our Mission</h2>
             </div>
             <p className="text-lg text-gray-600 leading-relaxed">
               To empower organizations of all sizes with transformative technology solutions that drive measurable business outcomes, through a combination of deep expertise, innovative thinking, and unwavering commitment to our clients' success.
@@ -281,7 +281,7 @@ const VisionMission = () => {
 
         {/* Image Gallery Section */}
         <div className="py-12">
-  <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Milestones of Innovation & Impact</h2>
+  <h2 className="text-3xl font-bold text-center text-red-600 mb-12">Milestones of Innovation & Impact</h2>
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
 
     {/* Card 1 */}
@@ -357,7 +357,7 @@ const VisionMission = () => {
         {/* Core Values section */}
         <div className="py-20 bg-gradient-to-b from-blue-50 to-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="text-4xl font-bold text-center text-gray-900 mb-6">Our Core Values</h2>
+    <h2 className="text-4xl font-bold text-center text-red-600 mb-6">Our Core Values</h2>
     <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-16">
       These values define who we are, what we believe in, and how we operate — both as individuals and as a team.
     </p>
@@ -370,7 +370,7 @@ const VisionMission = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-2">Innovation</h4>
+        <h4 className="text-xl font-bold text-red-600 mb-2">Innovation</h4>
         <p className="text-gray-600">We embrace new ideas and continuously push boundaries to deliver future-ready solutions.</p>
       </div>
 
@@ -380,7 +380,7 @@ const VisionMission = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-2">Excellence</h4>
+        <h4 className="text-xl font-bold text-red-600 mb-2">Excellence</h4>
         <p className="text-gray-600">We strive for excellence in everything we do — delivering high-quality outcomes without compromise.</p>
       </div>
 
@@ -390,7 +390,7 @@ const VisionMission = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-2">Integrity</h4>
+        <h4 className="text-xl font-bold text-red-600 mb-2">Integrity</h4>
         <p className="text-gray-600">We do what's right — even when no one is watching. Transparency and honesty guide our actions.</p>
       </div>
 
@@ -400,7 +400,7 @@ const VisionMission = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-2">Teamwork</h4>
+        <h4 className="text-xl font-bold text-red-600 mb-2">Teamwork</h4>
         <p className="text-gray-600">We succeed together — collaborating openly, respecting every voice, and supporting one another.</p>
       </div>
 
@@ -410,7 +410,7 @@ const VisionMission = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-2">Quality</h4>
+        <h4 className="text-xl font-bold text-red-600 mb-2">Quality</h4>
         <p className="text-gray-600">We are committed to delivering the highest level of quality in our work and services.</p>
       </div>
 
@@ -420,7 +420,7 @@ const VisionMission = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-2">Customer Focus</h4>
+        <h4 className="text-xl font-bold text-red-600 mb-2">Customer Focus</h4>
         <p className="text-gray-600">Our clients' success is our success. We listen, understand, and deliver with purpose.</p>
       </div>
     </div>
@@ -430,7 +430,7 @@ const VisionMission = () => {
 
         {/* CTA Section */}
         <div className="bg-blue-600 rounded-xl p-12 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-red-600 mb-4">
             Join Us on Our Journey
           </h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">

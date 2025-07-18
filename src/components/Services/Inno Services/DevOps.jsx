@@ -1,519 +1,414 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { forwardRef, useState } from "react";
+import { Link } from "react-router-dom";
+import "./DevOps.css";
 
-const DevOps = () => {
+const ServicesCard = ({ title, description, image, features }) => (
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+    <div className="relative h-48">
+      <img src={image} className="w-full h-full object-cover" alt={title} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-600 leading-relaxed mb-4">{description}</p>
+      {features && (
+        <ul className="space-y-2">
+          {features.map((feature, idx) => (
+            <li key={idx} className="flex items-start text-gray-600 text-sm">
+              <svg className="w-4 h-4 text-blue-600 mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+);
+
+const DevOps = forwardRef((props, ref) => {
+  const [hoveredService, setHoveredService] = useState(null);
+
+  const offerings = {
+    items: [
+      "Continuous Integration/Deployment",
+      "Infrastructure Automation",
+      "Cloud Services Management",
+      "Container Orchestration",
+      "Monitoring & Logging",
+      "Security Implementation"
+    ],
+    description: "At Innomatrics, we streamline your development and operations with modern DevOps practices. Our solutions automate workflows, enhance collaboration, and ensure reliable deployments.",
+    images: {
+      default: "https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration_107173-25133.jpg",
+      "Continuous Integration/Deployment": "https://img.freepik.com/free-vector/continuous-integration-abstract-concept-illustration_335657-4849.jpg",
+      "Infrastructure Automation": "https://img.freepik.com/free-vector/cloud-services-isometric-composition_1284-55829.jpg",
+      "Cloud Services Management": "https://img.freepik.com/free-vector/cloud-computing-security-abstract-concept-illustration_335657-2105.jpg",
+      "Container Orchestration": "https://img.freepik.com/free-vector/container-ship-abstract-concept-illustration_335657-4427.jpg",
+      "Monitoring & Logging": "https://img.freepik.com/free-vector/data-analytics-illustration_335657-4661.jpg",
+      "Security Implementation": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"
+    },
+    descriptions: {
+      default: "Transform your development pipeline with our comprehensive DevOps solutions that combine automation with best practices.",
+      "Continuous Integration/Deployment": "Implement robust CI/CD pipelines that automate testing and deployment for faster, more reliable software delivery.",
+      "Infrastructure Automation": "Automate infrastructure provisioning and management with Infrastructure as Code (IaC) practices.",
+      "Cloud Services Management": "Optimize cloud resources and costs while maintaining high availability and scalability.",
+      "Container Orchestration": "Manage containerized applications efficiently with Kubernetes and Docker orchestration.",
+      "Monitoring & Logging": "Implement comprehensive monitoring and logging solutions for real-time system visibility.",
+      "Security Implementation": "Integrate security best practices throughout the development lifecycle (DevSecOps)."
+    }
+  };
+
   const services = [
     {
       title: "CI/CD Pipeline Implementation",
-      description: "Automated build, test, and deployment processes for faster and more reliable software delivery.",
-      icon: (
-        <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
-      )
+      description: "Automate your software delivery process with robust CI/CD pipelines.",
+      image: "https://img.freepik.com/free-vector/continuous-integration-abstract-concept-illustration_335657-4849.jpg",
+      features: [
+        "Automated testing integration",
+        "Deployment automation",
+        "Version control integration",
+        "Build process optimization",
+        "Release management"
+      ]
     },
     {
       title: "Infrastructure as Code",
-      description: "Automated infrastructure provisioning and management using tools like Terraform and CloudFormation.",
-      icon: (
-        <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      )
+      description: "Manage and provision infrastructure through code for consistency and reliability.",
+      image: "https://img.freepik.com/free-vector/cloud-services-isometric-composition_1284-55829.jpg",
+      features: [
+        "Infrastructure automation",
+        "Configuration management",
+        "Environment consistency",
+        "Version-controlled infrastructure",
+        "Automated scaling"
+      ]
     },
     {
-      title: "Container Orchestration",
-      description: "Kubernetes and Docker implementation for scalable and manageable containerized applications.",
-      icon: (
-        <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-        </svg>
-      )
-    },
-    {
-      title: "Cloud Infrastructure Management",
-      description: "Expert management of AWS, Azure, and Google Cloud platforms for optimal performance and cost.",
-      icon: (
-        <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-        </svg>
-      )
-    },
-    {
-      title: "Monitoring and Logging",
-      description: "Comprehensive monitoring solutions using tools like Prometheus, Grafana, and ELK Stack.",
-      icon: (
-        <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      )
-    },
-    {
-      title: "Security Implementation",
-      description: "DevSecOps practices for building security into the development lifecycle.",
-      icon: (
-        <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
-    }
-  ];
-
-  const tools = [
-    { name: "Kubernetes", category: "Container Orchestration" },
-    { name: "Docker", category: "Containerization" },
-    { name: "Terraform", category: "Infrastructure as Code" },
-    { name: "Ansible", category: "Configuration Management" },
-    { name: "Jenkins", category: "CI/CD" },
-    { name: "GitLab CI/CD", category: "CI/CD" },
-    { name: "AWS", category: "Cloud Platform" },
-    { name: "Azure", category: "Cloud Platform" },
-    { name: "GCP", category: "Cloud Platform" },
-    { name: "Prometheus", category: "Monitoring" },
-    { name: "Grafana", category: "Monitoring" },
-    { name: "ELK Stack", category: "Logging" },
-  ];
-
-  const benefits = [
-    {
-      title: "Faster Time to Market",
-      description: "Reduce deployment times from weeks to minutes with automated CI/CD pipelines.",
-      icon: "⏱️"
-    },
-    {
-      title: "Improved Reliability",
-      description: "Minimize human errors and increase system stability with infrastructure as code.",
-      icon: "🛡️"
-    },
-    {
-      title: "Cost Optimization",
-      description: "Reduce cloud costs with proper resource provisioning and auto-scaling.",
-      icon: "💰"
-    },
-    {
-      title: "Enhanced Security",
-      description: "Implement security best practices throughout your development lifecycle.",
-      icon: "🔒"
-    },
-    {
-      title: "Better Collaboration",
-      description: "Break down silos between development and operations teams.",
-      icon: "👥"
-    },
-    {
-      title: "Scalability",
-      description: "Easily scale your infrastructure to meet growing business demands.",
-      icon: "📈"
-    },
-  ];
-
-  const processSteps = [
-    {
-      title: "Continuous Integration",
-      description: "Automated code integration and testing",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9jW0UMLeFTAdXKjYBov2wOABDSYXu6jOR4w&s",
-      features: ["Automated builds", "Unit testing", "Code quality checks", "Integration testing"]
-    },
-    {
-      title: "Continuous Deployment",
-      description: "Automated deployment pipelines",
-      image: "https://miro.medium.com/v2/resize:fit:640/1*QYn03nv31ohSshObFzsY5w.png",
-      features: ["Automated releases", "Environment management", "Rollback capability", "Deployment tracking"]
-    },
-    {
-      title: "Infrastructure Management",
-      description: "Cloud and infrastructure automation",
-      image: "https://static.vecteezy.com/system/resources/thumbnails/036/781/015/small_2x/ai-generated-sustainable-energy-management-with-ai-ai-generated-photo.jpg",
-      features: ["Resource provisioning", "Scaling automation", "Infrastructure as Code", "Cost optimization"]
-    }
-  ];
-
-  const technologies = [
-    {
-      category: "Containerization",
-      image: "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
-      tools: ["Docker", "Kubernetes", "Container Registry", "Microservices"]
-    },
-    {
-      category: "Cloud Platforms",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png",
-      tools: ["AWS", "Azure", "Google Cloud", "Multi-cloud"]
-    },
-    {
-      category: "Monitoring",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU_X725VxT-HbXMyR2n9HN9YaiCWBcoxwF6A&s",
-      tools: ["Prometheus", "Grafana", "ELK Stack", "New Relic"]
+      title: "Cloud Services Management",
+      description: "Optimize your cloud infrastructure for performance and cost-efficiency.",
+      image: "https://img.freepik.com/free-vector/cloud-computing-security-abstract-concept-illustration_335657-2105.jpg",
+      features: [
+        "Multi-cloud management",
+        "Cost optimization",
+        "Security implementation",
+        "Performance monitoring",
+        "Disaster recovery"
+      ]
     }
   ];
 
   return (
-    <div className="bg-gray-50">
+    <div className="flex flex-col items-center pt:0 md:pt-10 pb-20 bg-white shadow-sm" ref={ref}>
       {/* Hero Section */}
-      <div className="relative bg-blue-900 text-white py-32 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{
-            backgroundImage: "url('https://t3.ftcdn.net/jpg/13/83/35/94/360_F_1383359475_rZpmdRpSp6mPtQlxxP6TwQyqoqWI6jvB.jpg')",
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-blue-900/50"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Transforming IT Operations Through DevOps Innovation
-            </h1>
-            <div className="w-32 h-1 bg-blue-400 mx-auto mb-8"></div>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
-              Streamline your development pipeline, enhance collaboration, and deliver value faster with our enterprise-grade DevOps solutions. Experience seamless integration, automated workflows, and robust security.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white hover:bg-blue-50 text-blue-700 font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300 shadow-lg"
-              >
-                Schedule a Consultation
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-transparent hover:bg-blue-800 border-2 border-white text-white font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300"
-              >
-                View Our Solutions
-              </motion.button>
+      <div
+        className="BgDiv relative flex flex-col items-start self-stretch px-20 py-20 font-medium text-center leading-[108%] min-h-[276px] text-zinc-900 max-md:px-5 max-md:max-w-full"
+        style={{ 
+          height: "60vh",
+          backgroundImage: "url('https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          position: "relative"
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30"></div>
+        
+        <div className="flex flex-col my-12 items-start justify-start gap-4 text-start relative z-10">
+          <h1 className="text-3xl my-4 font-bold text-white md:text-white md:text-5xl">
+            DevOps Services
+          </h1>
+          
+          <hr className="text-sky-600 w-[140%]" />
+        </div>
+      </div>
+
+      {/* Overview Section */}
+      <div className="mb-20 px-6 md:px-8">
+        <h2 className="text-xl font-bold text-orange-600 mb-4 mt-8">OVERVIEW</h2>
+        <p className="text-lg text-gray-900 leading-relaxed">
+          At Innomatrics, we understand that modern software development demands seamless integration between development and operations. Our DevOps services bridge this gap, implementing automated workflows, continuous integration/deployment pipelines, and robust monitoring solutions. We help organizations adopt DevOps practices that enhance collaboration, speed up delivery, and maintain high reliability standards. Our team brings extensive experience in cloud technologies, containerization, and automation tools to transform your development lifecycle.
+        </p>
+      </div>
+
+      {/* Offerings Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-3xl text-red-700 font-bold">OUR OFFERINGS</h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-8">
+          {/* Left Content */}
+          <div>
+            <div className="space-y-4">
+              {offerings.items.map((item) => (
+                <div 
+                  key={item}
+                  className="group relative cursor-pointer"
+                  onMouseEnter={() => setHoveredService(item)}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <h4 className="text-lg font-semibold text-gray-800 group-hover:text-red-500 transition-colors duration-300">
+                    {item}
+                  </h4>
+                </div>
+              ))}
+
+              <p className="text-gray-600 mt-6">
+                {offerings.description}
+              </p>
             </div>
-          </motion.div>
+          </div>
+
+          {/* Right Image */}
+          <div className="relative">
+            <img
+              src={hoveredService ? offerings.images[hoveredService] || offerings.images.default : offerings.images.default}
+              alt={hoveredService || "DevOps Services"}
+              className="rounded-lg shadow-xl w-full object-cover transition-opacity duration-500"
+              style={{ height: '400px' }}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 rounded-b-lg">
+              <p className="text-white text-lg">
+                {hoveredService ? offerings.descriptions[hoveredService] || offerings.descriptions.default : offerings.descriptions.default}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* The Infinite Difference Section */}
+      <div className="w-full px-4 py-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-xl font-bold text-red-500">THE INFINITE DIFFERENCE</h2>
+            <h3 className="text-4xl font-bold text-gray-900 mt-4">
+              Streamlined Development & <br /> Enhanced Operations
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left side - Image */}
+            <div className="relative">
+              <img 
+                src="https://img.freepik.com/free-vector/devops-concept-illustration_114360-8975.jpg"
+                alt="DevOps Innovation"
+                className="w-full rounded-lg shadow-xl object-cover h-[400px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-transparent rounded-lg"></div>
+            </div>
+
+            {/* Right side - Features */}
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Automation Excellence</h4>
+                <p className="text-gray-700">
+                  Our automated pipelines and infrastructure management reduce manual errors and speed up deployment cycles by up to 80%.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Cloud-Native Expertise</h4>
+                <p className="text-gray-700">
+                  Leverage our deep knowledge of cloud platforms and containerization to build scalable, resilient applications.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Continuous Improvement</h4>
+                <p className="text-gray-700">
+                  Our monitoring and feedback systems ensure continuous optimization of your development pipeline and infrastructure.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Services Section */}
-      <div className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our DevOps Services</h2>
+      <div className="w-full px-4 py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-red-600 mb-4">
+              Our DevOps Services
+            </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We provide end-to-end DevOps solutions tailored to your business needs
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive DevOps solutions to streamline your development pipeline and enhance operational efficiency
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
             {services.map((service, index) => (
-              <motion.div
+              <ServicesCard
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border-l-4 border-blue-600"
-              >
-                <div className="flex items-center justify-center h-16 w-16 bg-blue-100 rounded-full mb-6">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <a href="#" className="text-blue-600 font-medium hover:text-blue-800 transition-colors duration-300">
-                  Learn more →
-                </a>
-              </motion.div>
+                title={service.title}
+                description={service.description}
+                image={service.image}
+                features={service.features}
+              />
             ))}
           </div>
         </div>
       </div>
 
-      {/* Benefits Section */}
-      <div className="py-20 bg-white">
+      {/* Join Our Journey Section */}
+      <div className="w-full bg-gradient-to-r from-blue-50 to-white py-20 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Benefits of DevOps</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how DevOps can transform your organization
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300"
-              >
-                <div className="text-4xl mb-6">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Tools Section */}
-      <div className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our DevOps Toolbox</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We work with the industry's leading tools and technologies
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-20">
-            {tools.map((tool, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-                className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="text-2xl font-bold text-gray-800 mb-2">{tool.name}</div>
-                <div className="text-sm text-gray-500">{tool.category}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Case Studies Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how we've helped companies achieve DevOps excellence
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-gray-50 rounded-xl p-8 border-l-4 border-blue-600"
-            >
-              <div className="flex items-center mb-6">
-                <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold mr-4">A</div>
-                <div>
-                  <h3 className="text-xl font-semibold">E-commerce Platform</h3>
-                  <p className="text-gray-500">Retail Industry</p>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-6">
-                "Implemented a complete CI/CD pipeline that reduced deployment times by 85% and increased deployment frequency from once a month to multiple times per day."
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-red-600">Transform Your Development Pipeline</h2>
+              <p className="text-lg text-gray-600">
+                Ready to streamline your development process and enhance operational efficiency? Partner with Innomatrics to implement modern DevOps practices that drive innovation and reliability.
               </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">AWS</span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Kubernetes</span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Jenkins</span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Terraform</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-gray-50 rounded-xl p-8 border-l-4 border-blue-600"
-            >
-              <div className="flex items-center mb-6">
-                <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold mr-4">B</div>
-                <div>
-                  <h3 className="text-xl font-semibold">Financial Services</h3>
-                  <p className="text-gray-500">Banking Sector</p>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-6">
-                "Migrated legacy infrastructure to cloud with full automation, achieving 99.99% uptime and reducing operational costs by 40% while improving security compliance."
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Azure</span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Docker</span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Ansible</span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Prometheus</span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* Visual Process Flow */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our DevOps Process</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden"
-              >
-                <div className="relative h-48">
-                  <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">{step.title}</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">{step.description}</p>
-                  <ul className="space-y-2">
-                    {step.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-gray-700">
-                        <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Technology Showcase */}
-      <div className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technology Stack</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {technologies.map((tech, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl p-6 shadow-lg"
-              >
-                <div className="h-32 flex items-center justify-center mb-6">
-                  <img src={tech.image} alt={tech.category} className="h-full object-contain" />
-                </div>
-                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">{tech.category}</h3>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {tech.tools.map((tool, idx) => (
-                    <span key={idx} className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Implementation Workflow */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Implementation Workflow</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute top-0 left-1/2 -ml-px h-full w-0.5 bg-gray-200"></div>
-            <div className="space-y-8">
-              {[
-                {
-                  title: "Assessment & Planning",
-                  description: "Evaluate current infrastructure and develop migration strategy",
-                  image: "https://www.netguru.com/hs-fs/hubfs/assessment.png?width=900&name=assessment.png"
-                },
-                {
-                  title: "Infrastructure Setup",
-                  description: "Configure cloud infrastructure and deployment pipelines",
-                  image: "https://www.netguru.com/hs-fs/hubfs/infrastructure.png?width=900&name=infrastructure.png"
-                },
-                {
-                  title: "Automation Implementation",
-                  description: "Implement CI/CD pipelines and automated testing",
-                  image: "https://www.netguru.com/hs-fs/hubfs/automation.png?width=900&name=automation.png"
-                },
-                {
-                  title: "Monitoring & Optimization",
-                  description: "Set up monitoring tools and optimize performance",
-                  image: "https://www.netguru.com/hs-fs/hubfs/monitoring.png?width=900&name=monitoring.png"
-                }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} relative`}
-                >
-                  <div className="flex items-center w-full max-w-md">
-                    <div className={`w-full bg-white rounded-xl shadow-lg overflow-hidden ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}>
-                      <img src={step.image} alt={step.title} className="w-full h-48 object-cover" />
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                        <p className="text-gray-600">{step.description}</p>
-                      </div>
-                    </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
                   </div>
-                </motion.div>
-              ))}
+                  <p className="text-gray-700">Automated CI/CD Pipelines</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    </svg>
+                  </div>
+                  <p className="text-gray-700">Infrastructure as Code</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                  </div>
+                  <p className="text-gray-700">Enhanced Security & Monitoring</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-600/10 rounded-3xl transform rotate-3"></div>
+              <img 
+                src="https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration_107173-25133.jpg" 
+                alt="DevOps Journey" 
+                className="relative rounded-3xl w-full h-[400px] object-cover shadow-xl"
+              />
             </div>
           </div>
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Development Process?</h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-10">
-              Our DevOps experts are ready to help you build, deploy, and scale your applications faster and more reliably.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                to="/quote"
-                className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg inline-block"
-              >
-                Get Started
-              </Link>
-              
+      {/* New Additional Section */}
+      <div className="w-full px-4 py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-xl font-bold text-red-500">DEVOPS EXCELLENCE</h2>
+            <h3 className="text-4xl font-bold text-gray-900 mt-4">
+              Streamlined Development & <br/> Continuous Integration
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {/* Card 1 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
+              <div className="relative h-48 mb-6 overflow-hidden rounded-lg">
+                <img 
+                  src="https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration_107173-25133.jpg"
+                  alt="Automation Excellence"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <h4 className="text-xl font-semibold text-red-500 mb-3">Automation Excellence</h4>
+              <p className="text-gray-600">
+                Implement end-to-end automation for your development pipeline, reducing manual errors and accelerating delivery.
+              </p>
             </div>
-          </motion.div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
+              <div className="relative h-48 mb-6 overflow-hidden rounded-lg">
+                <img 
+                  src="https://img.freepik.com/free-vector/cloud-computing-security-abstract-concept-illustration_335657-2105.jpg"
+                  alt="Cloud Integration"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <h4 className="text-xl font-semibold text-red-500 mb-3">Cloud Integration</h4>
+              <p className="text-gray-600">
+                Seamlessly integrate cloud services with your development workflow for enhanced scalability and reliability.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
+              <div className="relative h-48 mb-6 overflow-hidden rounded-lg">
+                <img 
+                  src="https://img.freepik.com/free-vector/continuous-integration-abstract-concept-illustration_335657-4849.jpg"
+                  alt="Continuous Integration"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <h4 className="text-xl font-semibold text-red-500 mb-3">Continuous Integration</h4>
+              <p className="text-gray-600">
+                Implement robust CI/CD pipelines that automate testing and deployment for faster, more reliable software delivery.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-800">Rapid Deployment</h4>
+                  <p className="text-gray-600">Accelerate your deployment cycles with automated workflows</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-800">Enhanced Security</h4>
+                  <p className="text-gray-600">Implement security best practices throughout the pipeline</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-800">Performance Monitoring</h4>
+                  <p className="text-gray-600">Real-time monitoring and analytics for optimal performance</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img 
+                src="https://img.freepik.com/free-vector/devops-concept-illustration_114360-8975.jpg"
+                alt="DevOps Process"
+                className="w-full rounded-lg shadow-xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent rounded-lg"></div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   );
-};
+});
 
 export default DevOps;
