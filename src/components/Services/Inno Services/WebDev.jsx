@@ -329,100 +329,92 @@ const WebDev = forwardRef((props, ref) => {
           </div>
 
           {/* Value Delivered Section */}
-          <div className="mt-20">
-            <h2 className="text-xl font-bold text-orange-500 mb-4">VALUE DELIVERED</h2>
-            <h3 className="text-4xl font-bold text-gray-800 mb-12">Engineering excellence with real-world impact</h3>
+          <div className="w-full px-4 py-16 bg-white">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="text-xl font-bold text-orange-500 mb-4">VALUE DELIVERED</h2>
+              <h3 className="text-4xl font-bold text-gray-900 mb-12">
+                Engineering excellence with<br />real-world impact
+              </h3>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Left Side - 2x2 Grid */}
-              <div className="lg:col-span-2">
-                <div className="grid grid-cols-2 gap-6">
-                  {/* Top Left */}
-                  <div className="relative overflow-hidden rounded-lg" style={{ height: "300px" }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1470&auto=format&fit=crop"
-                      alt="Case Study"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="relative z-10 p-6 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
-                      <h4 className="text-blue-300 text-lg mb-2">Case Study</h4>
-                      <p className="text-white text-sm">
-                        Innomatrics Tech's Custom Software Solution Reduces Operating Costs by 40% for Major E-commerce Platform
-                      </p>
-                      <Link to="/case-studies" className="text-orange-500 hover:text-orange-400 mt-2">
-                        Learn More →
-                      </Link>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {/* Card 1 */}
+                <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-700/20 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <h4 className="text-xl font-semibold mb-4">Tech's Custom Software Solution</h4>
+                    <p className="text-blue-100 mb-4">
+                      Reduces Operating Costs by 40% through automation and streamlined workflows, improving efficiency across departments.
+                    </p>
+                    <div className="flex items-center gap-2 text-blue-200">
+                      <span className="text-3xl font-bold">40%</span>
+                      <span className="text-sm">Cost Reduction</span>
                     </div>
                   </div>
+                </div>
 
-                  {/* Top Right */}
-                  <div className="relative overflow-hidden rounded-lg" style={{ height: "300px" }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop"
-                      alt="Background"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="relative z-10 p-6 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
-                      <p className="text-white text-sm mb-4">
-                        "Innomatrics Tech delivered exceptional results with our cloud migration project. Their team's expertise helped us achieve 99.9% uptime and significant cost savings."
-                      </p>
-                      <div>
-                        <h4 className="text-blue-300 text-sm">TECH DIRECTOR</h4>
-                        <p className="text-white text-sm">Leading E-commerce Platform</p>
-                      </div>
+                {/* Card 2 */}
+                <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-700/20 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <h4 className="text-xl font-semibold mb-4">Technical Expertise</h4>
+                    <p className="text-blue-100 mb-4">
+                      Achieved 99.9% uptime and significant performance improvements through optimized architecture and robust monitoring.
+                    </p>
+                    <div className="flex items-center gap-2 text-blue-200">
+                      <span className="text-3xl font-bold">99.9%</span>
+                      <span className="text-sm">Uptime</span>
                     </div>
                   </div>
+                </div>
 
-                  {/* Bottom Left */}
-                  <div className="relative overflow-hidden rounded-lg" style={{ height: "300px" }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1470&auto=format&fit=crop"
-                      alt="Background"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="relative z-10 p-6 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
-                      <p className="text-white text-sm mb-4">
-                        "The Innomatrics team demonstrated exceptional skill in modernizing our legacy systems. Their innovative solutions have transformed our business operations."
-                      </p>
-                      <div>
-                        <h4 className="text-blue-300 text-sm">CTO</h4>
-                        <p className="text-white text-sm">Financial Services Company</p>
-                      </div>
+                {/* Card 3 */}
+                <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-700/20 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <h4 className="text-xl font-semibold mb-4">Enhanced User Experience</h4>
+                    <p className="text-blue-100 mb-4">
+                      Improved user satisfaction by 85% with intuitive interfaces and faster page load times across all devices.
+                    </p>
+                    <div className="flex items-center gap-2 text-blue-200">
+                      <span className="text-3xl font-bold">85%</span>
+                      <span className="text-sm">User Satisfaction</span>
                     </div>
                   </div>
+                </div>
 
-                  {/* Bottom Right */}
-                  <div className="relative overflow-hidden rounded-lg" style={{ height: "300px" }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1469&auto=format&fit=crop"
-                      alt="Background"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="relative z-10 p-6 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
-                      <p className="text-white text-sm mb-4">
-                        "Innomatrics Tech's development team consistently delivers high-quality solutions. Their agile approach and technical expertise have been invaluable to our digital transformation."
-                      </p>
-                      <div>
-                        <h4 className="text-blue-300 text-sm">PRODUCT MANAGER</h4>
-                        <p className="text-white text-sm">Healthcare Technology Provider</p>
-                      </div>
+                {/* Card 4 */}
+                <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-700/20 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <h4 className="text-xl font-semibold mb-4">Accelerated Development</h4>
+                    <p className="text-blue-100 mb-4">
+                      Reduced development time by 60% using our proven frameworks and automated testing procedures.
+                    </p>
+                    <div className="flex items-center gap-2 text-blue-200">
+                      <span className="text-3xl font-bold">60%</span>
+                      <span className="text-sm">Faster Delivery</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Side - Full Height Image */}
-              <div className="relative overflow-hidden rounded-lg" style={{ height: "620px" }}>
-                <img
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1472&auto=format&fit=crop"
-                  alt="Case Study"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="relative z-10 p-8 h-full flex flex-col justify-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent">
-                  <h4 className="text-blue-300 text-xl mb-4">Case Study</h4>
-                  <p className="text-xl text-white">
-                    Innomatrics Tech's AI-powered automation solution increases efficiency by 200% for enterprise client
-                  </p>
+              {/* Additional Stats Section */}
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-600">100+</div>
+                  <div className="text-gray-600 mt-2">Projects Delivered</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-600">95%</div>
+                  <div className="text-gray-600 mt-2">Client Retention</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-600">24/7</div>
+                  <div className="text-gray-600 mt-2">Support Available</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-600">50+</div>
+                  <div className="text-gray-600 mt-2">Expert Developers</div>
                 </div>
               </div>
             </div>

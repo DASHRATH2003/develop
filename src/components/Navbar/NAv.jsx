@@ -26,6 +26,12 @@ function NAv() {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+    setShowServices(false);
+    setShowAbout(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -53,6 +59,13 @@ function NAv() {
   const toggleInfoBar = () => {
     setShowInfoBar(!showInfoBar);
   };
+
+  // Update the mobile menu links to use closeMenu
+  const MobileLink = ({ to, children }) => (
+    <Link to={to} className="nav-item block" onClick={closeMenu}>
+      {children}
+    </Link>
+  );
 
   return (
     <header className="relative">
@@ -234,16 +247,17 @@ function NAv() {
               </button>
               {showAbout && (
                 <div className="bg-blue-800 rounded-md mt-1 py-2">
-                  <Link to="/about/overview" className="nav-item block pl-4">
+                  <Link to="/about/overview" className="nav-item block pl-4" onClick={closeMenu}>
                     Company Overview
                   </Link>
                   <Link
                     to="/about/vision-mission"
                     className="nav-item block pl-4"
+                    onClick={closeMenu}
                   >
                     Our Vision & Mission
                   </Link>
-                  <Link to="/about/why-us" className="nav-item block pl-4">
+                  <Link to="/about/why-us" className="nav-item block pl-4" onClick={closeMenu}>
                     Why Us
                   </Link>
                 </div>
@@ -272,46 +286,45 @@ function NAv() {
               </button>
               {showServices && (
                 <div className="bg-blue-800 rounded-md mt-1 py-2">
-                  <Link to="/webdev" className="nav-item block pl-4">
+                  <Link to="/webdev" className="nav-item block pl-4" onClick={closeMenu}>
                     Web Development
                   </Link>
-                  <Link to="/appdev" className="nav-item block pl-4">
+                  <Link to="/appdev" className="nav-item block pl-4" onClick={closeMenu}>
                     App Development
                   </Link>
-                  <Link to="/digitalmarket" className="nav-item block pl-4">
+                  <Link to="/digitalmarket" className="nav-item block pl-4" onClick={closeMenu}>
                     Digital Marketing
                   </Link>
-                  <Link to="/logodesign" className="nav-item block pl-4">
+                  <Link to="/logodesign" className="nav-item block pl-4" onClick={closeMenu}>
                     Logo Design
                   </Link>
-                  <Link to="/socialmedia" className="nav-item block pl-4">
-                    Social Media
+                  <Link to="/socialmedia" className="nav-item block pl-4" onClick={closeMenu}>
+                    Social Media Marketing
                   </Link>
-                  <Link to="/webdesign" className="nav-item block pl-4">
+                  <Link to="/devops" className="nav-item block pl-4" onClick={closeMenu}>
+                    DevOps
+                  </Link>
+                  <Link to="/webdesign" className="nav-item block pl-4" onClick={closeMenu}>
                     Web Design
                   </Link>
                 </div>
               )}
             </div>
-            <Link to="/industries" className="nav-item block">
-              Industries
-            </Link>
-            <Link to="/blog" className="nav-item block">
-              Blog
-            </Link>
-            <Link to="/careers" className="nav-item block">
-              Careers
-            </Link>
+            <MobileLink to="/industries">Industries</MobileLink>
+            <MobileLink to="/blog">Blog</MobileLink>
+            <MobileLink to="/careers">Careers</MobileLink>
             <div className="pt-4 flex flex-col items-center space-y-2 px-2">
               <Link
                 to="/contact"
                 className="nav-button primary w-full max-w-[200px] text-center"
+                onClick={closeMenu}
               >
                 Contact Us
               </Link>
               <Link
                 to="/quote"
                 className="nav-button secondary w-full max-w-[200px] text-center"
+                onClick={closeMenu}
               >
                 Get a Quote
               </Link>

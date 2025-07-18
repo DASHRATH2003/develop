@@ -54,10 +54,9 @@ const Industries = () => {
         <div className="absolute inset-0 bg-gradient-to-r " />
         <div className="relative h-full flex flex-col justify-center">
           <div className="container mx-auto px-4">
-            <h1 className="text-5xl  mt-24 ml-[-450px] md:text-6xl font-bold text-white mb-6 text-center">
+            <h1 className="text-4xl font-bold text-white mb-6 text-center md:text-left md:text-5xl lg:text-6xl lg:ml-[-450px] mt-24">
               Industries We Serve
             </h1>
-           
           </div>
         </div>
       </div>

@@ -459,10 +459,12 @@ const AppDev = forwardRef((props, ref) => {
       {/* New Technology Innovation Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl ml-[-700px] font-bold text-red-400 mb-4">
+          <h1 className="text-4xl font-bold text-red-400 mb-4 text-center md:text-left md:ml-[-700px]">
             TECHNOLOGY INNOVATION
           </h1> 
-          <p className="text-2xl ml-[-700px] text-gray-700 ">Pioneering solution for tomorrow's challanges</p>
+          <p className="text-2xl text-gray-700 text-center md:text-left md:ml-[-700px]">
+            Pioneering solution for tomorrow's challanges
+          </p>
         
           
         </div>
@@ -546,11 +548,11 @@ const AppDev = forwardRef((props, ref) => {
         <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-12">
           {/* Left: Text Content */}
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <h2 className="text-3xl ml-[-50px] font-bold text-red-600 mb-4">
+            <h2 className="text-3xl font-bold text-red-600 mb-4 text-center md:text-left md:ml-[-50px]">
               Transform Your Business with Mobile Technology
             </h2>
-            <div className="w-24 h-1 ml-[-50px] bg-blue-600 mb-6"></div>
-            <p className="text-xl ml-[-50px] text-gray-700">
+            <div className="w-24 h-1 bg-blue-600 mb-6 mx-auto md:mx-0 md:ml-[-50px]"></div>
+            <p className="text-xl text-gray-700 text-center md:text-left md:ml-[-50px]">
               At Innomatrics Tech, we specialize in creating high-performance
               mobile applications that deliver exceptional user experiences and
               measurable business results. With over 10 years of experience, our
@@ -605,9 +607,8 @@ const AppDev = forwardRef((props, ref) => {
         <div className="mb-20 mt-10">
           <h2 className="text-3xl font-bold text-center text-red-600 mb-12">
             Comprehensive App Development Services
-            <div className="w-28 h-1 bg-red-600 mb-6 mt-2 ml-80 "></div>
           </h2>
-         
+          <div className="w-28 h-1 bg-red-600 mb-6 mx-auto"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div
