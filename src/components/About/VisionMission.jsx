@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./About.css";
+import NAv from "../Navbar/NAv";
 import aboutCorporate from "../../assets/aboutCorporate.jpg";
 import mission1 from "../../assets/mission1.jpg";
 import mission2 from "../../assets/mission2.jpg";
@@ -172,27 +173,31 @@ const VisionMission = () => {
   ];
 
   return (
-    <div className="vision-mission">
+    <div className="min-h-screen bg-white">
+      <NAv />
       {/* Hero Section */}
-      <div
-        className="relative w-full h-[400px] flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${aboutCorporate})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        <div className="absolute inset-0 bg-black/70"></div>
-        <div className="relative z-10 w-full text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-            Our Vision & Mission
-          </h1>
-          <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto px-4">
-            Guiding principles that drive our innovation and define our
-            commitment to excellence in technology solutions
-          </p>
+      <div className="relative w-full bg-[#020A13]">
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNiQmckEiog2__5cgK-O9RF4xbDi1-5-MK8NGiTP8f3ZrrxG_4uJ0_UDigd5wiFTMgSHY&usqp=CAU')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.3'
+          }}
+        />
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-7xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Our Vision & Mission
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl">
+              Guiding principles that drive our innovation and define our commitment to excellence in technology solutions
+            </p>
+            <div className="w-32 h-0.5 bg-white mt-8"></div>
+          </div>
         </div>
       </div>
 

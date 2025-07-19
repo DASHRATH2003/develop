@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import NAv from "../Navbar/NAv";
 
 const BlogPage = () => {
   const categories = [
@@ -58,33 +59,34 @@ const BlogPage = () => {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
+      <NAv />
       {/* Hero Section */}
-      <div 
-        className="relative h-[60vh] text-white"
-        style={{
-          backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFPxEuA0sDXYWGWZGqZo23nAWwo4Y_tJ_J0Mm0n_TYgWJZDK4vhVHMPKPATV7QKbmwDOQ&usqp=CAU')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        <div className="absolute inset-0"></div>
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl mb-4 md:text-left md:ml-[-400px]">
-              Our Latest Insights
+      <div className="relative w-full bg-black">
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI5AocHjcxxSmI7XkK2pdNC55VdzKkJjS6QW4OGsLhOYkin71AJL0jN69ULuO_PETJ8dM&usqp=CAU')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.2'
+          }}
+        />
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-7xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Blog & Insights
             </h1>
-            <p className="mt-4 text-xl text-blue-100 md:text-left md:ml-[-200px]">
-              Stay updated with the latest trends and insights in technology and digital innovation
-            </p>
+            <div className="w-32 h-0.5 bg-white mt-8"></div>
           </div>
         </div>
       </div>
 
       {/* Category Filter */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap gap-2 justify-start">
           {categories.map((category) => (
             <button
               key={category}
@@ -149,7 +151,7 @@ const BlogPage = () => {
           ))}
         </div>
 
-        {/* Newsletter Subscription */}
+        {/* Newsletter Section */}
         <div className="mt-16 bg-blue-900 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white">Subscribe to Our Newsletter</h2>
           <p className="mt-2 text-blue-200">Get the latest insights delivered directly to your inbox</p>

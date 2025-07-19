@@ -170,7 +170,7 @@ function NAv() {
                 </Link>
                 
                 <Link
-                  to="/quote"
+                  to="/contact"
                   className="nav-button secondary bg-red-500/90 hover:bg-red-600 text-white shadow-lg backdrop-blur-sm"
                 >
                   Get a Quote
@@ -319,7 +319,7 @@ function NAv() {
                 Contact Us
               </Link>
               <Link
-                to="/quote"
+                to="/contact"
                 className="nav-button secondary w-full max-w-[200px] text-center"
                 onClick={closeMenu}
               >

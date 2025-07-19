@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NAv from "../Navbar/NAv";
 
 const Industries = () => {
   const industries = [
@@ -42,21 +43,27 @@ const Industries = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-white">
+      <NAv />
       {/* Hero Section */}
-      <div className="relative h-[60vh] w-full">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      <div className="relative w-full bg-black">
+        <div
+          className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: "url('https://cdn.pixabay.com/photo/2017/03/03/09/49/earth-2113658_640.jpg')",
+            backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI5AocHjcxxSmI7XkK2pdNC55VdzKkJjS6QW4OGsLhOYkin71AJL0jN69ULuO_PETJ8dM&usqp=CAU')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.2'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r " />
-        <div className="relative h-full flex flex-col justify-center">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-white mb-6 text-center md:text-left md:text-5xl lg:text-6xl lg:ml-[-450px] mt-24">
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-7xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               Industries We Serve
             </h1>
+            <div className="w-32 h-0.5 bg-white mt-8"></div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Companyimage from "../../assets/Companyimage.jpg";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import NAv from "../Navbar/NAv";
 
 const CompanyOverview = () => {
   useEffect(() => {
@@ -85,28 +86,31 @@ const CompanyOverview = () => {
   ];
 
   return (
-    <div className="company-overview">
+    <div className="min-h-screen bg-white">
+      <NAv />
       {/* Hero Section */}
-      <div
-        className="relative w-full h-[500px] flex items-center"
-        style={{
-          backgroundImage:
-            "url('https://media.istockphoto.com/id/871030872/photo/programming-code-abstract-technology-background-of-software-developer.jpg?s=612x612&w=0&k=20&c=lkfUNy8Sf3TpFBeIfpBAy6FB5XQwbwjdzypK_1uOQd8=')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        data-aos="fade-down"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-white max-w-4xl">
-  <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-    Innovating for Tomorrow
-  </h1>
-  <p className="text-lg md:text-xl text-gray-200">
-    Driving digital transformation through innovative technology solutions since 2023
-  </p>
-</div>
+      <div className="relative w-full bg-[#020A13]">
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: "url('https://images.pexels.com/photos/41949/earth-earth-at-night-night-lights-41949.jpeg?cs=srgb&dl=pexels-pixabay-41949.jpg&fm=jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.2'
+          }}
+        />
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-7xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Innovating for Tomorrow
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl">
+              Driving digital transformation through innovative technology solutions since 2023
+            </p>
+            <div className="w-32 h-0.5 bg-white mt-8"></div>
+          </div>
         </div>
       </div>
 
@@ -138,8 +142,11 @@ const CompanyOverview = () => {
                 thinking to solve complex challenges and deliver exceptional
                 results.
               </p>
-              <p>We combine technical expertise with creative
-                thinking to solve complex.</p>            </div>
+              <p>
+                We combine technical expertise with creative thinking to solve
+                complex.
+              </p>{" "}
+            </div>
           </div>
 
           {/* Our Journey Section */}

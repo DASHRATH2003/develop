@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "./About.css";
+import NAv from "../Navbar/NAv";
 
 const WhyUs = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -124,33 +125,35 @@ const WhyUs = () => {
   };
 
   return (
-    <div className="why-us">
-      {/* Hero Section with Background */}
-      <div className="relative py-20">
+    <div className="min-h-screen bg-white">
+      <NAv />
+      {/* Hero Section */}
+      <div className="relative w-full bg-[#020A13]">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-            backgroundAttachment: "fixed",
+            backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwJdCdjWM6UpiBcv3cMPqTRqrwI6x4w5hugT0kG-yYy2r6RPmi7TBbuXCdNu5cTrB5UuI&usqp=CAU')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.3'
           }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-black/80"></div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-          <h1 className="text-4xl font-bold text-white mb-4">Why Choose Us</h1>
-          <div className="w-24 h-1 bg-blue-400 mx-auto mb-6"></div>
-          <p className="mt-6 text-xl text-gray-200 max-w-3xl mx-auto">
-            We combine innovation, expertise, and dedication to deliver
-            exceptional technology solutions that drive your business forward.
-          </p>
-        </motion.div>
+        />
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-7xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Why Choose Us
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl">
+              We combine innovation, expertise, and dedication to deliver exceptional technology solutions that drive your business forward.
+            </p>
+            <div className="w-32 h-0.5 bg-white mt-8"></div>
+          </div>
+        </div>
       </div>
 
+      {/* Rest of your existing content */}
       <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}

@@ -70,16 +70,22 @@ const About = forwardRef((props, ref) => {
   ];
   return (
     <>
-      <section className="about-section bg-cover bg-center" ref={ref}>
-        <div className="container mx-auto px-4 py-20 md:py-40">
+      <section className="about-section bg-cover bg-center relative h-[500px]" ref={ref}
+        style={{
+          backgroundImage: "url('https://media.istockphoto.com/id/1413514774/photo/digital-transformation-and-futuristic-technology-concept-blue-earth-network-connection.jpg?s=612x612&w=0&k=20&c=Gy2NBtEhUy6CLFALBwzABwRhQH5NJV5sAVWt7VL2J2U=')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+        <div className="container mx-auto px-4 py-20 md:py-40 relative z-10">
           <div className="flex flex-col my-[50px] md:my-[10px] items-start justify-start gap-4 text-start">
-            <h1 className="text-3xl font-bold text-white md:text-5xl">
-              About US
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              About Us
             </h1>
-            <p className="text-xl font-semibold text-white md:text-2xl">
-              Helping businesses thrive with digital and tech solutions.
+            <p className="text-xl md:text-2xl text-gray-200 max-w-2xl">
+              Driving digital transformation through innovative technology solutions since 2023
             </p>
-            <hr className="text-sky-600 w-[100%] md:w-[50%] " />
+            <hr className="text-sky-600 w-[100%] md:w-[50%]" />
           </div>
         </div>
       </section>
