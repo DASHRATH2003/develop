@@ -251,7 +251,7 @@ const SocialMedia = forwardRef((props, ref) => {
             {/* Left side - Image */}
             <div className="relative">
               <img 
-                src="https://img.freepik.com/free-vector/social-media-marketing-concept-illustration_114360-7572.jpg"
+                src="https://media.istockphoto.com/id/1346575545/photo/3d-render-of-social-media-business-concept.jpg?s=612x612&w=0&k=20&c=1083IFHVsot9K6aguY59kOLCWIijhPQT69oYJB9SYS0="
                 alt="Social Media Marketing Innovation"
                 className="w-full rounded-lg shadow-xl object-cover h-[400px]"
               />

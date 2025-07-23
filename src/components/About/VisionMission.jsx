@@ -201,6 +201,38 @@ const VisionMission = () => {
         </div>
       </div>
 
+
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold text-gray-900">Vision & Mission</h2>
+      <p className="mt-2 text-lg text-gray-600">What drives us forward</p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Vision */}
+      <div className="p-6 bg-pink-50 rounded-lg shadow">
+        <h3 className="text-xl font-semibold text-orange-600 mb-4">Our Vision</h3>
+        <p className="text-gray-800 leading-relaxed">
+          To become a globally recognized technology leader by delivering innovative, scalable, and impactful digital solutions.
+          We aim to empower businesses of all sizes through technology that drives growth, efficiency, and lasting success.
+        </p>
+      </div>
+
+      {/* Mission */}
+      <div className="p-6 bg-pink-50 rounded-lg shadow">
+        <h3 className="text-xl font-semibold text-orange-600 mb-4">Our Mission</h3>
+        <p className="text-gray-800 leading-relaxed">
+          Our mission is to provide exceptional software services by understanding client needs, embracing innovation, and delivering
+          high-quality, custom-built solutions. We strive to build long-term partnerships by consistently exceeding expectations and
+          creating value through technology.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Vision Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">

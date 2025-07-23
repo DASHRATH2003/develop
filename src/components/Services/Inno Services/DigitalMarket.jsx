@@ -176,7 +176,7 @@ const DigitalMarketing = forwardRef((props, ref) => {
             {/* Left side - Hexagonal Image */}
             <div className="relative">
               <img 
-                src="https://img.freepik.com/premium-vector/artificial-intelligence-ai-robot-digital-brain-artificial-thinking-process-machine-learning-digital-transformation-big-data-concept_127544-850.jpg"
+                src="https://img.freepik.com/free-photo/colleagues-giving-fist-bump_53876-15018.jpg?semt=ais_hybrid&w=740"
                 alt="Digital Marketing Innovation"
                 className="w-full rounded-lg shadow-xl object-cover h-[500px]"
               />

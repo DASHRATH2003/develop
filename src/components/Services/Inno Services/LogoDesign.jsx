@@ -225,7 +225,7 @@ const LogoDesign = forwardRef((props, ref) => {
             {/* Left side - Hexagonal Image */}
             <div className="relative">
               <img 
-                src="https://img.freepik.com/premium-vector/artificial-intelligence-ai-robot-digital-brain-artificial-thinking-process-machine-learning-digital-transformation-big-data-concept_127544-850.jpg"
+                src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                 alt="Digital Marketing Innovation"
                 className="w-full rounded-lg shadow-xl object-cover h-[400px]"
               />
@@ -235,21 +235,21 @@ const LogoDesign = forwardRef((props, ref) => {
             {/* Right side - Features */}
             <div className="space-y-8">
               <div>
-                <h4 className="text-2xl text-red-500 font-semibold mb-4">Partnerships with Leading Platforms</h4>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Collaborations with Top-Tier Platforms</h4>
                 <p className="text-gray-700">
                   We have strategic partnerships with leading digital marketing platforms providing us with access to advanced tools, expert resources, and industry knowledge repositories.
                 </p>
               </div>
 
               <div>
-                <h4 className="text-2xl text-red-500 font-semibold mb-4">Advanced Marketing Tools</h4>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">Powerful & Cost-Effective Marketing Solutions</h4>
                 <p className="text-gray-700">
                   Leverage our comprehensive suite of marketing automation tools based on common use cases to optimize your digital presence while keeping costs minimal.
                 </p>
               </div>
 
               <div>
-                <h4 className="text-2xl text-red-500 font-semibold mb-4">Proven ROI</h4>
+                <h4 className="text-2xl text-red-500 font-semibold mb-4">High-Impact Results with Tangible Savings</h4>
                 <p className="text-gray-700">
                   Our clients consistently achieve significant results, with typical cost savings between 40%-80% through our optimized digital marketing strategies.
                 </p>

@@ -88,6 +88,7 @@ const CompanyOverview = () => {
   return (
     <div className="min-h-screen bg-white">
       <NAv />
+      
       {/* Hero Section */}
       <div className="relative w-full bg-[#020A13]">
         <div
@@ -114,10 +115,18 @@ const CompanyOverview = () => {
         </div>
       </div>
 
+
+      <div className="mb-20 px-6 md:px-8">
+  <h2 className="text-xl font-bold text-orange-600 mb-4 mt-8">OVERVIEW</h2>
+  <p className="text-lg text-gray-900 leading-relaxed">
+    Innomatrics is a technology-driven company focused on delivering innovative, scalable, and customer-centric solutions. With a strong foundation in modern development practices and cloud infrastructure, we empower businesses to transform digitally and stay competitive. Our team specializes in crafting end-to-end software products tailored to meet diverse industry needs, ensuring efficiency, security, and long-term growth.
+  </p>
+</div>
+
       {/* About Us Section */}
       <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-[-80px] items-center mb-20">
             <div data-aos="fade-right">
               <img
                 src="https://plus.unsplash.com/premium_photo-1661347859297-859b8ae1d7c5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVzaW5lc3MlMjBtZWV0aW5nfGVufDB8fDB8fHww"

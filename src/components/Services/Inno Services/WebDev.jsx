@@ -442,7 +442,7 @@ const WebDev = forwardRef((props, ref) => {
               <div>
                 <h2 className="text-2xl font-bold text-orange-500 mb-4">Industry Recognition</h2>
                 <p className="text-lg text-gray-800">
-                  Innomatrics Tech is recognized as an emerging leader in Next-Generation Software Development and Enterprise Solutions, delivering cutting-edge technology services since 2018
+                  Innomatrics Tech is recognized as an emerging leader in Next-Generation Software Development and Enterprise Solutions, delivering cutting-edge technology services since 2023.
                 </p>
               </div>
 
@@ -483,7 +483,7 @@ const WebDev = forwardRef((props, ref) => {
             </div>
             <div className="w-full mt-16 md:w-1/2">
               <img
-                src="https://lh3.googleusercontent.com/p/AF1QipPt4MB4nnqOACB60WVnk3ui4MYSTNHZe1VsOVBl=s1360-w1360-h1020-rw"
+                src="https://www.shutterstock.com/image-photo/online-presence-concept-digital-channels-600nw-2442404275.jpg"
                 alt="Innomatrics Digital Solutions"
                 className="w-full h-72 rounded-lg shadow-md"
               />

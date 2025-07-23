@@ -153,9 +153,16 @@ const WhyUs = () => {
         </div>
       </div>
 
+      <div className="mb-20 px-6 md:px-8">
+  <h2 className="text-xl font-bold text-orange-600 mb-4 mt-8">WHY US</h2>
+  <p className="text-lg text-gray-900 leading-relaxed">
+    At Innomatrics, we combine deep technical expertise with a commitment to excellence. Our solutions are tailored to your business goals, ensuring maximum impact and value. From user-friendly interfaces to secure backend systems, we deliver products that are both powerful and reliable. With transparent communication, timely delivery, and a client-first mindset, we are a partner you can trust for long-term success.
+  </p>
+</div>
+
       {/* Rest of your existing content */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="py-20 bg-white ">
+        <div className="max-w-7xl mt-[-80px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}
           <div data-aos="fade-right">
             <img
@@ -166,7 +173,7 @@ const WhyUs = () => {
           </div>
 
           {/* Content Section */}
-          <div data-aos="fade-left">
+          <div data-aos=" fade-left">
             <h2 className="text-4xl font-bold text-red-600 mb-6">
               Why Choose Our Software Company?
             </h2>

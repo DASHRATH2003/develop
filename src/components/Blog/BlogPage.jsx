@@ -83,6 +83,22 @@ const BlogPage = () => {
           </div>
         </div>
       </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="py-16 space-y-8">
+    <div className="w-full mx-auto">
+      <h4 className="text-3xl text-red-500 font-semibold mb-8 text-left">Innomatrics Blog</h4>
+      <p className="text-gray-700 text-lg leading-relaxed text-left">
+        Welcome to the official blog of <span className="font-semibold text-blue-600">Innomatrics</span>, your trusted software development partner.
+        Here, we share valuable insights, tech trends, and practical solutions that are driving innovation across industries.
+        Whether you're a startup looking to scale, a business undergoing digital transformation, or a developer eager to explore cutting-edge technologies, our blog is designed for you.
+        <br /><br />
+        At Innomatrics, we believe in empowering businesses through smart, scalable, and future-ready software solutions.
+        Our team regularly publishes content on web development, mobile apps, UI/UX design, cloud computing, cybersecurity, AI integration, and much more.
+        Stay connected with our blog to learn from real-world case studies, expert opinions, and company updates that reflect our passion for technology and customer success.
+      </p>
+    </div>
+  </div>
+</div>
 
       {/* Category Filter */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
