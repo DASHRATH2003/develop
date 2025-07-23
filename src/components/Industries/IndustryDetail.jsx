@@ -328,34 +328,7 @@ const IndustryDetail = () => {
       </div>
 
       {/* Case Studies Section */}
-      <div className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Success Stories</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {currentIndustry.caseStudies.map((study, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">{study.title}</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-blue-600">Challenge:</h4>
-                      <p className="text-gray-600">{study.challenge}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-600">Solution:</h4>
-                      <p className="text-gray-600">{study.solution}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-600">Result:</h4>
-                      <p className="text-gray-600">{study.result}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+     
 
       {/* Call to Action Section */}
       <div className="bg-blue-600 py-16">

@@ -32,7 +32,7 @@ const Industries = () => {
       id: 'construction',
       title: "CONSTRUCTION FIRMS",
       subtitle: "We empower construction firms with innovative digital solutions that streamline project management",
-      image: "https://plus.unsplash.com/premium-photo-1681691912442-68c4179c530c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29uc3RydWN0aW9ufGVufDB8fDB8fHww"
+      image: "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?cs=srgb&dl=pexels-sevenstormphotography-439416.jpg&fm=jpg"
     },
     {
       id: 'security',
