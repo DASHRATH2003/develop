@@ -164,13 +164,14 @@ const WhyUs = () => {
       <div className="py-20 bg-white ">
         <div className="max-w-7xl mt-[-80px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}
-          <div data-aos="fade-right">
-            <img
-              src="https://thumbs.dreamstime.com/b/handwriting-text-writing-why-choose-us-question-concept-meaning-reasons-choosing-our-brand-over-others-arguments-conceptual-160898301.jpg" // Replace with your preferred image URL
-              alt="Why Choose Us"
-              className="w-full h-auto rounded-xl shadow-lg"
-            />
-          </div>
+          <div className="relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-xl">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/02/87/66/91/360_F_287669118_j5dQdApPRxoXuyXMrrGavM7uTydyh1AG.jpg"
+                    alt="Our team working"
+                    className="object-cover w-full h-full"
+                  />
+                  <div className="absolute inset-0 bg-blue-900 opacity-20"></div>
+                </div>
 
           {/* Content Section */}
           <div data-aos=" fade-left">
