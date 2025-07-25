@@ -15,7 +15,7 @@ import WhyUs from './components/About/WhyUs';
 import Services from './components/Services/Services';
 import Industries from './components/Industries/Industries';
 import IndustryDetail from './components/Industries/IndustryDetail';
-import Conatct from './components/Contact/Contact';
+import Contact from './components/Contact/Contact';
 import Career from './components/Career/Career';
 import BlogPage from './components/Blog/BlogPage';
 import Quote from './components/Quote/Quote';
@@ -60,7 +60,7 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="industries" element={<Industries />} />
           <Route path="industries/:industry" element={<IndustryDetail />} />
-          <Route path="contact" element={<Conatct />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="careers" element={<Career />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="quote" element={<Quote />} />

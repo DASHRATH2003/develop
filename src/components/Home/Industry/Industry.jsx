@@ -18,7 +18,7 @@ const Industry = () => {
       icon: <MdLocalHospital className="text-2xl" />,
       title: "Healthcare",
       description: "Revolutionizing healthcare delivery through innovative digital solutions that enhance patient care, streamline operations, and improve healthcare outcomes for a better tomorrow.",
-      image: "https://innomatricstech.com/static/media/healthcare.e62a4eb7627020872da5.jpg"
+      image: "https://www.shutterstock.com/image-vector/bfsi-banking-financial-services-insurance-600nw-2133334589.jpg"
     },
     {
       id: 'banking',
@@ -32,28 +32,28 @@ const Industry = () => {
       icon: <MdApartment className="text-2xl" />,
       title: "NGO Organizations",
       description: "Dedicatedly empowering communities and catalyzing meaningful change through concerted efforts that prioritize inclusivity, collaboration, and sustainable practices, thereby fostering a brighter, more equitable future for all.",
-      image: "https://innomatricstech.com/static/media/ngo.f4d06299e1fe648175d1.jpg"
+      image: "https://t3.ftcdn.net/jpg/02/36/95/44/360_F_236954427_7l75FyrRb19rvnTCyJdNNcYpXokXkEPi.jpg"
     },
     {
       id: 'tours',
       icon: <MdDirectionsCar className="text-2xl" />,
       title: "Tours And Travels",
       description: "Transforming travel experiences through cutting-edge technology solutions that streamline bookings, enhance customer experiences, and revolutionize the way people explore the world.",
-      image: "https://innomatricstech.com/static/media/tours.5a2b2fb7493d15de0a69.jpg"
+      image: "https://t4.ftcdn.net/jpg/00/65/48/25/360_F_65482539_C0ZozE5gUjCafz7Xq98WB4dW6LAhqKfs.jpg"
     },
     {
       id: 'construction',
       icon: <MdBusiness className="text-2xl" />,
       title: "Construction Firms",
       description: "Building the future through innovative digital solutions that optimize project management, enhance collaboration, and drive efficiency in construction operations.",
-      image: "https://innomatricstech.com/static/media/construction.5fcfec7212b510106d76.jpg"
+      image: "https://info.engineering.vanderbilt.edu/hubfs/AdobeStock_222740403-1.jpeg"
     },
     {
       id: 'security',
       icon: <MdLock className="text-2xl" />,
       title: "Security",
       description: "Protecting digital assets and infrastructure with state-of-the-art security solutions that ensure peace of mind in an increasingly connected world.",
-      image: "https://innomatricstech.com/static/media/security.3064eeb1e8cf302453f9.jpg"
+      image: "https://media.istockphoto.com/id/1412282189/photo/lock-network-technology-concept.jpg?s=612x612&w=0&k=20&c=hripuxLs9pS_7Ln6YWQR-Ow2_-BU5RdQ4vOY8s1q1iQ="
     }
   ];
 
